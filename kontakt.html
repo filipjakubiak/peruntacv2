@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt i FAQ - Perun Tac</title>
+<meta name="description" content="Skontaktuj się z Perun Tac: +48 453 300 536, info@peruntac.pl. Szkolenia na strzelnicach Dolnego Śląska i w całej Polsce. Najczęściej zadawane pytania.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html">Baza wiedzy</a>
+      <a href="o-nas.html">O nas</a>
+      <a href="perun-security.html">Perun Security</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" aria-current="page" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
+    <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="assets/banner-kontakt.jpg" alt="Instruktorzy Perun Tac na strzelnicy" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <span>KONTAKT</span></p>
+      <h1 class="page-hero__title">
+        <span class="line"><span class="line__in">Nawiąż</span></span>
+        <span class="line"><span class="line__in"><em>łączność.</em></span></span>
+      </h1>
+      <p class="page-hero__intro">Nie mamy stałej siedziby: szkolenia prowadzimy na wybranych strzelnicach
+      Dolnego Śląska i na terenie całego kraju. Zadzwoń, napisz maila albo użyj formularza.</p>
+    </div>
+  </section>
+
+  <!-- KONTAKT GRID -->
+  <section class="contact-grid" aria-label="Dane kontaktowe i formularz">
+    <div>
+      <h2 class="contact-grid__title reveal-lines"><span class="line"><span class="line__in">Dane</span></span><span class="line"><span class="line__in">kontaktowe</span></span></h2>
+      <p class="contact-grid__note">Aby umówić się na szkolenie, zadzwoń, uzupełnij formularz lub napisz maila.
+      Odpowiadamy najszybciej jak to możliwe, zwykle tego samego dnia.</p>
+      <div class="contact-grid__data">
+        <a href="tel:+48453300536"><span class="mono" style="color:var(--olive)">TELEFON</span><span class="contact-grid__val">+48 453 300 536</span></a>
+        <a href="mailto:info@peruntac.pl"><span class="mono" style="color:var(--olive)">E-MAIL</span><span class="contact-grid__val">info@peruntac.pl</span></a>
+        <a href="wydarzenia.html"><span class="mono" style="color:var(--olive)">ZAPISY</span><span class="contact-grid__val">Kalendarz wydarzeń</span></a>
+      </div>
+      <div class="contact-grid__photo">
+        <img src="assets/kontakt-photo.jpg" alt="Zespół Perun Tac podczas szkolenia" loading="lazy">
+      </div>
+    </div>
+    <div>
+      <h2 class="contact-grid__title reveal-lines"><span class="line"><span class="line__in">Wyślij</span></span><span class="line"><span class="line__in">wiadomość</span></span></h2>
+      <form data-mailto-form novalidate>
+        <input type="hidden" name="_subject" value="Wiadomość ze strony - formularz kontaktowy">
+        <div class="field">
+          <label for="cName">Imię i nazwisko *</label>
+          <input id="cName" name="imie_i_nazwisko" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cMail">Twój e-mail *</label>
+          <input id="cMail" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="cTopic">Temat</label>
+          <select id="cTopic" name="temat">
+            <option value="Szkolenie otwarte">Szkolenie otwarte</option>
+            <option value="Trening indywidualny">Trening indywidualny</option>
+            <option value="Szkolenie dedykowane / grupa">Szkolenie dedykowane / grupa</option>
+            <option value="Współpraca biznesowa">Współpraca biznesowa</option>
+            <option value="Inne">Inne</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cMsg">Treść wiadomości *</label>
+          <textarea id="cMsg" name="wiadomosc" required></textarea>
+        </div>
+        <div class="field field--check">
+          <input id="cRodo" type="checkbox" required>
+          <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zapytania zgodnie z
+          <a href="https://peruntac.pl/polityka-prywatnosci" target="_blank" rel="noopener" style="text-decoration:underline">polityką prywatności</a>. *</span>
+        </div>
+        <button class="btn btn--signal bk__submit" type="submit">Wyślij →</button>
+        <div class="bk__sent" data-mailto-sent role="status">
+          <span class="mono">WIADOMOŚĆ PRZYGOTOWANA</span>
+          Otworzyliśmy Twój program pocztowy z gotową wiadomością. Wystarczy nacisnąć „Wyślij”.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad" id="faq" aria-label="Najczęściej zadawane pytania">
+    <div class="section-head" style="padding-left:0;padding-right:0;padding-top:0">
+      <h2 class="section-head__title reveal-lines"><span class="line"><span class="line__in">FAQ</span></span></h2>
+      <p class="section-head__note">Najczęściej zadawane pytania. Nie znalazłeś odpowiedzi? Po prostu zadzwoń.</p>
+    </div>
+    <div class="faq">
+      <details class="faq__item">
+        <summary>Czy mogę umówić się na szkolenie indywidualne lub spoza oferty?</summary>
+        <p>Masz własny pomysł na szkolenie lub chcesz skupić się na konkretnym zagadnieniu? Umów się z nami
+        na szkolenie indywidualne. Dla osób już strzelających oferujemy również regularne treningi indywidualne.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Nie mam własnej broni. Czy mogę wziąć udział w szkoleniu?</summary>
+        <p>Pewnie! Dysponujemy dużą i zróżnicowaną ilością broni, a uczestnikom szkoleń zapewniamy możliwość
+        jej wynajmu. Jedyne, co musisz zrobić, to dać nam wcześniej znać.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Czy mogę dokupić amunicję na miejscu?</summary>
+        <p>Tak, po wcześniejszym uzgodnieniu z prowadzącym szkolenie.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Gdzie odbywają się szkolenia?</summary>
+        <p>Szkolenia odbywają się na całym terytorium Polski. Wybrana lokalizacja oraz wskazówki dojazdu
+        znajdują się zawsze w opisie szkolenia.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Gdzie znajdę informacje o nadchodzących szkoleniach?</summary>
+        <p>Wszystkie terminy publikujemy w <a href="wydarzenia.html" style="text-decoration:underline">kalendarzu wydarzeń</a>
+        oraz na naszym profilu facebookowym. Jeśli nie znajdziesz tam informacji, które Cię interesują, zachęcamy do kontaktu.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Czy osoby niepełnoletnie mogą brać udział w szkoleniach?</summary>
+        <p>Jak najbardziej! Konieczna jest jednak obecność rodzica lub opiekuna prawnego.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Jak się ubrać na strzelnicę?</summary>
+        <p>Szkolenia najczęściej odbywają się na strzelnicach otwartych, dlatego ubierz się adekwatnie do prognozy
+        pogody. Pracujemy z pasem taktycznym, więc garderoba nie może blokować do niego dostępu. Weź pod uwagę,
+        że ubrania i obuwie mogą się pobrudzić, zniszczyć lub przemoczyć.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Co powinienem / powinnam zabrać ze sobą?</summary>
+        <p>Szkolenia są intensywne, dlatego zalecamy zabranie wody i czegoś do przegryzienia.
+        Zachęcamy też do zabrania markera lub długopisu.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Czy po ukończeniu szkolenia otrzymam certyfikat?</summary>
+        <p>Tak, po każdym szkoleniu uczestnicy otrzymują imienne certyfikaty potwierdzające ukończenie programu.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FOOTER (compact) -->
+  <footer class="contact" style="padding-top:0">
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jakie zero do celownika mini red dot na pistolecie? - Perun Tac</title>
+<meta name="description" content="Analiza czterech dystansów zerowania MRDS na pistolecie (10, 12,5, 15 i 25 m) w systemie metrycznym: Glock 19, Trijicon RMR, dane offsetu POA-POI i rekomendacje pod profil użycia.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html" aria-current="page">Baza wiedzy</a>
+      <a href="o-nas.html">O nas</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="kontakt.html"><span class="mono mmenu__tag">ŁĄCZNOŚĆ</span>Kontakt</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero" style="min-height:clamp(360px,52svh,540px)">
+    <div class="page-hero__media">
+      <img src="assets/art5-banner.jpg" alt="Pistolet z celownikiem mini red dot" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <a href="baza-wiedzy.html">BAZA WIEDZY</a> <span>//</span> <span>ARTYKUŁ</span></p>
+      <h1 class="page-hero__title" style="font-size:clamp(2.2rem,6vw,4.2rem)">
+        <span class="line"><span class="line__in">Jakie zero dla</span></span>
+        <span class="line"><span class="line__in"><em>MRDS</em> na pistolecie?</span></span>
+      </h1>
+    </div>
+  </section>
+
+  <article class="art">
+    <div class="art__meta mono">
+      <span>27 LISTOPADA 2025</span><span>//</span><span>BALISTYKA</span><span>//</span><span>PISTOLET · MRDS</span>
+    </div>
+
+    <p>Celowniki typu Mini Red Dot Sight (MRDS) na pistoletach nie są już niczym zaskakującym. W środowisku
+    strzeleckim stanowią obecnie standard, zarówno w zastosowaniach służbowych, sportowych, jak i obronnych.
+    Mimo rosnącej popularności nadal pojawia się pytanie: <strong>na jaką odległość najlepiej wyzerować pistolet
+    wyposażony w MRDS?</strong> W internecie można znaleźć wiele odpowiedzi, jednak większość opiera się na danych
+    w systemie imperialnym i nie porusza dogłębnie plusów i minusów różnych opcji.</p>
+    <p>Poniżej przedstawiamy analizę czterech najpopularniejszych dystansów zerowania MRDS
+    w <strong>metrycznym systemie miar</strong>, opartą na rzeczywistych danych balistycznych.</p>
+
+    <h2>Parametry testowe</h2>
+    <ul>
+      <li><strong>Broń</strong>: Glock 19 (standardowa długość lufy 102 mm)</li>
+      <li><strong>Celownik</strong>: Trijicon RMR (punkt 3,25 MOA)</li>
+      <li><strong>Amunicja</strong>: STV 9×19 mm, FMJ, 124 gr</li>
+      <li><strong>Metoda</strong>: pomiary offsetu POA-POI przy strzelaniu z pełnej stabilizacji</li>
+    </ul>
+    <p>Wyniki przedstawiają różnice pomiędzy punktem celowania (POA, Point of Aim) a punktem trafienia
+    (POI, Point of Impact) na poszczególnych dystansach, przy czterech ustawieniach zera:
+    <strong>10 m, 12,5 m, 15 m i 25 m</strong>. Skupiamy się na dystansach istotnych praktycznie:
+    5, 10, 15, 20, 25 i 30 m; wartości dla 50 i 100 m traktujemy informacyjnie.</p>
+
+    <h2>Dane: offset POA-POI dla czterech zer</h2>
+    <figure>
+      <img src="assets/art5-img-1.jpg" alt="Tabela offsetów POA-POI dla zera 10 m" loading="lazy">
+      <figcaption class="mono">ZERO 10 M / GLOCK 19 / 124 GR FMJ</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/art5-img-2.jpg" alt="Tabela offsetów POA-POI dla zera 12,5 m" loading="lazy">
+      <figcaption class="mono">ZERO 12,5 M</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/art5-img-3.jpg" alt="Tabela offsetów POA-POI dla zera 15 m" loading="lazy">
+      <figcaption class="mono">ZERO 15 M</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/art5-img-4.jpg" alt="Tabela offsetów POA-POI dla zera 25 m" loading="lazy">
+      <figcaption class="mono">ZERO 25 M</figcaption>
+    </figure>
+
+    <h2>Dlaczego zero 25 m wychodzi najbardziej „płasko” w dystansach 5-30 m?</h2>
+    <p>Zerowanie na dalszy dystans powoduje, że linia celowania i linia lotu pocisku przecinają się w sposób,
+    który daje mniejsze wahania POI przy średnich i dalszych krótkich dystansach. Przy wyzerowaniu na 25 m pocisk
+    jest nieco „wyżej” w zakresie 10-25 m, ale rozkład tych odchyleń jest bardziej jednorodny, co w liczbach daje
+    niższe <strong>mean_abs</strong> (średnia wartość bezwzględna offsetów, miara uśrednionego odchylenia)
+    i <strong>peak-to-peak</strong> (rozpiętość między najwyższym a najniższym offsetem).</p>
+    <p>Zera bliższe (10 m) powodują większe „wzniesienie” w przedziale 15-30 m, co daje większe
+    <strong>max_abs</strong> (największe bezwzględne odchylenie w przedziale 5-30 m) i większą rozpiętość.</p>
+    <p>Zero 25 m daje najlepszą płaskość w całym zakresie 5-30 m, ale ma największy (najbardziej ujemny) offset
+    na 5 m: <strong>−1,14 cm</strong>. Przy bardzo bliskich trafieniach (kontakt, 2-5 m) punkt trafienia będzie
+    nieco niżej względem celu. Jeśli priorytetem jest absolutna zgodność POA=POI na 3-7 m, lepsze są zera krótsze
+    (10 m lub 12,5 m).</p>
+
+    <h2>Praktyczne rekomendacje: wybór zera pod profil użycia</h2>
+    <ul>
+      <li><strong>Szeroki zakres 5-30 m, minimalna zmienność POI</strong> → zero 25 m: najniższe mean_abs
+      i najmniejsza rozpiętość, czyli największa przewidywalność w całym zakresie</li>
+      <li><strong>Większość kontaktów 0-10 m, minimalny błąd na 5 m</strong> → zero 10 m (lub 12,5 m): dokładne
+      trafienie na 10 m i minimalne odchylenie w najbliższej strefie, kosztem większej rozpiętości dalej</li>
+      <li><strong>Precyzja na środkowym dystansie 10-25 m</strong> → zero 15 m: bardzo niskie średnie odchylenie
+      i mała rozpiętość w zakresie 10-30 m</li>
+      <li><strong>Uniwersalny kompromis do pracy taktyczno-służbowej</strong> → zero 12,5 m: dobre średnie wyniki,
+      przewidywalne zachowanie w 5-30 m, mniejsze max_abs niż zero 10 m</li>
+    </ul>
+
+    <h2>Praktyka zerowania: procedura warsztatowa</h2>
+    <ul>
+      <li><strong>Stabilne stanowisko i powtarzalny chwyt</strong>: zeruj MRDS z pistoletem opartym na worku
+      z piaskiem lub innej formie stabilizacji, aby zminimalizować błąd strzelca</li>
+      <li><strong>Cel</strong>: mały, kontrastowy punkt. Polecamy naszą tarczę
+      <a href="https://peruntac.pl/lib/v7viiv/MRDS-ZERO-25-ldd9yo8r.jpg" target="_blank" rel="noopener" style="text-decoration:underline">MRDS ZERO TARGET</a>
+      do zera na 25 m</li>
+      <li><strong>Zmniejsz jasność kropki</strong>: mniejsza jasność to mniejszy widoczny punkt. Większy punkt (MOA)
+      może zasłaniać cel i odbierać precyzję potrzebną do wyzerowania</li>
+      <li><strong>Strzały kontrolowane, min. 3 na grupę</strong>: połącz przestrzeliny markerem (trójkąt),
+      poprowadź linie z każdej przestrzeliny do przeciwległej; ich punkt przecięcia to uśredniony punkt trafienia.
+      Na nim bazuj korekty</li>
+    </ul>
+
+    <h2>Wnioski</h2>
+    <p>Zero 25 m jest najbardziej „płaskie” w sensie najmniejszej średniej i najmniejszej rozpiętości odchyleń
+    w praktycznie ważnym paśmie 5-30 m. Nie znaczy to jednak, że jest zawsze najlepsze: na bardzo bliskich
+    dystansach daje największe ujemne przesunięcie POI. Wybór zera to kompromis między płaskością trajektorii
+    w szerszym zakresie a minimalnym offsetem przy kontakcie bliskim.</p>
+    <p>Warto zaznaczyć, że ze względu na niskie ułożenie MRDS względem osi lufy oraz typowe dystanse pistoletowe,
+    różnice między zerami na 10, 12,5, 15 i 25 m nie są tak zauważalne jak przy karabinach i wahają się
+    w okolicach 2 cm.</p>
+    <div class="art__callout">
+      <span class="mono">REKOMENDACJE</span>
+      Uniwersalność 5-30 m: zero 25 m. Priorytet 0-10 m (CQB): 10 / 12,5 m. Precyzja 10-25 m: 15 m.
+    </div>
+  </article>
+
+  <nav class="art-nav" aria-label="Kolejne artykuły">
+    <a href="artykul-gazy.html"><span class="mono">← POPRZEDNI</span><strong>Gazy i substancje chemiczne przy strzelaniu</strong></a>
+    <a href="baza-wiedzy.html#artykuly"><span class="mono">BAZA WIEDZY →</span><strong>Wszystkie artykuły</strong></a>
+  </nav>
+
+  <footer class="contact" style="padding-top:clamp(50px,8vh,80px)">
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

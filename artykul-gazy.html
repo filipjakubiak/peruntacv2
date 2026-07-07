@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gazy i substancje chemiczne przy strzelaniu: wpływ na zdrowie - Perun Tac</title>
+<meta name="description" content="Metale ciężkie, CO, NOx, cząstki ultradrobne: co powstaje przy strzale, jakie są skutki zdrowotne, jak ocenić wentylację strzelnicy i jaką maskę wybrać (SORT, TR2, 3M).">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html" aria-current="page">Baza wiedzy</a>
+      <a href="o-nas.html">O nas</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="kontakt.html"><span class="mono mmenu__tag">ŁĄCZNOŚĆ</span>Kontakt</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero" style="min-height:clamp(360px,52svh,540px)">
+    <div class="page-hero__media">
+      <img src="assets/art4-banner.jpg" alt="Strzelec w masce ochronnej na krytej strzelnicy" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <a href="baza-wiedzy.html">BAZA WIEDZY</a> <span>//</span> <span>ARTYKUŁ</span></p>
+      <h1 class="page-hero__title" style="font-size:clamp(2.2rem,6vw,4.2rem)">
+        <span class="line"><span class="line__in">Gazy przy strzelaniu</span></span>
+        <span class="line"><span class="line__in">a Twoje <em>zdrowie</em></span></span>
+      </h1>
+    </div>
+  </section>
+
+  <article class="art">
+    <div class="art__meta mono">
+      <span>12 GRUDNIA 2025</span><span>//</span><span>BHP STRZELCA</span><span>//</span><span>GSR · WENTYLACJA</span>
+    </div>
+
+    <h2>Wstęp</h2>
+    <p>Strzelanie w pomieszczeniach zamkniętych, zarówno na strzelnicach komercyjnych, jak i w obiektach wojskowych
+    czy policyjnych, generuje szereg zanieczyszczeń powietrza, które stanowią realne, udokumentowane zagrożenie
+    zdrowotne. Choć większość użytkowników strzelnic jest świadoma hałasu i konieczności ochrony słuchu,
+    to zagrożenia <strong>chemiczne</strong> oraz <strong>aerozole powystrzałowe</strong> (GSR, gunshot residue)
+    wciąż są często niedoceniane lub wręcz ignorowane.</p>
+    <p>Najważniejsze zanieczyszczenia powietrza powstające podczas strzału to:</p>
+    <ul>
+      <li>metale ciężkie (głównie ołów, antymon, miedź, cynk)</li>
+      <li>cząstki PM10/PM2.5 i ultradrobne (UFP)</li>
+      <li>tlenek węgla (CO) i tlenki azotu (NOx)</li>
+      <li>lotne związki organiczne (VOCs)</li>
+      <li>gazy i cząstki pochodzące ze spłonek i prochu bezdymnego</li>
+    </ul>
+    <p>Ich stężenie zależy od intensywności strzelania, konstrukcji broni, rodzaju amunicji, a przede wszystkim
+    od <strong>wydajności systemów wentylacji</strong> i przestrzegania procedur higienicznych.</p>
+
+    <h2>1. Co powstaje w momencie strzału?</h2>
+    <h3>1.1. Metale ciężkie</h3>
+    <p>Najbardziej udokumentowanym ryzykiem jest ekspozycja na <strong>ołów (Pb)</strong>, który wciąż występuje
+    w spłonkach, części pocisków i w mikropyłach generowanych przez tarcie pocisku o przewód lufy. Wraz z ołowiem
+    w aerozolach pojawiają się:</p>
+    <ul>
+      <li><strong>antymon (Sb)</strong>: składnik spłonek</li>
+      <li><strong>miedź (Cu)</strong>: płaszcz pocisku</li>
+      <li><strong>cynk (Zn)</strong>: składnik niektórych stopów</li>
+      <li><strong>bar (Ba)</strong>: w GSR przy niektórych typach amunicji</li>
+    </ul>
+    <p>Metale te występują we frakcjach PM10, PM2.5 oraz frakcji ultradrobnej (&lt;100 nm), która jest szczególnie
+    niebezpieczna, gdyż potrafi przenikać przez barierę pęcherzykowo-naczyniową.</p>
+    <h3>1.2. Związki gazowe</h3>
+    <ul>
+      <li><strong>tlenek węgla (CO)</strong>: efekt niepełnego spalania prochu</li>
+      <li><strong>tlenki azotu (NO, NO₂)</strong>: drażnią błony śluzowe, mogą powodować obrzęk płuc</li>
+      <li><strong>dwutlenek siarki (SO₂)</strong>: w niewielkich ilościach, zależnie od prochu</li>
+      <li><strong>VOCs</strong>: lotne węglowodory aromatyczne i nitrozwiązki</li>
+    </ul>
+    <p>Przy intensywnym strzelaniu CO może osiągać poziomy przekraczające normy BHP.</p>
+    <h3>1.3. Cząstki stałe i ultradrobne</h3>
+    <p>Każdy strzał generuje chmurę pyłu zawierającą sadze, nierozłożony proch, mikrofragmenty płaszcza pocisku
+    i pozostałości spłonki. Największe ryzyko stanowią cząstki <strong>UFP</strong> (ultrafine particles)
+    o średnicy poniżej 0,1 mikrometra: przenikają głęboko do płuc, mogą przechodzić do krwiobiegu i wiążą metale
+    ciężkie, transportując je do tkanek.</p>
+
+    <h2>2. Skutki zdrowotne narażenia</h2>
+    <h3>2.1. Ekspozycja na ołów</h3>
+    <p>Ołów kumuluje się w tkankach, a jego skutki są szczególnie groźne dla układu nerwowego. Udokumentowane efekty:</p>
+    <ul>
+      <li>zaburzenia neurologiczne i poznawcze</li>
+      <li>nadciśnienie i zwiększone ryzyko incydentów sercowo-naczyniowych</li>
+      <li>zaburzenia hormonalne</li>
+      <li>spadek funkcji nerek</li>
+    </ul>
+    <p>W wielu raportach stwierdzono podwyższony poziom ołowiu we krwi (BLL) u instruktorów prowadzących zajęcia
+    codziennie, pracowników strzelnic, funkcjonariuszy służb mundurowych oraz strzelców sportowych korzystających
+    z obiektów zamkniętych.</p>
+    <h3>2.2. Choroby układu oddechowego</h3>
+    <p>Ekspozycja na pyły i NOx powoduje przewlekłe zapalenia dróg oddechowych, astmę zawodową (udokumentowane
+    przypadki), większe ryzyko infekcji i obniżenie pojemności płuc.</p>
+    <h3>2.3. Krótkoterminowe objawy po sesji strzeleckiej</h3>
+    <p>Nawet jednorazowa intensywna sesja może wywołać bóle głowy, podrażnienie spojówek, metaliczny posmak
+    w ustach, kaszel i duszność oraz zmęczenie i zaburzenia koncentracji.</p>
+
+    <h2>3. Znaczenie wentylacji: kluczowy element bezpieczeństwa</h2>
+    <p>Wentylacja jest najważniejszym czynnikiem ograniczającym ekspozycję. Niewłaściwa wentylacja potrafi
+    zwiększyć poziom zanieczyszczeń <strong>nawet 20-krotnie</strong>.</p>
+    <h3>Normy OSHA/NIOSH</h3>
+    <ul>
+      <li>Minimalna prędkość przepływu powietrza w kierunku tarcz: 0,3-0,4 m/s</li>
+      <li>Strumień powietrza od stanowiska strzelca w stronę tarczy, bez zawirowań</li>
+      <li>Filtracja HEPA klasy H13 lub wyższej</li>
+    </ul>
+    <h3>Normy europejskie</h3>
+    <p>W UE nie ma jednego spójnego dokumentu, ale większość krajów przyjmuje wartości podobne do NIOSH.
+    Zalecane: ciągły przepływ powietrza w osi strzeleckiej, system wyciągowy przy tarczy i nawiewowy
+    za plecami strzelca.</p>
+    <h3>3.1. Wymiany powietrza (ACH)</h3>
+    <p>ACH (Air Changes per Hour) określa, ile razy powietrze w pomieszczeniu jest wymieniane w ciągu godziny.
+    Rekomendowane minimum według przeglądu norm OSHA/NIOSH i praktyki komercyjnych strzelnic:
+    <strong>10-12 ACH</strong>, a dla obiektów intensywnych <strong>15-20 ACH</strong>.</p>
+
+    <h2>4. Ochrona dróg oddechowych</h2>
+    <p>W przypadku braku pewności co do wentylacji lub pracy w warunkach intensywnego zadymienia konieczna jest
+    ochrona dróg oddechowych. Poniżej zestawienie trzech grup sprzętu.</p>
+    <h3>4.1. Maski taktyczne klasy premium</h3>
+    <figure>
+      <img src="assets/art4-img-1.png" alt="Maska SORT Respirator Ops-Core" loading="lazy">
+      <figcaption class="mono">SORT RESPIRATOR / OPS-CORE (GENTEX)</figcaption>
+    </figure>
+    <p><strong>SORT Respirator, Ops-Core (Gentex)</strong>: maska zaprojektowana dla użytkowników wojskowych.
+    Filtracja klasy P100/HEPA, niski opór oddychania, kompatybilność z hełmami, ochroną słuchu i systemami
+    komunikacji, wkłady odpylające i chemiczne. Zalety: najwyższa skuteczność filtracji, stabilność podczas biegu,
+    minimalne parowanie okularów. Wady: wysoka cena, ograniczona dostępność w Europie.</p>
+    <figure>
+      <img src="assets/art4-img-2.png" alt="Respirator taktyczny Ventus TR2" loading="lazy">
+      <figcaption class="mono">VENTUS RESPIRATORY TR2</figcaption>
+    </figure>
+    <p><strong>VENTUS Respiratory TR2</strong>: profesjonalny respirator taktyczny, często wybierany przez
+    instruktorów i operatorów. Filtracja P100, modułowy system filtrów, bardzo niski opór oddychania, świetna
+    kompatybilność z płytami balistycznymi i hełmami. Zalety: jeden z najlepszych stosunków oddychalność/skuteczność
+    na rynku, doskonały do długich sesji w halach. Wady: wyższa cena niż systemy cywilne, wymaga okresowej konserwacji.</p>
+    <h3>4.2. Rozwiązania budżetowe: 3M i podobne</h3>
+    <figure>
+      <img src="assets/art4-img-3.png" alt="Półmaska 3M z filtrami P100" loading="lazy">
+      <figcaption class="mono">3M 7502 / 6200 + FILTRY P3/P100</figcaption>
+    </figure>
+    <p>Dla strzelców cywilnych i hobbystów doskonałym rozwiązaniem są półmaski z filtrami 3M: 7502 / 6200
+    z filtrami P3/P100, seria 6000, oraz jednorazowe 3M Aura FFP3. Zalety: bardzo niska cena, wysoka skuteczność
+    filtracji cząstek stałych, prosta obsługa i dostępność. Wady: brak kompatybilności z hełmami i niektórymi
+    ochronnikami słuchu, większe parowanie okularów, mniejsza stabilność w dynamice.</p>
+
+    <h2>5. Rekomendacje praktyczne dla strzelców i instruktorów</h2>
+    <h3>5.1. Jak ocenić wentylację strzelnicy?</h3>
+    <ul>
+      <li>Powietrze powinno wyczuwalnie płynąć od strzelca w kierunku tarczy</li>
+      <li>Bez zawirowań i cofania powietrza</li>
+      <li>Temperatura i zapach spalin nie powinny rosnąć podczas strzelania</li>
+      <li>Strzelnica powinna udostępniać dane ACH lub pomiary przepływu</li>
+    </ul>
+    <h3>5.2. Kiedy absolutnie należy używać maski?</h3>
+    <ul>
+      <li>Podczas strzelania w tunelach i wąskich osiach</li>
+      <li>Przy dużej liczbie strzelców na osi</li>
+      <li>Przy słabej wentylacji</li>
+      <li>Podczas czyszczenia osi strzeleckich i stanowisk</li>
+    </ul>
+    <h3>5.3. Której amunicji unikać w pomieszczeniach?</h3>
+    <ul>
+      <li>Amunicji ołowiowej bez płaszcza (lead exposed base)</li>
+      <li>Amunicji z agresywnymi chemicznie spłonkami (np. Barnaul, wojskowa 7,62×39)</li>
+      <li>Zalecana: amunicja z pełnym płaszczem (FMJ) lub non-toxic (NT)</li>
+    </ul>
+    <h3>5.4. Procedury higieniczne po strzelaniu</h3>
+    <ul>
+      <li>Myj ręce po każdej sesji. Na rękach osadzają się szkodliwe związki i metale ciężkie; kontakt z jedzeniem
+      lub piciem przed umyciem rąk może prowadzić do ciężkich zatruć</li>
+      <li>Zmieniaj i pierz odzież po intensywnym treningu. Jeśli ubrania „śmierdzą strzelnicą”, to właśnie przez
+      osiadające na nich substancje</li>
+      <li>Czyść broń w dobrze wentylowanym pomieszczeniu; do substancji powystrzałowych dochodzą środki czystości,
+      które również mogą zawierać toksyczne związki</li>
+      <li>Instruktorzy i pracownicy strzelnic: regularne badania poziomu ołowiu we krwi</li>
+    </ul>
+
+    <h2>6. Podsumowanie</h2>
+    <p>Strzelanie w pomieszczeniach zamkniętych generuje liczne zanieczyszczenia (metale ciężkie, cząstki stałe
+    i gazy), które mogą prowadzić do poważnych konsekwencji zdrowotnych. Odpowiednia wentylacja, maski ochronne
+    i właściwa higiena to kluczowe elementy minimalizacji ryzyka. Zastosowanie ochrony dróg oddechowych,
+    niezależnie czy jest to taktyczna maska SORT/TR2, czy budżetowa 3M, znacząco zmniejsza ekspozycję na aerozole
+    powystrzałowe.</p>
+    <div class="art__callout">
+      <span class="mono">NAJWAŻNIEJSZE</span>
+      Ryzyko chemiczne nie jest widoczne gołym okiem, ale jest realne, mierzalne i w pełni udokumentowane.
+      Podchodź do niego świadomie.
+    </div>
+  </article>
+
+  <nav class="art-nav" aria-label="Kolejne artykuły">
+    <a href="artykul-tlumiki.html"><span class="mono">← POPRZEDNI</span><strong>Tłumiki dźwięku: plusy i minusy</strong></a>
+    <a href="artykul-mrds-zero.html"><span class="mono">NASTĘPNY →</span><strong>Jakie zero do celownika mini red dot?</strong></a>
+  </nav>
+
+  <footer class="contact" style="padding-top:clamp(50px,8vh,80px)">
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

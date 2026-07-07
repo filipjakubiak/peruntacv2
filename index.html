@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perun Tac - Szkolenia strzeleckie i taktyczne · Wrocław / cały świat</title>
+<meta name="description" content="Perun Tac - szkolenia strzeleckie, taktyczne i specjalistyczne dla cywilów, służb mundurowych i jednostek wojskowych. Wrocław, Dolny Śląsk. Realizujemy zadania na całym świecie.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <img class="loader__mark" src="assets/logo.png" alt="">
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+    <p class="loader__label mono">PERUN TAC // ŁADOWANIE SYSTEMU</p>
+  </div>
+</div>
+
+<!-- Crosshair cursor -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<!-- Nav -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#top" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html">Baza wiedzy</a>
+      <a href="o-nas.html">O nas</a>
+      <a href="perun-security.html">Perun Security</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
+    <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
+    <a href="kontakt.html"><span class="mono mmenu__tag">ŁĄCZNOŚĆ</span>Kontakt</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- SPLIT HERO — Perun Tac (szkolenia) / Perun Sec (ochrona) -->
+  <section class="split" id="hero" aria-label="Wybierz dywizję Perun">
+    <span class="split__seam" aria-hidden="true"></span>
+
+    <a class="split__panel split__panel--tac" href="oferta.html" aria-label="Perun Tac — szkolenia strzeleckie i taktyczne">
+      <div class="split__media" aria-hidden="true"><img src="assets/band-wide.jpg" alt="" fetchpriority="high"></div>
+      <div class="split__scrim" aria-hidden="true"></div>
+      <div class="split__glow" aria-hidden="true"></div>
+      <span class="split__index mono">01 // DYWIZJA SZKOLENIOWA</span>
+      <p class="split__kicker mono"><span class="blink" aria-hidden="true">●</span> STRZELECKIE · TAKTYCZNE · SPECJALISTYCZNE</p>
+      <h1 class="split__brand">Perun <em>Tac</em></h1>
+      <p class="split__desc">Szkolimy tych, którzy nie mogą zawieść. Strzelcy cywilni, służby mundurowe i jednostki wojskowe — wybierz szkolenie.</p>
+      <span class="split__cta">Wejdź do szkoleń <span class="arw" aria-hidden="true">→</span></span>
+    </a>
+
+    <a class="split__panel split__panel--sec" href="perun-security.html" aria-label="Perun Security — ochrona osobista i VIP">
+      <div class="split__media" aria-hidden="true"><img src="assets/about-1.jpg" alt=""></div>
+      <div class="split__scrim" aria-hidden="true"></div>
+      <div class="split__glow" aria-hidden="true"></div>
+      <span class="split__index mono">02 // DYWIZJA OCHRONY</span>
+      <p class="split__kicker mono"><span class="blink" aria-hidden="true">●</span> OCHRONA OSOBISTA · CLOSE PROTECTION · VIP</p>
+      <h1 class="split__brand">Perun <em>Sec</em></h1>
+      <p class="split__desc">Bezpieczeństwo osób, których nie stać na przypadek. Dyskretna ochrona osobista i zabezpieczenie na całym świecie.</p>
+      <span class="split__cta">Wejdź do ochrony <span class="arw" aria-hidden="true">→</span></span>
+    </a>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>You don’t get what you want, you get what you <b>work</b> for&nbsp;&nbsp;✕&nbsp;&nbsp;</span><span>You don’t get what you want, you get what you <b>work</b> for&nbsp;&nbsp;✕&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- OFERTA -->
+  <section class="offer" id="oferta">
+    <div class="section-head">
+      <h2 class="section-head__title"><span class="line"><span class="line__in">Nasza oferta</span></span></h2>
+      <p class="section-head__note">Cztery kierunki. Jeden standard: taki, przy którym nie ma miejsca na&nbsp;szczęście.</p>
+    </div>
+
+    <div class="offer__list">
+      <a class="offer__row" href="oferta.html">
+        <div class="offer__bg" aria-hidden="true"><img src="assets/hero-4.jpg" alt="" loading="lazy"></div>
+        <div class="offer__inner">
+          <span class="offer__tag mono">OTWARTE ZAPISY</span>
+          <h3 class="offer__title">Szkolenia strzeleckie</h3>
+          <p class="offer__desc">Pistolet i karabinek AR-15: od fundamentów po strzelanie w ruchu, na dystansie i pod presją czasu.</p>
+          <span class="offer__arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a class="offer__row" href="oferta.html#taktyczne">
+        <div class="offer__bg" aria-hidden="true"><img src="assets/hero-2.jpg" alt="" loading="lazy"></div>
+        <div class="offer__inner">
+          <span class="offer__tag mono">NOC / DZIEŃ</span>
+          <h3 class="offer__title">Szkolenia taktyczne</h3>
+          <p class="offer__desc">CQB, praca zespołowa, działania nocne. Procedury wypracowane z jednostkami, które nie polegają na szczęściu.</p>
+          <span class="offer__arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a class="offer__row" href="oferta.html#specjalistyczne">
+        <div class="offer__bg" aria-hidden="true"><img src="assets/hero-1.jpg" alt="" loading="lazy"></div>
+        <div class="offer__inner">
+          <span class="offer__tag mono">AO: GLOBAL</span>
+          <h3 class="offer__title">Kontrakty specjalistyczne</h3>
+          <p class="offer__desc">Programy dla wojska, policji i sektora prywatnego. Realizujemy zadania na całym świecie.</p>
+          <span class="offer__arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a class="offer__row" href="baza-wiedzy.html">
+        <div class="offer__bg" aria-hidden="true"><img src="assets/about-3.png" alt="" loading="lazy"></div>
+        <div class="offer__inner">
+          <span class="offer__tag mono">DO POBRANIA</span>
+          <h3 class="offer__title">Materiały treningowe</h3>
+          <p class="offer__desc">Autorskie tarcze, range-cardy i darmowa baza wiedzy. Trenuj mądrzej między zjazdami.</p>
+          <span class="offer__arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- MISJA -->
+  <section class="mission" id="misja">
+    <div class="mission__grid">
+      <div class="mission__text">
+        <p class="mission__label mono">MISJA PERUN TAC</p>
+        <h2 class="mission__title">
+          <span class="line"><span class="line__in">Poszerzamy kulturę</span></span>
+          <span class="line"><span class="line__in">strzelectwa. Wymieniamy</span></span>
+          <span class="line"><span class="line__in"><em>doświadczenie.</em></span></span>
+        </h2>
+        <p class="mission__body">Nasze szkolenia kierowane są do strzelców cywilnych, służb mundurowych
+        i&nbsp;jednostek wojskowych. Realizujemy zadania na&nbsp;całym świecie, współpracując
+        z&nbsp;jednostkami wojska, policji i&nbsp;firmami z&nbsp;sektora prywatnego.</p>
+        <ul class="mission__facts mono">
+          <li><span>WSPÓŁPRACA</span><span>WOJSKO · POLICJA · SEKTOR PRYWATNY</span></li>
+          <li><span>ZASIĘG</span><span>CAŁY ŚWIAT</span></li>
+          <li><span>BAZA</span><span>WROCŁAW, DOLNY ŚLĄSK</span></li>
+          <li><span>DOKTRYNA</span><span>WIEDZA → POWTÓRZENIA → PRESJA</span></li>
+        </ul>
+        <a class="btn btn--ghost" href="kontakt.html" data-magnetic>Porozmawiajmy o szkoleniu</a>
+      </div>
+      <div class="mission__media">
+        <figure class="mission__photo mission__photo--tall" data-parallax="-14">
+          <img src="assets/about-1.jpg" alt="Operator w noktowizji podczas nocnego szkolenia" loading="lazy">
+          <figcaption class="mono">NOC // PRACA NA NVG</figcaption>
+        </figure>
+        <figure class="mission__photo" data-parallax="10">
+          <img src="assets/about-2.jpg" alt="Szkolenie strzeleckie Perun Tac" loading="lazy">
+          <figcaption class="mono">DZIEŃ // PRACA ZESPOŁOWA</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA - infinite drift strip, scroll-velocity reactive -->
+  <section class="gallery" id="galeria">
+    <div class="gallery__pin" id="galleryPin">
+      <div class="gallery__head">
+        <h2 class="gallery__title">Z ostatnich szkoleń</h2>
+        <span class="mono gallery__count" id="galleryCount">01 / 07</span>
+      </div>
+      <div class="gallery__strip">
+      <div class="gallery__track" id="galleryTrack">
+        <figure class="gallery__item"><img src="assets/hero-1.jpg" alt="Praca z psem bojowym podczas wejścia do pomieszczeń" loading="lazy"><figcaption class="mono">PT/001 - K9 / CQB</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-2.jpg" alt="Nocne szkolenie strzeleckie przy świetle latarek" loading="lazy"><figcaption class="mono">PT/002 - NOC / LOW-LIGHT</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-3.jpg" alt="Szkolenie strzeleckie Perun Tac" loading="lazy"><figcaption class="mono">PT/003 - STRZELNICA</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-4.jpg" alt="Trening na strzelnicy" loading="lazy"><figcaption class="mono">PT/004 - KARABINEK</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-5.jpg" alt="Uczestnicy szkolenia w trakcie ćwiczeń" loading="lazy"><figcaption class="mono">PT/005 - ZESPÓŁ</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-6.jpg" alt="Szkolenie taktyczne" loading="lazy"><figcaption class="mono">PT/006 - TAKTYKA</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-7.jpg" alt="Zgranie zespołu podczas szkolenia" loading="lazy"><figcaption class="mono">PT/007 - PRESJA</figcaption></figure>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM — ostatnie posty (kuratorowany grid, gotowy pod API) -->
+  <section class="ig" id="instagram" aria-label="Instagram Perun Tac">
+    <div class="ig__head section-head" style="margin-bottom:0;padding:0;max-width:none">
+      <div>
+        <p class="mono ig__handle"><span class="blink" aria-hidden="true">●</span> @PERUN_TAC · INSTAGRAM</p>
+        <h2 class="section-head__title" style="margin-top:10px"><span class="line"><span class="line__in">Z pierwszej ręki</span></span></h2>
+      </div>
+      <a class="btn btn--ghost" href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener" data-magnetic>Obserwuj →</a>
+    </div>
+    <!-- Kafle renderuje js/instagram.js z tablicy PT_IG (podmiana na API = faza 2) -->
+    <div class="ig__grid" id="igGrid" role="list"></div>
+  </section>
+
+  <!-- MOTTO -->
+  <section class="motto" aria-label="Motto Perun Tac">
+    <img class="motto__mark" src="assets/logo.png" alt="" aria-hidden="true" data-rotate>
+    <blockquote class="motto__quote">
+      <span class="line"><span class="line__in">You don’t get</span></span>
+      <span class="line"><span class="line__in">what you want,</span></span>
+      <span class="line"><span class="line__in">you get what</span></span>
+      <span class="line"><span class="line__in">you <em>work</em> for.</span></span>
+    </blockquote>
+  </section>
+
+  <!-- BAZA WIEDZY -->
+  <section class="kb" id="wiedza">
+    <div class="section-head">
+      <h2 class="section-head__title"><span class="line"><span class="line__in">Baza wiedzy</span></span></h2>
+      <p class="section-head__note">Darmowa wiedza z&nbsp;pierwszej ręki: balistyka, optyka, sprzęt. Bez marketingowej mgły.</p>
+    </div>
+
+    <div class="kb__list" id="kbList">
+      <a class="kb__row" href="artykul-zero-ar15.html" data-thumb="assets/article-1.jpg">
+        <span class="kb__date mono">04 MAJ 2026</span>
+        <h3 class="kb__title">Jakie zero wybrać na karabinek AR-15?</h3>
+        <span class="kb__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="kb__row" href="artykul-wysokosc-montazu.html" data-thumb="assets/article-2.jpg">
+        <span class="kb__date mono">08 STY 2026</span>
+        <h3 class="kb__title">Wpływ wysokości montażu na „zero” broni i&nbsp;drugie zero w&nbsp;optyce</h3>
+        <span class="kb__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="kb__row" href="artykul-tlumiki.html" data-thumb="assets/article-3.jpg">
+        <span class="kb__date mono">04 STY 2026</span>
+        <h3 class="kb__title">Tłumiki dźwięku na broni palnej - skutki pozytywne i&nbsp;negatywne</h3>
+        <span class="kb__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="kb__row" href="artykul-gazy.html" data-thumb="assets/article-4.jpg">
+        <span class="kb__date mono">12 GRU 2025</span>
+        <h3 class="kb__title">Gazy i substancje chemiczne przy strzelaniu - wpływ na&nbsp;zdrowie</h3>
+        <span class="kb__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="kb__row" href="artykul-mrds-zero.html" data-thumb="assets/article-5.jpg">
+        <span class="kb__date mono">27 LIS 2025</span>
+        <h3 class="kb__title">Jakie zero do celownika mini red dot na&nbsp;pistolecie?</h3>
+        <span class="kb__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="kb__thumb" id="kbThumb" aria-hidden="true"><img src="assets/article-1.jpg" alt=""></div>
+  </section>
+
+  <!-- KONTAKT / FOOTER -->
+  <footer class="contact" id="kontakt">
+    <div class="contact__head">
+      <p class="contact__label mono"><span class="blink" aria-hidden="true">●</span> KANAŁ OTWARTY</p>
+      <h2 class="contact__title">
+        <span class="line"><span class="line__in">Nawiąż</span></span>
+        <span class="line"><span class="line__in"><em>łączność.</em></span></span>
+      </h2>
+    </div>
+    <div class="contact__channels">
+      <a class="contact__link" href="tel:+48453300536" data-magnetic>
+        <span class="mono contact__link-tag">TEL</span>
+        <span class="contact__link-value">+48 453 300 536</span>
+      </a>
+      <a class="contact__link" href="mailto:info@peruntac.pl" data-magnetic>
+        <span class="mono contact__link-tag">EMAIL</span>
+        <span class="contact__link-value">info@peruntac.pl</span>
+      </a>
+    </div>
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/instagram.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalendarz wydarzeń i szkoleń - Perun Tac</title>
+<meta name="description" content="Nadchodzące szkolenia strzeleckie i taktyczne Perun Tac: otwarte treningi, CQB, vehicle tactics, szkolenia wysokościowe. Zapisz się online.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html" aria-current="page">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html">Baza wiedzy</a>
+      <a href="o-nas.html">O nas</a>
+      <a href="perun-security.html">Perun Security</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
+    <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
+    <a href="kontakt.html"><span class="mono mmenu__tag">ŁĄCZNOŚĆ</span>Kontakt</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="assets/banner-wydarzenia.jpg" alt="Uczestnicy szkolenia Perun Tac na strzelnicy" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <span>KALENDARZ WYDARZEŃ</span></p>
+      <h1 class="page-hero__title">
+        <span class="line"><span class="line__in">Kalendarz</span></span>
+        <span class="line"><span class="line__in">wydarzeń <em>2026</em></span></span>
+      </h1>
+      <p class="page-hero__intro">Otwarte treningi, szkolenia taktyczne i warsztaty specjalistyczne.
+      Wybierz termin, sprawdź szczegóły i wyślij zgłoszenie. Miejsce na liście potwierdzamy mailowo.</p>
+    </div>
+  </section>
+
+  <!-- Calendar renders here from js/booking.js -->
+  <section class="cal" id="cal" aria-label="Lista nadchodzących szkoleń"></section>
+
+  <!-- Booking dialog -->
+  <dialog class="bk" id="bkDialog" aria-labelledby="bkTitle">
+    <button class="bk__close" id="bkClose" aria-label="Zamknij okno">✕</button>
+    <div class="bk__wrap">
+      <div class="bk__info">
+        <div class="bk__img"><img id="bkImg" src="assets/hero-4.jpg" alt=""></div>
+        <span class="bk__tag mono" id="bkTag">SZKOLENIE</span>
+        <h2 class="bk__title" id="bkTitle">...</h2>
+        <div class="bk__grid">
+          <div><span class="mono">Termin</span><strong id="bkDate">...</strong></div>
+          <div><span class="mono">Miejsce</span><strong id="bkPlace">...</strong></div>
+          <div><span class="mono">Cena</span><strong id="bkPrice">...</strong></div>
+          <div><span class="mono">Poziom</span><strong id="bkLevel">...</strong></div>
+        </div>
+        <p class="bk__desc" id="bkDesc"></p>
+        <h3 class="bk__h">Program</h3>
+        <ul class="bk__list" id="bkProgram"></ul>
+        <h3 class="bk__h">Wymagania</h3>
+        <ul class="bk__list" id="bkReq"></ul>
+        <div class="bk__cal">
+          <button class="btn btn--ghost" id="bkIcs" type="button">＋ Dodaj do kalendarza (.ics)</button>
+          <a class="btn btn--ghost" id="bkGcal" href="#" target="_blank" rel="noopener">Google Calendar ↗</a>
+        </div>
+      </div>
+      <div class="bk__form-side">
+        <h3 class="bk__form-title">Zapisz się</h3>
+        <p class="bk__form-note">Wypełnij zgłoszenie, a przygotujemy wiadomość e-mail z Twoimi danymi.
+        Miejsce na liście potwierdzamy zwrotnie wraz z informacjami organizacyjnymi.</p>
+
+        <!-- Bramka płatnicza: zaliczka rezerwująca miejsce (link PayU/P24 per szkolenie) -->
+        <div class="bk__pay" id="bkPay">
+          <div class="bk__pay-row">
+            <span class="bk__pay-lbl mono">ZALICZKA REZERWUJĄCA</span>
+            <span class="bk__pay-amt" id="bkPayAmt">—</span>
+          </div>
+          <p class="bk__pay-sub">Wpłać zaliczkę, aby zablokować miejsce na liście od razu. Pozostałą kwotę
+          rozliczamy przed szkoleniem. Zaliczka jest zwrotna do 14 dni przed terminem.</p>
+          <a class="btn btn--signal" id="bkPayBtn" href="#" target="_blank" rel="noopener">Zapłać zaliczkę online →</a>
+          <p class="bk__pay-note"><b>PayU · Przelewy24 · BLIK.</b> Płatność w bezpiecznym oknie operatora.</p>
+        </div>
+        <form id="bkForm" novalidate>
+          <div class="field">
+            <label for="bkName">Imię i nazwisko *</label>
+            <input id="bkName" name="imie_i_nazwisko" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="bkMail">E-mail *</label>
+            <input id="bkMail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="bkPhone">Telefon *</label>
+            <input id="bkPhone" name="telefon" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="bkExp">Poziom doświadczenia</label>
+            <select id="bkExp" name="doswiadczenie">
+              <option value="Początkujący">Początkujący - pierwsze kroki</option>
+              <option value="Średniozaawansowany">Średniozaawansowany - regularne treningi</option>
+              <option value="Zaawansowany">Zaawansowany - zawody / służba</option>
+              <option value="Służby mundurowe">Służby mundurowe / wojsko</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bkNotes">Uwagi (broń własna / wynajem, pytania)</label>
+            <textarea id="bkNotes" name="uwagi"></textarea>
+          </div>
+          <div class="field field--check">
+            <input id="bkRodo" type="checkbox" required>
+            <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia
+            zgodnie z <a href="https://peruntac.pl/polityka-prywatnosci" target="_blank" rel="noopener" style="text-decoration:underline">polityką prywatności</a>. *</span>
+          </div>
+          <button class="btn btn--signal bk__submit" type="submit">Wyślij zgłoszenie →</button>
+          <div class="bk__sent" id="bkSent" role="status">
+            <span class="mono">ZGŁOSZENIE PRZYGOTOWANE</span>
+            Otworzyliśmy Twój program pocztowy z gotową wiadomością. Wystarczy nacisnąć „Wyślij”.
+            Jeśli nic się nie otworzyło, napisz bezpośrednio na <a href="mailto:info@peruntac.pl" style="text-decoration:underline">info@peruntac.pl</a>
+            lub zadzwoń: <a href="tel:+48453300536" style="text-decoration:underline">+48 453 300 536</a>.
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- FOOTER -->
+  <footer class="contact" id="kontakt">
+    <div class="contact__head">
+      <p class="contact__label mono"><span class="blink" aria-hidden="true">●</span> KANAŁ OTWARTY</p>
+      <h2 class="contact__title">
+        <span class="line"><span class="line__in">Nawiąż</span></span>
+        <span class="line"><span class="line__in"><em>łączność.</em></span></span>
+      </h2>
+    </div>
+    <div class="contact__channels">
+      <a class="contact__link" href="tel:+48453300536" data-magnetic>
+        <span class="mono contact__link-tag">TEL</span>
+        <span class="contact__link-value">+48 453 300 536</span>
+      </a>
+      <a class="contact__link" href="mailto:info@peruntac.pl" data-magnetic>
+        <span class="mono contact__link-tag">EMAIL</span>
+        <span class="contact__link-value">info@peruntac.pl</span>
+      </a>
+    </div>
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

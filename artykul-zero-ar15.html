@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jakie zero wybrać na karabinek AR-15? - Baza wiedzy - Perun Tac</title>
+<meta name="description" content="Porównanie zera na 25, 36, 50 i 100 m dla 5.56/.223 oraz .300 BLK. Jak precyzyjnie ustawić zero, jak je potwierdzić i jak zmapować trajektorię swojego karabinka.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html" aria-current="page">Baza wiedzy</a>
+      <a href="o-nas.html">O nas</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="kontakt.html"><span class="mono mmenu__tag">ŁĄCZNOŚĆ</span>Kontakt</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero" style="min-height:clamp(360px,52svh,540px)">
+    <div class="page-hero__media">
+      <img src="assets/art1-banner.jpg" alt="Karabinek AR-15 na stanowisku strzeleckim" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <a href="baza-wiedzy.html">BAZA WIEDZY</a> <span>//</span> <span>ARTYKUŁ</span></p>
+      <h1 class="page-hero__title" style="font-size:clamp(2.4rem,6.5vw,4.6rem)">
+        <span class="line"><span class="line__in">Jakie zero wybrać</span></span>
+        <span class="line"><span class="line__in">na karabinek <em>AR-15?</em></span></span>
+      </h1>
+    </div>
+  </section>
+
+  <article class="art">
+    <div class="art__meta mono">
+      <span>04 MAJA 2026</span><span>//</span><span>BALISTYKA</span><span>//</span><span>5.56 · .300 BLK</span>
+    </div>
+
+    <p>Wybór zera na karabinku to jeden z tych tematów, które bardzo często są przedstawiane zbyt prosto.
+    W internecie można znaleźć krótkie odpowiedzi: „zeruj na 50”, „najlepsze jest 36”, „wojsko używa 25”,
+    „100 m jest najbardziej precyzyjne”. Problem polega na tym, że każde z tych rozwiązań może mieć sens,
+    ale tylko wtedy, gdy rozumiemy, co dzieje się z pociskiem między lufą, linią celowania i celem.</p>
+    <p>Zero nie jest magicznym ustawieniem celownika. Jest umową między linią celowania, osią lufy, balistyką
+    konkretnej amunicji, długością lufy i wysokością montażu optyki. Dlatego dwa karabinki ustawione „na 50 m”
+    mogą zachowywać się inaczej, jeżeli jeden ma standardowy montaż kolimatora, a drugi wysoki montaż pod noktowizję.</p>
+    <p>W tym artykule porównamy zero na <strong>25 m, 36 m, 50 m i 100 m</strong> dla dwóch popularnych kalibrów:
+    <strong>5.56/.223</strong> oraz <strong>.300 BLK</strong>. Osobno omówimy .300 BLK supersonic i subsonic,
+    ponieważ są to w praktyce dwa zupełnie różne światy balistyczne.</p>
+
+    <h2>1. Założenia do obliczeń</h2>
+    <p>Poniższe wartości są modelowe i służą do zrozumienia różnic między zerami.
+    Nie są gotową tabelą DOPE dla każdego karabinka. Do obliczeń przyjęliśmy:</p>
+    <ul>
+      <li>Wysokość osi celownika nad osią lufy: <strong>lower 1/3, około 2,6″ / 6,6 cm</strong></li>
+      <li>Celownik: głównie <strong>kolimator</strong></li>
+      <li>Odległości: dystanse w metrach</li>
+      <li>Wartość dodatnia w tabelach: pocisk trafia wyżej; ujemna: niżej</li>
+    </ul>
+    <h3>Amunicja</h3>
+    <p>Dla 5.56/.223 przyjęto pocisk <strong>55 gr FMJ</strong>. Dane referencyjne dla komercyjnej amunicji 55 gr
+    pokazują typowe prędkości z długich luf testowych w okolicy 3200-3240 fps oraz BC G1 w okolicy 0.24-0.27,
+    natomiast realna prędkość z krótszych luf AR-15 będzie niższa. Dlatego w modelu przyjęto ok.
+    <strong>884 m/s dla lufy 14,5″</strong> i ok. <strong>808 m/s dla lufy 10,5″</strong>.</p>
+    <p>Dla .300 BLK supersonic przyjęto pocisk <strong>110 gr V-MAX</strong> i lufę około 8″. Hornady podaje dla
+    swojej amunicji 110 gr V-MAX prędkość 2375 fps z lufy testowej 16″; przy krótszej lufie należy zakładać
+    niższą prędkość, w modelu ok. <strong>649 m/s / 2130 fps</strong>.</p>
+    <p>Dla .300 BLK subsonic przyjęto pocisk <strong>190 gr Sub-X</strong> i lufę około 8″. Dane katalogowe pokazują
+    prędkość 1050 fps z lufy testowej 24″, BC G1 .437 oraz bardzo duży opad już na 200-300 yd. W modelu dla krótkiej
+    lufy przyjęto ok. <strong>305 m/s / 1000 fps</strong>.</p>
+
+    <h2>2. Dlaczego wysokość montażu jest tak ważna?</h2>
+    <p>Wysokość montażu optyki, czyli HOB (height over bore), to odległość między osią lufy a osią celownika.
+    W AR-15 standardowy montaż kolimatora lower 1/3 daje zwykle okolice 2,6″ / 6,6 cm. To oznacza, że na bardzo
+    bliskim dystansie, np. 5-10 m, pocisk będzie trafiał niżej mniej więcej o tę wartość, ponieważ nie zdąży
+    jeszcze „wejść” w linię celowania.</p>
+    <p>Na naszej stronie jest już osobny <a href="artykul-wysokosc-montazu.html" style="text-decoration:underline">artykuł
+    o wpływie wysokości montażu na zero broni i przesunięcie drugiego zera</a>. Warto go przeczytać jako uzupełnienie:
+    zmiana montażu z klasycznego na wysoki nie zmienia wyłącznie offsetu na blisko, zmienia też całe zachowanie
+    trajektorii, przewyższenie pocisku w środku dystansu, położenie drugiego zera i mapę poprawek.</p>
+    <p>Dlatego wszystkie tabele poniżej bazują na jednym założeniu: <strong>lower 1/3, około 6,6 cm HOB</strong>.
+    Jeżeli używasz montażu 1.93″, 2.26″, Hydra albo innego wysokiego montażu, Twoje wartości będą inne.</p>
+
+    <h2>3. Zero dla .223/5.56</h2>
+    <figure>
+      <img src="assets/art1-chart-1.png" alt="Tabela trafień względem punktu celowania dla 5.56 z lufy 14,5 cala przy zerach 25, 36, 50 i 100 m" loading="lazy">
+      <figcaption class="mono">5.56 / LUFA 14,5″ / 55 GR FMJ / HOB 6,6 CM</figcaption>
+    </figure>
+    <h3>Interpretacja: lufa 14,5″</h3>
+    <p>Dla lufy 14,5″ zero na 25 m daje bardzo wysokie trafienia w środku trajektorii, szczególnie w okolicy
+    100-200 m. Zaletą jest to, że do 300 m pocisk pozostaje w dość szerokiej, ale nadal praktycznej „tubie” trafień
+    dla dużych stref celu. To właśnie dlatego w Perun Tac używamy zera na 25 m jako praktycznego rozwiązania
+    szkoleniowego: daje ono relatywnie mało poprawek do zapamiętania do około 300 m. Nie oznacza to jednak,
+    że jest to jedyne dobre zero.</p>
+    <p>Zero na 36 m jest bardziej „płaskie” w zakresie 36-200 m, ale na 300 m wymaga już większej poprawki.
+    Zero na 50 m jest bardzo wygodne dla dystansów bliskich i średnich, zwłaszcza gdy większość pracy odbywa się
+    do około 150-200 m. Zero na 100 m jest najbardziej intuicyjne do strzelań długodystansowych, ale nie sprawdzi
+    się przy strzelaniu na bliższe odległości.</p>
+    <figure>
+      <img src="assets/art1-chart-2.png" alt="Tabela trafień względem punktu celowania dla 5.56 z lufy 10,5 cala przy zerach 25, 36, 50 i 100 m" loading="lazy">
+      <figcaption class="mono">5.56 / LUFA 10,5″ / 55 GR FMJ / HOB 6,6 CM</figcaption>
+    </figure>
+    <h3>Interpretacja: lufa 10,5″</h3>
+    <p>Krótsza lufa oznacza niższą prędkość początkową. Do 100-150 m różnica względem lufy 14,5″ nie wygląda
+    dramatycznie, ale im dalej, tym szybciej zaczyna być widoczna. Przy 300 m lufa 10,5″ wymaga już wyraźnie
+    większej świadomości poprawek.</p>
+    <p>W praktyce zero 25 m nadal może być użyteczne, jeżeli celem jest prosta mapa pracy do około 300 m,
+    ale trzeba pamiętać, że na 100-150 m pocisk będzie wyraźnie wysoko. Zero 50 m jest wygodne na krótszym
+    karabinku, jeżeli większość strzelania odbywa się bliżej, a dystanse 200-300 m są okazjonalne i traktowane
+    jako wymagające świadomego holdoveru. Przy 10,5-calowej lufie strzelanie długiego dystansu raczej nie będzie
+    domyślnym wyborem, więc zero na 100 m raczej nie powinno być brane pod uwagę.</p>
+
+    <h2>4. Zero dla .300 BLK</h2>
+    <figure>
+      <img src="assets/art1-chart-3.png" alt="Tabela trafień dla .300 BLK supersonic 110 gr z lufy 8 cali" loading="lazy">
+      <figcaption class="mono">.300 BLK SUPERSONIC / 110 GR V-MAX / LUFA 8″</figcaption>
+    </figure>
+    <h3>Interpretacja: supersonic</h3>
+    <p>.300 BLK supersonic z krótkiej lufy jest bardzo praktyczny na bliskich i średnich dystansach, ale nie
+    zachowuje się jak 5.56 z lufy 14,5″. Przy 200-300 m opad jest już dużo większy. To szczególnie ważne, jeżeli
+    ktoś próbuje używać tych samych nawyków, które wypracował na AR-15 w 5.56.</p>
+    <p>Zero 25 m daje prostą, dość wysoką trajektorię na blisko i sensowne zachowanie do około 200 m. Zero 50 m
+    i 100 m są bardziej intuicyjne, ale wymagają mocniejszego trzymania wyżej przy 200-300 m. W .300 BLK supersonic
+    warto bardzo mocno ograniczyć „gotowce z internetu” i realnie zmapować własny karabinek.</p>
+    <figure>
+      <img src="assets/art1-chart-4.png" alt="Tabela trafień dla .300 BLK subsonic 190 gr z lufy 8 cali" loading="lazy">
+      <figcaption class="mono">.300 BLK SUBSONIC / 190 GR SUB-X / LUFA 8″</figcaption>
+    </figure>
+    <h3>Interpretacja: subsonic</h3>
+    <p>.300 BLK subsonic trzeba traktować osobno. To nie jest po prostu „wolniejszy .300 BLK”, to zupełnie inna
+    trajektoria. Pocisk leci znacznie wolniej, więc czas lotu jest dłuższy, a grawitacja ma dużo więcej czasu,
+    żeby „ściągnąć” go w dół.</p>
+    <p>Dla subsonica zero na 25 m lub 50 m może być praktyczne na krótkich dystansach, szczególnie jeśli broń jest
+    używana w konfiguracji z tłumikiem i realny zakres pracy jest bliski. Przy tak dużych opadach szczególnie ważne
+    będzie utrwalanie mapy zera podczas treningów.</p>
+
+    <h2>5. Porównanie zalet i wad poszczególnych zer</h2>
+    <h3>Zero 25 m</h3>
+    <p>Proste do ustawienia, łatwo dostępne na większości strzelnic i bardzo praktyczne szkoleniowo. Daje relatywnie
+    prostą mapę poprawek do około 300 m, szczególnie w 5.56/.223. W Perun Tac używamy go właśnie z tego powodu:
+    pozwala początkującym szybciej zrozumieć zachowanie karabinka i ogranicza liczbę poprawek do zapamiętania
+    na typowych dystansach taktycznych.</p>
+    <p>Minusem jest wyraźne przewyższenie pocisku na średnich dystansach. Przy 5.56 z lufy 14,5″ model pokazuje
+    około +14 cm na 100 m i około +15 cm na 200 m. To nadal może być akceptowalne dla dużej strefy celu, ale nie
+    jest obojętne przy małych celach, head-boxach, tarczach częściowo zasłoniętych lub strzelaniu przez otwory.</p>
+    <h3>Zero 36 m</h3>
+    <p>Popularny kompromis między bliskim zerem a użytecznością na dalszym dystansie. Warto jednak uważać na
+    kopiowanie amerykańskich opisów „36 yard zero”: 36 jardów to około 33 m, a nie 36 m. Dodatkowo bardzo duże
+    znaczenie ma wysokość montażu. Przy przyjętym HOB lower 1/3 zero 36 m daje rozsądną trajektorię w zakresie
+    36-200 m dla 5.56, ale przy 300 m wymaga już wyraźnej poprawki. Rozwiązanie praktyczne, ale nie uniwersalne.</p>
+    <h3>Zero 50 m</h3>
+    <p>Bardzo dobry kompromis dla wielu użytkowników kolimatora. Daje małe odchylenia na dystansach bliskich
+    i średnich, a jednocześnie jest łatwe do ustawienia na typowej strzelnicy. Dla osób pracujących głównie
+    w zakresie 0-200 m może być bardzo wygodne. Minusem jest to, że przy 300 m, zwłaszcza z krótszej lufy albo
+    z .300 BLK, trzeba już trzymać wyżej: w 5.56 z lufy 14,5″ model pokazuje około -48 cm na 300 m,
+    a z lufy 10,5″ około -64 cm.</p>
+    <h3>Zero 100 m</h3>
+    <p>Bardzo czytelne i precyzyjne. Świetny punkt odniesienia dla osób używających LPVO, lunet, siatek z podziałką
+    MRAD/MOA albo prowadzących dokładne notatki balistyczne. Jeżeli ktoś chce budować świadomy DOPE pod strzelanie
+    na dłuższe odległości, 100 m jest bardzo logicznym wyborem. Minusem w kolimatorze jest to, że na bliskich
+    dystansach pocisk nadal trafia nisko z powodu HOB, a na dalszych szybko zaczyna opadać: przy 5.56 z lufy 14,5″
+    około -56 cm na 300 m, przy 10,5″ około -69 cm. To wymaga świadomego holdoveru.</p>
+
+    <h2>6. Kolimator, LPVO i siatki BDC</h2>
+    <p>W tym artykule zakładamy głównie kolimator, czyli prosty punkt celowniczy bez rozbudowanej siatki
+    balistycznej. W takim przypadku wybór zera ma ogromne znaczenie, bo strzelec pracuje głównie trzymaniem punktu:
+    wyżej, niżej albo centralnie.</p>
+    <p>Przy LPVO sytuacja może wyglądać inaczej. Jeżeli siatka ma podziałkę MRAD lub MOA, można zbudować własne
+    poprawki i używać ich niezależnie od wybranego zera. Jeżeli jednak optyka ma siatkę BDC, producent zwykle
+    projektuje ją pod konkretny kaliber, prędkość, wysokość montażu i dystans zerowania. Wtedy wybór zera nie jest
+    dowolny: jeżeli siatka BDC wymaga zera na 100 m, a ustawimy broń na 50 m, znaczniki mogą przestać odpowiadać
+    realnej trajektorii.</p>
+
+    <h2>7. Jak precyzyjnie ustawić zero?</h2>
+    <p>Najważniejsza zasada: zero nie może być ustawione „mniej więcej”. To nie jest etap, który można potraktować
+    jako formalność z myślą „kiedyś jeszcze to poprawię”. Każdy kolejny strzał, każde ćwiczenie i każda poprawka
+    będą bazować na tym, jak dobrze wyzerowaliśmy celownik. Dobre zero wymaga precyzji, cierpliwości
+    i stabilnej platformy.</p>
+    <h3>1) Ustal prawdziwy dystans</h3>
+    <p>Nie ustawiaj tarczy „na oko”. Jeżeli zerujesz na 25 m, to ma być 25 m od stanowiska do tarczy. Różnica kilku
+    metrów może zmienić wynik, zwłaszcza przy krótkich zerach. Najlepiej użyć dalmierza, taśmy mierniczej albo
+    oznaczonej osi na strzelnicy. Jeżeli korzystasz z tarczy redukcyjnej, upewnij się, że jest przeznaczona
+    dokładnie do tego dystansu, kalibru i założonego zera.</p>
+    <h3>2) Strzelaj z najstabilniejszej możliwej pozycji</h3>
+    <p>Zero ustawiamy po to, żeby wyeliminować błąd sprzętowy, a nie testować pozycję strzelecką. Najlepiej użyć
+    stołu, podpórki, worka strzeleckiego, stabilnego front restu albo stanowiska do zerowania. Jeżeli nie masz
+    stołu, wykorzystaj najstabilniejszą możliwą pozycję leżącą z solidnym podparciem. Na tym etapie nie chodzi
+    o szybkość, chodzi o powtarzalność.</p>
+    <h3>3) Strzelaj grupy, nie pojedyncze strzały</h3>
+    <p>Nie reguluj celownika po jednym strzale, chyba że pierwszy strzał jest skrajnie poza tarczą i musisz wrócić
+    na papier. Standardem powinny być grupy 3-strzałowe, a jeszcze lepiej 5-strzałowe, jeżeli amunicja i czas na to
+    pozwalają. Po oddaniu grupy znajdź jej środek. Regulujesz celownik do środka grupy, nie do najlepszego
+    pojedynczego trafienia.</p>
+    <h3>4) Policz poprawkę</h3>
+    <p>Jeżeli grupa jest 4 cm w lewo i 3 cm nisko, wprowadź poprawkę wynikającą z klikalności celownika. Upewnij
+    się, ile jeden klik oznacza na danym dystansie: inaczej pracuje celownik 1/2 MOA, inaczej 1/4 MOA, inaczej
+    regulacja w MRAD. Możesz też nanosić poprawki metodą prób i błędów: nanieś poprawkę, policz kliki i zapisz je
+    na tarczy. Po oddanych strzałach porównaj różnicę między punktami trafień, już wiesz, ile klików oznacza jaką
+    odległość na tarczy.</p>
+    <h3>5) Potwierdź zero kolejną grupą</h3>
+    <p>Po regulacji oddaj następną grupę. Jeżeli środek grupy jest tam, gdzie powinien, zero jest ustawione.
+    Jeżeli nie, powtórz proces. Dobrą praktyką jest też ponowne potwierdzenie zera po zdjęciu i ponownym założeniu
+    optyki, zmianie montażu, zmianie amunicji, zmianie tłumika lub mocnym uderzeniu broni.</p>
+
+    <h2>8. Zmapuj swoje zero</h2>
+    <p>Samo ustawienie zera na 25, 36, 50 albo 100 m nie kończy pracy. Trzeba jeszcze znać swoje zero.
+    Oznacza to sprawdzenie, gdzie broń trafia na innych dystansach. Minimalny zestaw do mapowania:</p>
+    <ul>
+      <li>5 m, 10 m, 15 m</li>
+      <li>dystans zerowania</li>
+      <li>50 m, 100 m, 200 m</li>
+      <li>300 m, jeżeli strzelnica na to pozwala</li>
+    </ul>
+    <p>Oddawaj strzały z poszczególnych odległości, stale trzymając ten sam punkt celowania (najlepiej środek dużej
+    tarczy). Po każdej serii podejdź do tarczy i podpisz trafienia odległością, z której strzelałeś. Po skończeniu
+    z tarczy stworzysz mapę zera. Zachowaj ją i następnie strzelaj, zmieniając punkt celowania tak, aby trafienia
+    były w wybranej przez Ciebie strefie tarczy.</p>
+
+    <h2>9. Jakie zero wybrać?</h2>
+    <p>Nie ma jednego najlepszego zera dla każdego karabinka i każdego strzelca.</p>
+    <p>Dla 5.56/.223 zero 25 m może być bardzo praktyczne, jeżeli zależy nam na prostej mapie pracy do około 300 m
+    i akceptujemy wyższe trafienia na średnim dystansie. Zero 36 m jest ciekawym kompromisem, ale musi być rozumiane
+    w kontekście konkretnej wysokości montażu. Zero 50 m jest bardzo wygodne dla kolimatora i pracy na dystansach
+    bliskich oraz średnich. Zero 100 m jest najbardziej przejrzyste dla precyzyjnego potwierdzania, LPVO
+    i budowania DOPE.</p>
+    <p>Dla .300 BLK trzeba rozdzielić supersonic i subsonic. Supersonic można jeszcze traktować jako praktyczny
+    kaliber na bliskie i średnie dystanse, ale z większym opadem niż 5.56. Subsonic wymaga zupełnie innego
+    podejścia: krótszych realnych dystansów, dokładnego mapowania i świadomości bardzo dużych poprawek.</p>
+    <p>Najważniejsze nie jest to, czy wybierzesz 25, 36, 50 czy 100 m. Najważniejsze jest to, żebyś wiedział,
+    co ten wybór oznacza na Twoim karabinku, z Twoją amunicją, Twoją lufą, Twoim montażem i Twoim celownikiem.</p>
+    <div class="art__callout">
+      <span class="mono">ZNAJ SWOJE ZERO</span>
+      Zero trzeba ustawić precyzyjnie. Potem trzeba je potwierdzić. A na końcu trzeba je zmapować.
+      Dopiero wtedy naprawdę znasz swój karabinek.
+    </div>
+  </article>
+
+  <nav class="art-nav" aria-label="Kolejne artykuły">
+    <a href="baza-wiedzy.html#artykuly"><span class="mono">← BAZA WIEDZY</span><strong>Wszystkie artykuły</strong></a>
+    <a href="artykul-wysokosc-montazu.html"><span class="mono">NASTĘPNY →</span><strong>Wpływ wysokości montażu na „zero” broni</strong></a>
+  </nav>
+
+  <footer class="contact" style="padding-top:clamp(50px,8vh,80px)">
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

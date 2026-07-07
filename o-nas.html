@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O nas - kim jesteśmy - Perun Tac</title>
+<meta name="description" content="Perun Tac powstało w 2020 roku. Instruktorzy z doświadczeniem z jednostek wojska, policji, służb specjalnych i sektora prywatnego. Poznaj nasz zespół i metodologię.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - strona główna">
+      <img src="assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <a href="wydarzenia.html">Wydarzenia</a>
+      <a href="oferta.html">Oferta</a>
+      <a href="baza-wiedzy.html">Baza wiedzy</a>
+      <a href="o-nas.html" aria-current="page">O nas</a>
+      <a href="perun-security.html">Perun Security</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="kontakt.html" data-magnetic>Kontakt</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Menu mobilne">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
+    <a href="kontakt.html"><span class="mono mmenu__tag">ŁĄCZNOŚĆ</span>Kontakt</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="assets/banner-onas.jpg" alt="Zespół Perun Tac podczas szkolenia" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <span>O NAS</span></p>
+      <h1 class="page-hero__title">
+        <span class="line"><span class="line__in">Kim</span></span>
+        <span class="line"><span class="line__in"><em>jesteśmy.</em></span></span>
+      </h1>
+      <p class="page-hero__intro">Perun Tac powstało w 2020 roku jako odpowiedź na realną potrzebę rzetelnej,
+      merytorycznej i praktycznej przestrzeni szkoleniowej w obszarze bezpieczeństwa i obronności.</p>
+    </div>
+  </section>
+
+  <!-- LEAD -->
+  <section class="about-lead" aria-label="Nasza misja">
+    <div>
+      <h2 class="about-lead__title reveal-lines">
+        <span class="line"><span class="line__in">Nie oferujemy</span></span>
+        <span class="line"><span class="line__in">„zabawy</span></span>
+        <span class="line"><span class="line__in">w komandosów”.</span></span>
+      </h2>
+      <div class="about-lead__body">
+        <p>Naszą misją jest dostarczanie wiedzy i umiejętności opartych na doświadczeniu zdobywanym
+        w środowiskach operacyjnych, pracy w zespołach bojowych i ochronnych oraz współpracy
+        z różnymi formacjami mundurowymi i wojskowymi.</p>
+        <p>Zamiast szkoleń bez wartości dostajesz u nas <strong>profesjonalne kursy prowadzone przez ekspertów</strong>,
+        w których każdy element, od podstaw obsługi broni, przez taktykę małych zespołów, po zaawansowane kursy
+        specjalistyczne, ma realne zastosowanie w rzeczywistych warunkach.</p>
+        <p>Firmę tworzą osoby wywodzące się z różnych sektorów bezpieczeństwa, z wieloletnim doświadczeniem
+        z misji na terenie Polski i poza jej granicami. Zespół instruktorów to profesjonaliści, którzy swoje
+        doświadczenie zdobywali w <strong>jednostkach wojska, policji, służbach specjalnych i sektorze prywatnym</strong>.</p>
+      </div>
+    </div>
+    <div class="about-lead__aside">
+      <figure style="aspect-ratio:4/3">
+        <img src="assets/onas-klasa.jpg" alt="Zajęcia teoretyczne w sali szkoleniowej" loading="lazy">
+        <figcaption class="mono">TEORIA // SALA</figcaption>
+      </figure>
+      <figure style="aspect-ratio:4/3">
+        <img src="assets/onas-2.jpg" alt="Praktyka na obiekcie szkoleniowym" loading="lazy">
+        <figcaption class="mono">PRAKTYKA // OBIEKT</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ZAŁOŻYCIEL -->
+  <section class="founder" aria-label="Założyciel firmy">
+    <div class="founder__inner">
+      <div class="founder__media"><img src="assets/onas-founder.jpg" alt="Założyciel Perun Tac podczas szkolenia" loading="lazy"></div>
+      <div>
+        <span class="mod__label mono">ZAŁOŻYCIEL FIRMY</span>
+        <h2 class="mod__title reveal-lines">
+          <span class="line"><span class="line__in">Doświadczenie</span></span>
+          <span class="line"><span class="line__in">z realnych <em>operacji.</em></span></span>
+        </h2>
+        <p class="mod__desc">Związany z sektorem bezpieczeństwa od 2014 roku. Wieloletnia obserwacja potrzeb rynku
+        oraz ewoluujących zagrożeń na arenie międzynarodowej popchnęła go do stworzenia firmy oferującej kompleksowe
+        usługi szkoleniowe na każdym poziomie zaawansowania.</p>
+        <p class="mod__desc">Posiada bogate doświadczenie instruktorskie w zakresie szkoleń taktycznych i strzeleckich.
+        Realizował zadania operacyjne na Bliskim Wschodzie, w północnej Afryce oraz w Ukrainie.</p>
+        <div class="founder__stats">
+          <div><span class="mono">W sektorze od</span><strong>2014</strong></div>
+          <div><span class="mono">Perun Tac od</span><strong>2020</strong></div>
+          <div><span class="mono">Szkolił jednostki z</span><strong>30+ państw</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGIA -->
+  <section class="about-lead" aria-label="Metodologia nauczania">
+    <div>
+      <span class="mod__label mono">METODOLOGIA</span>
+      <h2 class="about-lead__title reveal-lines">
+        <span class="line"><span class="line__in">Doświadczenie</span></span>
+        <span class="line"><span class="line__in">to jedno. Sposób</span></span>
+        <span class="line"><span class="line__in">przekazania wiedzy</span></span>
+        <span class="line"><span class="line__in">to <em>drugie.</em></span></span>
+      </h2>
+      <div class="about-lead__body">
+        <p>Program każdego szkolenia jest opracowany z myślą o przekazywaniu usystematyzowanej wiedzy.
+        Zawdzięczamy to autorskiemu systemowi nauczania, dzięki któremu rozwijasz swoje umiejętności
+        znacznie szybciej.</p>
+        <p>Jeśli oczekujesz wysokiego poziomu merytorycznego, dbałości o detale oraz treningu, który faktycznie
+        rozwija kompetencje niezbędne w sytuacjach kryzysowych, <strong>jesteś we właściwym miejscu.</strong></p>
+      </div>
+      <a class="btn btn--signal" style="margin-top:10px" href="wydarzenia.html" data-magnetic>Trenuj z nami</a>
+    </div>
+    <div class="about-lead__aside">
+      <figure style="aspect-ratio:3/4">
+        <img src="assets/about-1.jpg" alt="Operator w noktowizji podczas nocnego szkolenia" loading="lazy">
+        <figcaption class="mono">NOC // NVG</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- GALERIA BAND -->
+  <section class="motto" aria-label="Zdjęcia ze szkoleń" style="padding-block:0;border-block:0">
+    <div class="kbcat" style="margin-bottom:0;padding-block:clamp(40px,6vh,70px)">
+      <figure class="kbcat__item" style="aspect-ratio:16/10;border:0">
+        <img src="assets/onas-1.jpg" alt="Szkolenie zespołowe Perun Tac" loading="lazy" style="filter:none">
+      </figure>
+      <figure class="kbcat__item" style="aspect-ratio:16/10;border:0">
+        <img src="assets/onas-3.jpg" alt="Uczestnicy kursu podczas ćwiczeń praktycznych" loading="lazy" style="filter:none">
+      </figure>
+      <figure class="kbcat__item" style="aspect-ratio:16/10;border:0">
+        <img src="assets/onas-4.jpg" alt="Trening strzelecki w terenie" loading="lazy" style="filter:none">
+      </figure>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="contact" id="kontakt">
+    <div class="contact__head">
+      <p class="contact__label mono"><span class="blink" aria-hidden="true">●</span> KANAŁ OTWARTY</p>
+      <h2 class="contact__title">
+        <span class="line"><span class="line__in">Nawiąż</span></span>
+        <span class="line"><span class="line__in"><em>łączność.</em></span></span>
+      </h2>
+    </div>
+    <div class="contact__channels">
+      <a class="contact__link" href="tel:+48453300536" data-magnetic>
+        <span class="mono contact__link-tag">TEL</span>
+        <span class="contact__link-value">+48 453 300 536</span>
+      </a>
+      <a class="contact__link" href="mailto:info@peruntac.pl" data-magnetic>
+        <span class="mono contact__link-tag">EMAIL</span>
+        <span class="contact__link-value">info@peruntac.pl</span>
+      </a>
+    </div>
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
