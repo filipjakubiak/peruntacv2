@@ -82,6 +82,9 @@ em { font-style: normal; color: var(--signal); }
 
 h1, h2, h3 { text-wrap: balance; }
 
+/* fixed nav must not cover anchored sections */
+[id] { scroll-margin-top: 96px; }
+
 .blink { color: var(--signal); animation: blink 1.6s steps(2) infinite; font-size: 0.9em; }
 @keyframes blink { 50% { opacity: 0.15; } }
 
@@ -152,10 +155,18 @@ h1, h2, h3 { text-wrap: balance; }
     padding: 0;
     background: transparent;
     overflow: visible;
+    /* parked offscreen + invisible until the first real mousemove */
+    transform: translate(-200px, -200px);
+    opacity: 0;
+    transition: opacity 0.3s;
   }
+  .cursor.is-active { opacity: 1; }
   .cursor__dot {
     position: absolute;
     width: 4px; height: 4px;
+    /* hex fallbacks first: a browser without oklch/color-mix drops those
+       declarations and would otherwise render an invisible crosshair */
+    background: #96ce74;
     background: var(--signal);
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -163,6 +174,7 @@ h1, h2, h3 { text-wrap: balance; }
   .cursor__ring {
     position: absolute;
     width: 34px; height: 34px;
+    border: 1px solid rgba(235, 235, 226, 0.45);
     border: 1px solid color-mix(in oklab, var(--ink) 45%, transparent);
     border-radius: 50%;
     transform: translate(-50%, -50%) scale(1);
@@ -172,15 +184,18 @@ h1, h2, h3 { text-wrap: balance; }
   .cursor__ring::before, .cursor__ring::after {
     content: "";
     position: absolute;
+    background: rgba(235, 235, 226, 0.45);
     background: color-mix(in oklab, var(--ink) 45%, transparent);
   }
-  .cursor__ring::before { left: 50%; top: -5px; width: 1px; height: 4px; box-shadow: 0 40px 0 color-mix(in oklab, var(--ink) 45%, transparent); }
-  .cursor__ring::after { top: 50%; left: -5px; height: 1px; width: 4px; box-shadow: 40px 0 0 color-mix(in oklab, var(--ink) 45%, transparent); }
+  .cursor__ring::before { left: 50%; top: -5px; width: 1px; height: 4px; box-shadow: 0 40px 0 rgba(235, 235, 226, 0.45); box-shadow: 0 40px 0 color-mix(in oklab, var(--ink) 45%, transparent); }
+  .cursor__ring::after { top: 50%; left: -5px; height: 1px; width: 4px; box-shadow: 40px 0 0 rgba(235, 235, 226, 0.45); box-shadow: 40px 0 0 color-mix(in oklab, var(--ink) 45%, transparent); }
   .cursor.is-hover .cursor__ring {
     transform: translate(-50%, -50%) scale(1.7);
+    border-color: #96ce74;
     border-color: var(--signal);
   }
-  body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
+  /* hide the native cursor everywhere, including form controls and summaries */
+  body.has-cursor, body.has-cursor * { cursor: none; }
 }
 
 /* ==========================================================================
@@ -292,12 +307,16 @@ h1, h2, h3 { text-wrap: balance; }
   background: var(--bg);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: var(--gutter);
+  /* auto margins center the links but still allow scrolling on short
+     viewports (justify-content: center would clip the top) */
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: calc(var(--gutter) + 50px) var(--gutter) var(--gutter);
   clip-path: inset(0 0 100% 0);
   transition: clip-path 0.7s var(--ease-out);
   visibility: hidden;
 }
+.mmenu__links { margin-top: auto; }
 .mmenu.is-open { clip-path: inset(0 0 0% 0); visibility: visible; }
 .mmenu__links { display: grid; gap: 6px; }
 .mmenu__links a {
@@ -322,12 +341,17 @@ h1, h2, h3 { text-wrap: balance; }
 .mmenu__tag { color: var(--signal); font-size: 0.65rem; }
 .mmenu__foot {
   margin-top: 40px;
+  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
   color: var(--ink-dim);
 }
 
+/* mid widths: phone number would collide with the links row */
+@media (max-width: 1120px) {
+  .nav__phone { display: none; }
+}
 @media (max-width: 900px) {
   .nav__links, .nav__phone, .nav__cta { display: none; }
   .nav__burger { display: block; }
@@ -822,9 +846,17 @@ h1, h2, h3 { text-wrap: balance; }
 .contact__title {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(4rem, 14vw, 6rem);
+  /* min 2.8rem: "Porozmawiajmy" must survive 320px viewports */
+  font-size: clamp(2.8rem, 13vw, 6rem);
   line-height: 0.9;
   text-transform: uppercase;
+  margin-bottom: clamp(50px, 8vh, 90px);
+}
+.contact__title:has(+ .contact__note) { margin-bottom: clamp(20px, 3vh, 30px); }
+.contact__note {
+  max-width: 56ch;
+  color: var(--ink-dim);
+  text-wrap: pretty;
   margin-bottom: clamp(50px, 8vh, 90px);
 }
 .contact__channels {
@@ -1052,11 +1084,22 @@ h1, h2, h3 { text-wrap: balance; }
   background: var(--bg);
   color: var(--ink);
   padding: 0;
-  width: min(1060px, calc(100vw - 32px));
-  max-height: calc(100svh - 48px);
+  width: min(1060px, calc(100vw - 24px));
+  max-height: calc(100svh - 32px);
+  max-height: calc(100dvh - 32px); /* dvh: tracks the real viewport under mobile browser bars */
+  /* single-track grid so .bk__wrap becomes the scroll container and the
+     close button (absolute in the dialog) stays pinned while content scrolls */
+  display: grid;
+  overflow: hidden;
 }
 .bk::backdrop { background: oklch(0.1 0.005 130 / 0.82); }
-.bk__wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.bk__wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
 .bk__info { padding: clamp(24px, 4vw, 44px); border-right: 1px solid var(--line); }
 .bk__form-side { padding: clamp(24px, 4vw, 44px); background: var(--bg-raised); }
 .bk__close {
@@ -1125,8 +1168,11 @@ h1, h2, h3 { text-wrap: balance; }
 .bk__sent.is-on { display: block; }
 .bk__sent .mono { color: var(--olive); display: block; margin-bottom: 6px; }
 @media (max-width: 880px) {
+  .bk { width: calc(100vw - 12px); max-height: calc(100svh - 12px); max-height: calc(100dvh - 12px); }
   .bk__wrap { grid-template-columns: 1fr; }
   .bk__info { border-right: 0; border-bottom: 1px solid var(--line); }
+  .bk__close { top: 8px; right: 8px; }
+  .bk__form-side { padding-bottom: calc(clamp(24px, 4vw, 44px) + env(safe-area-inset-bottom)); }
 }
 
 /* ==========================================================================
@@ -1537,6 +1583,86 @@ h1, h2, h3 { text-wrap: balance; }
   --signal: oklch(0.72 0.13 245);
   --signal-deep: oklch(0.5 0.1 245);
   --olive: oklch(0.66 0.045 240);
+}
+
+/* --- Perun Security: numbered process ("Jak pracujemy") ---
+   Adds a leading step index + a connector line that draws on scroll.
+   Scoped to .theme-sec so oferta.html's "Tryby szkoleń" keeps its 2-col look. */
+.theme-sec .modes { counter-reset: sec-step; }
+.theme-sec .modes__row {
+  grid-template-columns: 76px 180px minmax(0, 1fr);
+  align-items: start;
+  position: relative;
+}
+.theme-sec .modes__row::before {
+  counter-increment: sec-step;
+  content: counter(sec-step, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--signal);
+  padding-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+/* connector: a hairline down the index column, drawn by JS (scaleY) */
+.theme-sec .modes__index-line {
+  position: absolute;
+  left: calc(var(--gutter) + 11px);
+  top: 34px; bottom: -1px;
+  width: 1px;
+  background: var(--line);
+  transform-origin: top;
+  pointer-events: none;
+  /* default visible (no-JS/reduced degrades gracefully); JS zeroes then draws */
+}
+.theme-sec .modes__row:last-child .modes__index-line { display: none; }
+.theme-sec .modes__name { padding-top: 0; }
+@media (max-width: 760px) {
+  .theme-sec .modes__row { grid-template-columns: 52px minmax(0, 1fr); row-gap: 6px; }
+  .theme-sec .modes__row::before { grid-row: 1; }
+  .theme-sec .modes__name { grid-column: 2; }
+  .theme-sec .modes__desc { grid-column: 1 / -1; }
+  .theme-sec .modes__index-line { display: none; }
+}
+
+/* --- Perun Security: service modules — image reveal + hover push --- */
+.theme-sec .mod { position: relative; }
+.theme-sec .mod__media {
+  position: relative;
+  box-shadow: 0 30px 60px -40px oklch(0.14 0.006 130 / 0.9);
+}
+.theme-sec .mod__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.5s var(--ease-out);
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .theme-sec .mod:hover .mod__media::after { border-color: color-mix(in oklab, var(--signal) 55%, transparent); }
+  .theme-sec .mod:hover .mod__media img { transform: scale(1.04); }
+}
+.theme-sec .mod__media img { transition: transform 0.9s var(--ease-out); }
+/* points get a left accent that lights up in sequence on enter */
+.theme-sec .mod__points li { transition: color 0.4s, border-color 0.4s; }
+@media (hover: hover) {
+  .theme-sec .mod:hover .mod__points li::before { color: var(--signal); }
+}
+
+/* --- Perun Security: reason/stats band --- */
+.theme-sec .founder__stats strong { font-size: 1.15rem; line-height: 1.15; }
+.theme-sec .founder__stats > div { min-width: 0; }
+
+/* --- Perun Security: hero divider accent under intro --- */
+.theme-sec .page-hero__intro { position: relative; padding-bottom: 22px; }
+.theme-sec .page-hero__intro::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 64px; height: 2px;
+  background: var(--signal);
+  transform-origin: left;
 }
 
 /* ==========================================================================

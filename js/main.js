@@ -161,11 +161,18 @@
     document.body.classList.add("has-cursor");
     if (typeof cursor.showPopover === "function") {
       // keep the crosshair in the top layer so it stays visible above
-      // modal <dialog>s (showModal() renders above any z-index)
-      cursor.setAttribute("popover", "manual");
+      // modal <dialog>s (showModal() renders above any z-index).
+      // Guard: if showPopover fails, the UA rule [popover]:not(:popover-open)
+      // would leave the element display:none (invisible cursor in some
+      // browsers), so we strip the attribute and fall back to a plain
+      // fixed element — still visible, just below modal dialogs.
       var liftCursor = function () {
+        cursor.setAttribute("popover", "manual");
         try { cursor.hidePopover(); } catch (err) {}
         try { cursor.showPopover(); } catch (err) {}
+        var ok = false;
+        try { ok = cursor.matches(":popover-open"); } catch (err) { ok = false; }
+        if (!ok) cursor.removeAttribute("popover");
       };
       liftCursor();
       // opening a modal dialog closes popovers and stacks above them,
@@ -176,7 +183,23 @@
     }
     var cx = gsap.quickTo(cursor, "x", { duration: 0.18, ease: "power3.out" });
     var cy = gsap.quickTo(cursor, "y", { duration: 0.18, ease: "power3.out" });
-    window.addEventListener("mousemove", function (e) { cx(e.clientX); cy(e.clientY); });
+    var cursorLive = false;
+    window.addEventListener("mousemove", function (e) {
+      if (!cursorLive) {
+        // jump to the pointer without a lerp trail from its parked position,
+        // then reveal — avoids a crosshair streaking in from the corner
+        cursorLive = true;
+        gsap.set(cursor, { x: e.clientX, y: e.clientY });
+        cursor.classList.add("is-active");
+      }
+      cx(e.clientX); cy(e.clientY);
+    });
+    window.addEventListener("mouseout", function (e) {
+      if (!e.relatedTarget && !e.toElement) cursor.classList.remove("is-active");
+    });
+    window.addEventListener("mouseover", function () {
+      if (cursorLive) cursor.classList.add("is-active");
+    });
     document.querySelectorAll("a, button").forEach(function (el) {
       el.addEventListener("mouseenter", function () { cursor.classList.add("is-hover"); });
       el.addEventListener("mouseleave", function () { cursor.classList.remove("is-hover"); });
@@ -322,8 +345,15 @@
       });
     }
 
+    // On Perun Security we hand .mod / .modes__row to a richer, page-specific
+    // sequence below, so exclude them from the generic handlers here.
+    var secPage = document.body.classList.contains("theme-sec");
+
     // card/grid entrances: discrete units, so they settle with a touch of scale (not just fade-up)
-    gsap.utils.toArray(".mod, .modgrid__card, .kbcat__item, .faq__item, .dl a, .drill").forEach(function (el, i) {
+    var cardSel = secPage
+      ? ".modgrid__card, .kbcat__item, .faq__item, .dl a, .drill"
+      : ".mod, .modgrid__card, .kbcat__item, .faq__item, .dl a, .drill";
+    gsap.utils.toArray(cardSel).forEach(function (el, i) {
       gsap.from(el, {
         opacity: 0, y: 26, scale: 0.97, duration: 0.85, ease: "expo.out", delay: (i % 4) * 0.05,
         scrollTrigger: { trigger: el, start: "top 92%", once: true }
@@ -331,12 +361,51 @@
     });
 
     // ledger rows (events, modes): slide in from the margin like an entry logging itself
-    gsap.utils.toArray(".ev, .modes__row").forEach(function (el, i) {
+    gsap.utils.toArray(secPage ? ".ev" : ".ev, .modes__row").forEach(function (el, i) {
       gsap.from(el, {
         opacity: 0, x: -22, duration: 0.8, ease: "expo.out", delay: (i % 5) * 0.04,
         scrollTrigger: { trigger: el, start: "top 92%", once: true }
       });
     });
+
+    // ---------- Perun Security: page-specific choreography ----------
+    if (secPage) {
+      // service modules: the photo wipes up while its image de-zooms,
+      // then the copy settles in line by line
+      gsap.utils.toArray(".mod").forEach(function (mod) {
+        var media = mod.querySelector(".mod__media");
+        var text = mod.querySelector(".mod__text");
+        var st = { trigger: mod, start: "top 82%", once: true };
+        if (media) {
+          var img = media.querySelector("img");
+          gsap.fromTo(media, { clipPath: "inset(0 0 100% 0)" },
+            { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "expo.out", scrollTrigger: st });
+          if (img) gsap.fromTo(img, { scale: 1.2 },
+            { scale: 1, duration: 1.5, ease: "expo.out", scrollTrigger: st });
+        }
+        if (text) {
+          gsap.from(text.children, {
+            opacity: 0, y: 24, duration: 0.8, ease: "expo.out", stagger: 0.07,
+            scrollTrigger: { trigger: mod, start: "top 78%", once: true }
+          });
+        }
+      });
+
+      // process steps: row settles, then its connector line draws toward the next
+      gsap.set(".modes__index-line", { scaleY: 0 });
+      gsap.utils.toArray(".modes__row").forEach(function (row) {
+        var line = row.querySelector(".modes__index-line");
+        var tl = gsap.timeline({ scrollTrigger: { trigger: row, start: "top 84%", once: true } });
+        tl.from(row, { opacity: 0, x: -22, duration: 0.7, ease: "expo.out" });
+        if (line) tl.to(line, { scaleY: 1, duration: 0.55, ease: "power2.out" }, 0.25);
+      });
+
+      // reason band: doctrine stats pop in as a set
+      gsap.from(".founder__stats > div", {
+        opacity: 0, y: 16, duration: 0.6, ease: "expo.out", stagger: 0.08,
+        scrollTrigger: { trigger: ".founder__stats", start: "top 86%", once: true }
+      });
+    }
 
     // footer title creep
     gsap.from(".contact__channels, .contact__socials", {
