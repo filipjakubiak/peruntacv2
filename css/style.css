@@ -1080,6 +1080,9 @@ h1, h2, h3 { text-wrap: balance; }
    ========================================================================== */
 
 .bk {
+  /* the global `* { margin: 0 }` reset kills the native dialog margin:auto —
+     restore it or the dialog pins to the viewport's top-left corner */
+  margin: auto;
   border: 1px solid var(--line);
   background: var(--bg);
   color: var(--ink);
@@ -1097,6 +1100,9 @@ h1, h2, h3 { text-wrap: balance; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  /* the one place the sharp-edged system softens: a slight radius so the
+     floating dialog reads as a card; overflow:hidden clips content to it */
+  border-radius: 10px;
 }
 .bk::backdrop { background: oklch(0.1 0.005 130 / 0.82); }
 .bk__wrap {
@@ -1106,15 +1112,27 @@ h1, h2, h3 { text-wrap: balance; }
   overscroll-behavior: contain;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  /* slim, unobtrusive scrollbar (dialog scrolls on desktop and mobile) */
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, oklch(0.95 0.008 100) 24%, transparent) transparent;
 }
+.bk__wrap::-webkit-scrollbar { width: 8px; }
+.bk__wrap::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, oklch(0.95 0.008 100) 24%, transparent);
+  border-radius: 4px;
+}
+.bk__wrap::-webkit-scrollbar-track { background: transparent; }
 .bk__info { padding: clamp(24px, 4vw, 44px); border-right: 1px solid var(--line); }
 .bk__form-side { padding: clamp(24px, 4vw, 44px); background: var(--bg-raised); }
 .bk__close {
   position: absolute;
   top: 12px; right: 12px;
   width: 44px; height: 44px;
-  background: var(--bg);
-  border: 1px solid var(--line);
+  /* semi-opaque + brighter border: must stay legible over the dark hero photo */
+  background: oklch(0.14 0.006 130 / 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid color-mix(in oklab, oklch(0.95 0.008 100) 32%, transparent);
+  border-radius: 6px;
   color: var(--ink);
   font-size: 1.1rem;
   cursor: pointer;
