@@ -13,8 +13,9 @@
   /* ---- Płatności: zaliczka rezerwująca ----
      DEPOSIT_DEFAULT — stała zaliczka (zł) dla szkoleń z ceną liczbową; można
      nadpisać per event polem `deposit`. PAY_LINKS — realne linki płatności
-     PayU / Przelewy24 (id szkolenia → URL); dopóki puste, generujemy placeholder
-     https://pay.peruntac.pl/... który podmienisz na link z panelu operatora. */
+     PayU / Przelewy24 (id szkolenia → URL). Blok płatności pokazuje się TYLKO
+     dla szkoleń, które mają tu wpisany prawdziwy link — bez linku klient
+     nie może trafić na martwy adres. */
   var DEPOSIT_DEFAULT = 100;
   var PAY_LINKS = {
     // "its-0614": "https://secure.payu.com/pay/....",
@@ -32,7 +33,7 @@
     return Math.min(dep, val);
   }
   function payUrlFor(ev) {
-    return PAY_LINKS[ev.id] || "https://pay.peruntac.pl/zaliczka/" + ev.id;
+    return PAY_LINKS[ev.id] || null; // null -> blok płatności ukryty
   }
 
   var OPEN_TRAINING = {
@@ -197,12 +198,13 @@
     if (els.pay) {
       var past = parse(current.end) < today;
       var dep = depositFor(current);
-      if (past || dep == null) {
+      var payUrl = payUrlFor(current);
+      if (past || dep == null || !payUrl) {
         els.pay.classList.add("is-hidden");
       } else {
         els.pay.classList.remove("is-hidden");
         els.payAmt.textContent = dep + " zł";
-        els.payBtn.href = payUrlFor(current);
+        els.payBtn.href = payUrl;
       }
     }
     els.sent.classList.remove("is-on");
