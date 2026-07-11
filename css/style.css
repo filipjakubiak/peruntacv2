@@ -1624,16 +1624,16 @@ h1, h2, h3 { text-wrap: balance; }
   --olive: oklch(0.66 0.045 240);
 }
 
-/* --- Perun Security: numbered process ("Jak pracujemy") ---
+/* --- Numbered process steps (born on Perun Security, now shared) ---
    Adds a leading step index + a connector line that draws on scroll.
-   Scoped to .theme-sec so oferta.html's "Tryby szkoleń" keeps its 2-col look. */
-.theme-sec .modes { counter-reset: sec-step; }
-.theme-sec .modes__row {
+   Opt-in via .modes--steps on the section (perun-security + oferta). */
+.modes--steps { counter-reset: sec-step; }
+.modes--steps .modes__row {
   grid-template-columns: 76px 180px minmax(0, 1fr);
   align-items: start;
   position: relative;
 }
-.theme-sec .modes__row::before {
+.modes--steps .modes__row::before {
   counter-increment: sec-step;
   content: counter(sec-step, decimal-leading-zero);
   font-family: var(--font-mono);
@@ -1646,7 +1646,7 @@ h1, h2, h3 { text-wrap: balance; }
   z-index: 1;
 }
 /* connector: a hairline down the index column, drawn by JS (scaleY) */
-.theme-sec .modes__index-line {
+.modes--steps .modes__index-line {
   position: absolute;
   left: calc(var(--gutter) + 11px);
   top: 34px; bottom: -1px;
@@ -1656,14 +1656,14 @@ h1, h2, h3 { text-wrap: balance; }
   pointer-events: none;
   /* default visible (no-JS/reduced degrades gracefully); JS zeroes then draws */
 }
-.theme-sec .modes__row:last-child .modes__index-line { display: none; }
-.theme-sec .modes__name { padding-top: 0; }
+.modes--steps .modes__row:last-child .modes__index-line { display: none; }
+.modes--steps .modes__name { padding-top: 0; }
 @media (max-width: 760px) {
-  .theme-sec .modes__row { grid-template-columns: 52px minmax(0, 1fr); row-gap: 6px; }
-  .theme-sec .modes__row::before { grid-row: 1; }
-  .theme-sec .modes__name { grid-column: 2; }
-  .theme-sec .modes__desc { grid-column: 1 / -1; }
-  .theme-sec .modes__index-line { display: none; }
+  .modes--steps .modes__row { grid-template-columns: 52px minmax(0, 1fr); row-gap: 6px; }
+  .modes--steps .modes__row::before { grid-row: 1; }
+  .modes--steps .modes__name { grid-column: 2; }
+  .modes--steps .modes__desc { grid-column: 1 / -1; }
+  .modes--steps .modes__index-line { display: none; }
 }
 
 /* --- Perun Security: service modules — image reveal + hover push --- */

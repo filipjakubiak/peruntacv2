@@ -345,67 +345,72 @@
       });
     }
 
-    // On Perun Security we hand .mod / .modes__row to a richer, page-specific
-    // sequence below, so exclude them from the generic handlers here.
-    var secPage = document.body.classList.contains("theme-sec");
-
     // card/grid entrances: discrete units, so they settle with a touch of scale (not just fade-up)
-    var cardSel = secPage
-      ? ".modgrid__card, .kbcat__item, .faq__item, .dl a, .drill"
-      : ".mod, .modgrid__card, .kbcat__item, .faq__item, .dl a, .drill";
-    gsap.utils.toArray(cardSel).forEach(function (el, i) {
+    // (.mod / .modgrid__card get the richer module choreography below instead)
+    gsap.utils.toArray(".kbcat__item, .faq__item, .dl a, .drill").forEach(function (el, i) {
       gsap.from(el, {
         opacity: 0, y: 26, scale: 0.97, duration: 0.85, ease: "expo.out", delay: (i % 4) * 0.05,
         scrollTrigger: { trigger: el, start: "top 92%", once: true }
       });
     });
 
-    // ledger rows (events, modes): slide in from the margin like an entry logging itself
-    gsap.utils.toArray(secPage ? ".ev" : ".ev, .modes__row").forEach(function (el, i) {
+    // ledger rows (events): slide in from the margin like an entry logging itself
+    // (.modes__row gets the step choreography below instead)
+    gsap.utils.toArray(".ev").forEach(function (el, i) {
       gsap.from(el, {
         opacity: 0, x: -22, duration: 0.8, ease: "expo.out", delay: (i % 5) * 0.04,
         scrollTrigger: { trigger: el, start: "top 92%", once: true }
       });
     });
 
-    // ---------- Perun Security: page-specific choreography ----------
-    if (secPage) {
-      // service modules: the photo wipes up while its image de-zooms,
-      // then the copy settles in line by line
-      gsap.utils.toArray(".mod").forEach(function (mod) {
-        var media = mod.querySelector(".mod__media");
-        var text = mod.querySelector(".mod__text");
-        var st = { trigger: mod, start: "top 82%", once: true };
-        if (media) {
-          var img = media.querySelector("img");
-          gsap.fromTo(media, { clipPath: "inset(0 0 100% 0)" },
-            { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "expo.out", scrollTrigger: st });
-          if (img) gsap.fromTo(img, { scale: 1.2 },
-            { scale: 1, duration: 1.5, ease: "expo.out", scrollTrigger: st });
+    // ---------- Module choreography (born on Perun Security, now sitewide) ----------
+    // media+copy modules: the photo wipes up while its image de-zooms,
+    // then the copy settles in line by line
+    gsap.utils.toArray(".mod, .modgrid__card, .founder__inner").forEach(function (mod) {
+      var media = mod.querySelector(".mod__media, .modgrid__media, .founder__media");
+      var st = { trigger: mod, start: "top 82%", once: true };
+      if (media) {
+        var img = media.querySelector("img");
+        gsap.fromTo(media, { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)", duration: 1.1, ease: "expo.out", scrollTrigger: st });
+        if (img) {
+          // parallax imgs carry a permanent overscan scale (set above) — de-zoom
+          // toward that base, not to 1, or the parallax would expose the edges
+          var base = Number(gsap.getProperty(img, "scale")) || 1;
+          gsap.fromTo(img, { scale: base * 1.18 },
+            { scale: base, duration: 1.5, ease: "expo.out", scrollTrigger: st });
         }
-        if (text) {
-          gsap.from(text.children, {
-            opacity: 0, y: 24, duration: 0.8, ease: "expo.out", stagger: 0.07,
-            scrollTrigger: { trigger: mod, start: "top 78%", once: true }
-          });
-        }
-      });
+      }
+      // copy container: .mod__text (Perun Security) or the module's non-media
+      // children (.modgrid__card direct content, .founder__inner text column)
+      var text = mod.querySelector(".mod__text");
+      var kids = text ? text.children
+        : Array.prototype.filter.call(mod.children, function (c) { return c !== media; });
+      if (!text && kids.length === 1 && kids[0].children.length) kids = kids[0].children;
+      if (kids.length) {
+        gsap.from(kids, {
+          opacity: 0, y: 24, duration: 0.8, ease: "expo.out", stagger: 0.07,
+          scrollTrigger: { trigger: mod, start: "top 78%", once: true }
+        });
+      }
+    });
 
-      // process steps: row settles, then its connector line draws toward the next
-      gsap.set(".modes__index-line", { scaleY: 0 });
-      gsap.utils.toArray(".modes__row").forEach(function (row) {
-        var line = row.querySelector(".modes__index-line");
-        var tl = gsap.timeline({ scrollTrigger: { trigger: row, start: "top 84%", once: true } });
-        tl.from(row, { opacity: 0, x: -22, duration: 0.7, ease: "expo.out" });
-        if (line) tl.to(line, { scaleY: 1, duration: 0.55, ease: "power2.out" }, 0.25);
-      });
+    // process steps: row settles, then its connector line draws toward the next
+    gsap.set(".modes__index-line", { scaleY: 0 });
+    gsap.utils.toArray(".modes__row").forEach(function (row) {
+      var line = row.querySelector(".modes__index-line");
+      var tl = gsap.timeline({ scrollTrigger: { trigger: row, start: "top 84%", once: true } });
+      tl.from(row, { opacity: 0, x: -22, duration: 0.7, ease: "expo.out" });
+      if (line) tl.to(line, { scaleY: 1, duration: 0.55, ease: "power2.out" }, 0.25);
+    });
 
-      // reason band: doctrine stats pop in as a set
-      gsap.from(".founder__stats > div", {
+    // doctrine/founder stats pop in as a set
+    gsap.utils.toArray(".founder__stats").forEach(function (stats) {
+      gsap.from(stats.children, {
         opacity: 0, y: 16, duration: 0.6, ease: "expo.out", stagger: 0.08,
-        scrollTrigger: { trigger: ".founder__stats", start: "top 86%", once: true }
+        scrollTrigger: { trigger: stats, start: "top 86%", once: true }
       });
-    }
+    });
 
     // footer title creep
     gsap.from(".contact__channels, .contact__socials", {
