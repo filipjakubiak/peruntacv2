@@ -219,6 +219,11 @@
 
   dlg.addEventListener("close", function () { lockScroll(false); });
   document.getElementById("bkClose").addEventListener("click", closeDialog);
+  // ESC zamyka. showModal() robi to natywnie (event `cancel`), ale jawny
+  // handler jest odporny na przeglądarki/rozszerzenia, które to psują.
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && dlg.open) closeDialog();
+  });
   dlg.addEventListener("click", function (e) {
     // click on the backdrop (outside the content box) closes
     var r = dlg.getBoundingClientRect();

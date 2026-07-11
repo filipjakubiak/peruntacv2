@@ -1101,19 +1101,22 @@ h1, h2, h3 { text-wrap: balance; }
   width: min(1060px, calc(100vw - 24px));
   max-height: calc(100svh - 32px);
   max-height: calc(100dvh - 32px); /* dvh: tracks the real viewport under mobile browser bars */
-  /* flex column caps the dialog at max-height and lets .bk__wrap take the
-     remaining space and scroll. With display:grid the wrap track sizes to
-     content (max-content), so on phones the wrap grew to full height (~2160px)
-     and max-height:...+overflow:hidden merely CLIPPED it — the signup form and
-     deposit-pay button below the fold were cut off and unreachable (no scroll).
-     flex + .bk__wrap{flex:1 1 auto; min-height:0} caps the wrap and lets it
-     scroll. The close button (absolute in .bk) stays pinned in both cases. */
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
   /* the one place the sharp-edged system softens: a slight radius so the
      floating dialog reads as a card; overflow:hidden clips content to it */
   border-radius: 10px;
+}
+/* layout ONLY while open — an unconditional display on .bk would override the
+   UA rule `dialog:not([open]) { display:none }` (author styles always beat UA
+   styles), leaving the dialog painted on the page after close() and rendered
+   at the bottom of the page before any open. That was the "close does
+   nothing" bug: dlg.close() ran fine, the dialog just stayed visible.
+   Flex column caps the dialog at max-height and lets .bk__wrap (flex:1 1 auto
+   + min-height:0) take the remaining space and scroll — a grid track would
+   size to content and clip instead of scrolling. */
+.bk[open] {
+  display: flex;
+  flex-direction: column;
 }
 .bk::backdrop { background: oklch(0.1 0.005 130 / 0.82); }
 .bk__wrap {
