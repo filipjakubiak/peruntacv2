@@ -639,9 +639,12 @@ h1, h2, h3 { text-wrap: balance; }
   .offer__inner {
     grid-template-columns: 1fr auto;
     grid-template-areas: "tag arrow" "title arrow" "desc desc";
-    row-gap: 6px;
+    row-gap: 8px;
   }
   .offer__tag { padding-top: 0; }
+  /* stacked layout: the display title sits at line-height 1, so it needs
+     real air before the description (desktop reads fine off the grid gap) */
+  .offer__desc { margin-top: 14px; }
   /* touch: show a dimmed image strip permanently */
   .offer__bg { opacity: 0.35; }
 }
@@ -1366,6 +1369,34 @@ h1, h2, h3 { text-wrap: balance; }
 .modes__name { font-family: var(--font-display); font-weight: 900; font-size: 1.5rem; text-transform: uppercase; }
 .modes__desc { color: var(--ink-dim); max-width: 68ch; }
 @media (max-width: 700px) { .modes__row { grid-template-columns: 1fr; } }
+
+/* Oferta: training formats as three color-coded tiers — each row carries its
+   own accent (signal green / olive / steel blue) on the edge bar, name, tag
+   and background wash, so the three formats read apart at a glance. */
+.modes--tiers .modes__row {
+  --tier: var(--signal);
+  position: relative;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--tier) 8%, transparent), transparent 60%);
+  transition: background 0.4s;
+}
+.modes--tiers .modes__row:nth-child(2) { --tier: var(--olive); }
+.modes--tiers .modes__row:nth-child(3) { --tier: oklch(0.72 0.09 230); }
+.modes--tiers .modes__row::before {
+  content: "";
+  position: absolute;
+  left: 0; top: -1px; bottom: -1px;
+  width: 3px;
+  background: var(--tier);
+}
+.modes--tiers .modes__row:hover {
+  background: linear-gradient(90deg, color-mix(in oklab, var(--tier) 14%, transparent), transparent 62%);
+}
+.modes--tiers .modes__name { color: var(--tier); }
+.modes--tiers .modes__tag {
+  display: block;
+  margin-top: 6px;
+  color: color-mix(in oklab, var(--tier) 72%, var(--ink-dim));
+}
 
 /* ==========================================================================
    O nas
