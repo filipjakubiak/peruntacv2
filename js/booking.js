@@ -6,9 +6,34 @@
 (function () {
   "use strict";
 
-  var MONTHS = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
-  var MONTH_NAMES = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
-  var MON_SHORT = ["STY", "LUT", "MAR", "KWI", "MAJ", "CZE", "LIP", "SIE", "WRZ", "PAŹ", "LIS", "GRU"];
+  /* EN pages live in /en/ and set <html lang="en" data-root="../"> —
+     ROOT re-bases asset paths, EN swaps month names, UI strings and
+     event copy (EVENTS_EN overlay below). */
+  var EN = (document.documentElement.lang || "pl").toLowerCase().indexOf("en") === 0;
+  var ROOT = document.documentElement.getAttribute("data-root") || "";
+
+  var MONTHS = EN
+    ? ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    : ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
+  var MONTH_NAMES = EN
+    ? ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    : ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+  var MON_SHORT = EN
+    ? ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+    : ["STY", "LUT", "MAR", "KWI", "MAJ", "CZE", "LIP", "SIE", "WRZ", "PAŹ", "LIS", "GRU"];
+
+  /* UI strings */
+  var T = EN ? {
+    dateOne: " DATE", dateMany: " DATES",
+    past: "COMPLETED", archive: "Archive", details: "Details + sign-up",
+    currency: " PLN",
+    signupLine: "Sign-up: info@peruntac.pl / +48 453 300 536"
+  } : {
+    dateOne: " TERMIN", dateMany: " TERMINY",
+    past: "ZAKOŃCZONE", archive: "Archiwum", details: "Szczegóły + zapisy",
+    currency: " zł",
+    signupLine: "Zapisy: info@peruntac.pl / +48 453 300 536"
+  };
 
   /* ---- Płatności: zaliczka rezerwująca ----
      DEPOSIT_DEFAULT — stała zaliczka (zł) dla szkoleń z ceną liczbową; można
@@ -108,6 +133,76 @@
       tag: OPEN_TRAINING.tag, level: OPEN_TRAINING.level, desc: OPEN_TRAINING.desc, program: OPEN_TRAINING.program, req: OPEN_TRAINING.req }
   ];
 
+  /* ---- EN overlay: same events, translated copy (merged onto EVENTS when EN) ---- */
+  var OPEN_TRAINING_EN = {
+    tag: "OPEN TRAINING",
+    level: "All levels",
+    desc: "Open live-fire training with pistol and carbine. Small group, instructor supervision, and a focus on repeatability and the quality of every single shot.",
+    program: ["Safety check and range commands", "Refining the fundamentals: grip, mount, trigger work", "Timed shooting drills (shot timer)", "Individual feedback from the instructor"],
+    req: ["Own firearm or on-site rental (notify us in advance)", "Ammunition: approx. 150 rds pistol / 150 rds carbine", "Eye and ear protection", "Belt / holster welcome"]
+  };
+  var EVENTS_EN = {
+    "its-0614": { title: "Open training: pistol and carbine - ITS match prep", price: "250 PLN",
+      tag: OPEN_TRAINING_EN.tag, level: OPEN_TRAINING_EN.level, desc: OPEN_TRAINING_EN.desc, program: OPEN_TRAINING_EN.program, req: OPEN_TRAINING_EN.req },
+    "wys-budynek": { title: "Height access course: building", place: "Warsaw", price: "600 PLN", tag: "SPECIALIST", level: "Basic",
+      desc: "Working at height in an urban environment: rope techniques, belaying and facade entries on a training building.",
+      program: ["Height equipment and self-belay", "Building rappel stations and anchor points", "Facade rappels, window entries", "Team work on top-down entries"],
+      req: ["No fear of heights", "Fitness to work in a harness", "Gloves, ankle-supporting footwear"] },
+    "cqb-intro": { title: "CQB intro", place: "Warsaw", price: "800 PLN", tag: "TACTICAL", level: "Basic",
+      desc: "Introduction to close-quarters battle: movement fundamentals, working the angles and two-man room entries.",
+      program: ["CQB safety rules", "Working the angles, slicing the pie", "Dynamic and deliberate entries", "Two-man scenarios (training weapons)"],
+      req: ["Completed shooting course or professional experience", "Eye and ear protection", "Knee protection recommended"] },
+    "vehicle-1": { title: "Vehicle Tactics - level 1", price: "1200 PLN", tag: "TACTICAL", level: "Intermediate",
+      desc: "Two-day vehicle tactics course: working around and inside the vehicle, bailing out under fire, cover and evacuation.",
+      program: ["Vehicle ballistics: what actually stops a bullet", "Shooting positions around the vehicle", "Exiting the vehicle: driver / passenger / rear", "Casualty evacuation from a vehicle", "Team scenarios, day / dusk"],
+      req: ["Confident carbine and pistol handling", "Ammunition: approx. 400 rds carbine, 200 rds pistol", "Gear that allows working inside a vehicle"] },
+    "marks-0830": { title: "Open training: pistol and carbine - marksmanship", price: "250 PLN",
+      tag: OPEN_TRAINING_EN.tag, level: OPEN_TRAINING_EN.level,
+      desc: "Accuracy training: precision work at distances from 5 to 100 m, grouping, zero and corrections.",
+      program: ["Grouping and zero confirmation", "Precision trigger work", "Shooting at 5-100 m distances", "Hit mapping and DOPE"],
+      req: OPEN_TRAINING_EN.req },
+    "wys-gory": { title: "Height access course: mountains", place: "Stołowe Mountains", price: "800 PLN", tag: "SPECIALIST", level: "Basic",
+      desc: "Rope techniques in mountain terrain: natural anchor points, traverses and rappels in exposed terrain.",
+      program: ["Building anchors on natural features", "Rappelling and rope ascents", "Exposed traverses", "Evacuation from difficult terrain"],
+      req: ["Fitness for a full day in the field", "Mountain boots, clothing for changing weather", "Height equipment (rental available)"] },
+    "mobility-0920": { title: "Open training: pistol and carbine - mobility", price: "250 PLN",
+      tag: OPEN_TRAINING_EN.tag, level: OPEN_TRAINING_EN.level,
+      desc: "Shooting on the move: moving between positions, position changes and working from cover.",
+      program: ["Working from cover: high / low", "Shooting on the move", "Reloads on the move", "Timed drills with a shot timer"],
+      req: OPEN_TRAINING_EN.req },
+    "cqb-2": { title: "CQB course - level 2", place: "Warsaw", price: "800 PLN", tag: "TACTICAL", level: "Advanced",
+      desc: "A follow-up to CQB intro: section-level work, connected rooms, hallways and stairwells.",
+      program: ["Fundamentals refresher and two-man work", "Connected-room sequences", "Hallways, T-intersections, stairwells", "Role-based decision scenarios"],
+      req: ["Completed CQB intro or equivalent", "Training weapons provided", "Eye, knee and elbow protection"] },
+    "kraken-26": { title: "KRAKEN-26 - International Tactical Workshops", place: "Baltic Sea", price: "Individual quote", tag: "WORKSHOPS", level: "Invitation / qualification",
+      desc: "Four-day international tactical workshops: an exchange of experience between instructors and operators from different sectors, with land and coastal scenarios.",
+      program: ["Training blocks led by instructors from several countries", "Night and day scenarios", "Experience and gear exchange zone", "Evaluation and certificates"],
+      req: ["Documented training or professional experience", "Application subject to qualification", "Logistics details after qualification"] },
+    "its-1018": { title: "Open training: pistol and carbine - ITS match prep", price: "250 PLN",
+      tag: OPEN_TRAINING_EN.tag, level: OPEN_TRAINING_EN.level, desc: OPEN_TRAINING_EN.desc, program: OPEN_TRAINING_EN.program, req: OPEN_TRAINING_EN.req },
+    "recoil-1024": { title: "Open training: pistol and carbine - recoil control", price: "250 PLN",
+      tag: OPEN_TRAINING_EN.tag, level: OPEN_TRAINING_EN.level,
+      desc: "Recoil control and rapid fire: building a mount that keeps fast strings of fire accurate.",
+      program: ["A mount built for rapid fire", "Controlled pairs and strings", "Bill drill and variants", "Split-time analysis on the timer"],
+      req: OPEN_TRAINING_EN.req },
+    "breaching": { title: "Breaching course", price: "1000 PLN", tag: "SPECIALIST", level: "Advanced",
+      desc: "Techniques for defeating structural obstacles: mechanical and tool entries on a training facility.",
+      program: ["Entry point reconnaissance", "Mechanical entries: ram, halligan", "Breach + assault team work", "Integration with the CQB sequence"],
+      req: ["CQB experience required", "Work gloves, eye protection", "Work clothing (it will get destroyed)"] },
+    "killhouse": { title: "CQB - Kill House", price: "1000 PLN", tag: "TACTICAL", level: "Advanced",
+      desc: "Full scenarios in a kill-house facility: CQB, breaching and decision-making combined under realistic conditions.",
+      program: ["Procedures and safety refresher", "Section scenarios with roles", "Low-light work", "Video debrief after every run"],
+      req: ["Completed CQB level 2 or equivalent", "Full ballistic protection (rental available)", "Proof of experience on request"] },
+    "open-1212": { title: "Open shooting training: pistol and carbine", price: "250 PLN",
+      tag: OPEN_TRAINING_EN.tag, level: OPEN_TRAINING_EN.level, desc: OPEN_TRAINING_EN.desc, program: OPEN_TRAINING_EN.program, req: OPEN_TRAINING_EN.req }
+  };
+  if (EN) {
+    EVENTS.forEach(function (ev) {
+      var tr = EVENTS_EN[ev.id];
+      if (tr) for (var key in tr) ev[key] = tr[key];
+    });
+  }
+
   /* ---------- Render calendar ---------- */
 
   var cal = document.getElementById("cal");
@@ -138,7 +233,7 @@
     var parts = key.split("-");
     var list = byMonth[key];
     html += '<div class="cal__group">';
-    html += '<div class="cal__month"><h2 class="cal__month-name">' + MONTH_NAMES[+parts[1]] + " " + parts[0] + '</h2><span class="cal__month-line"></span><span class="cal__month-count mono">' + list.length + (list.length === 1 ? " TERMIN" : " TERMINY") + "</span></div>";
+    html += '<div class="cal__month"><h2 class="cal__month-name">' + MONTH_NAMES[+parts[1]] + " " + parts[0] + '</h2><span class="cal__month-line"></span><span class="cal__month-count mono">' + list.length + (list.length === 1 ? T.dateOne : T.dateMany) + "</span></div>";
     list.forEach(function (ev) {
       var s = parse(ev.start);
       var past = parse(ev.end) < today;
@@ -146,9 +241,9 @@
       html += '<button class="ev' + (past ? " is-past" : "") + '" type="button" data-ev="' + ev.id + '" aria-haspopup="dialog">' +
         '<span class="ev__inner">' +
         '<span class="ev__date"><span class="ev__day">' + dayLabel + '</span><span class="ev__mon mono">' + MON_SHORT[s.getMonth()] + "</span></span>" +
-        '<span><span class="ev__title">' + ev.title + '</span><span class="ev__meta mono"><span>' + ev.place + '</span><span class="sep">/</span><span>' + ev.tag + "</span>" + (past ? '<span class="sep">/</span><span class="ev__soldout">ZAKOŃCZONE</span>' : "") + "</span></span>" +
+        '<span><span class="ev__title">' + ev.title + '</span><span class="ev__meta mono"><span>' + ev.place + '</span><span class="sep">/</span><span>' + ev.tag + "</span>" + (past ? '<span class="sep">/</span><span class="ev__soldout">' + T.past + "</span>" : "") + "</span></span>" +
         '<span class="ev__price">' + ev.price + "</span>" +
-        '<span class="ev__cta">' + (past ? "Archiwum" : "Szczegóły + zapisy") + "</span>" +
+        '<span class="ev__cta">' + (past ? T.archive : T.details) + "</span>" +
         "</span></button>";
     });
     html += "</div>";
@@ -182,7 +277,7 @@
   function openEvent(id) {
     current = EVENTS.filter(function (e) { return e.id === id; })[0];
     if (!current) return;
-    els.img.src = current.img;
+    els.img.src = ROOT + current.img;
     els.img.alt = current.title;
     els.tag.textContent = current.tag;
     els.title.textContent = current.title;
@@ -203,7 +298,7 @@
         els.pay.classList.add("is-hidden");
       } else {
         els.pay.classList.remove("is-hidden");
-        els.payAmt.textContent = dep + " zł";
+        els.payAmt.textContent = dep + T.currency;
         els.payBtn.href = payUrl;
       }
     }
@@ -245,13 +340,13 @@
       "&text=" + encodeURIComponent("Perun Tac: " + ev.title) +
       "&dates=" + dates +
       "&location=" + encodeURIComponent(ev.place) +
-      "&details=" + encodeURIComponent(ev.desc + "\n\nZapisy: info@peruntac.pl / +48 453 300 536");
+      "&details=" + encodeURIComponent(ev.desc + "\n\n" + T.signupLine);
   }
 
   document.getElementById("bkIcs").addEventListener("click", function () {
     if (!current) return;
     var ics = [
-      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Perun Tac//Kalendarz//PL", "CALSCALE:GREGORIAN",
+      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Perun Tac//" + (EN ? "Calendar//EN" : "Kalendarz//PL"), "CALSCALE:GREGORIAN",
       "BEGIN:VEVENT",
       "UID:" + current.id + "@peruntac.pl",
       "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+Z/, "Z"),
@@ -259,7 +354,7 @@
       "DTEND:" + icsStamp(current.end, "170000"),
       "SUMMARY:Perun Tac: " + current.title.replace(/,/g, "\\,"),
       "LOCATION:" + current.place.replace(/,/g, "\\,"),
-      "DESCRIPTION:" + (current.desc + " Zapisy: info@peruntac.pl / +48 453 300 536").replace(/,/g, "\\,"),
+      "DESCRIPTION:" + (current.desc + " " + T.signupLine).replace(/,/g, "\\,"),
       "END:VEVENT", "END:VCALENDAR"
     ].join("\r\n");
     var blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
@@ -278,20 +373,31 @@
     e.preventDefault();
     if (!els.form.reportValidity() || !current) return;
     var fd = new FormData(els.form);
-    var body =
-      "ZGŁOSZENIE NA SZKOLENIE\n" +
-      "=======================\n" +
-      "SZKOLENIE: " + current.title + "\n" +
-      "TERMIN: " + dateLabel(current) + "\n" +
-      "MIEJSCE: " + current.place + "\n" +
-      "CENA: " + current.price + "\n\n" +
-      "IMIĘ I NAZWISKO: " + fd.get("imie_i_nazwisko") + "\n" +
-      "E-MAIL: " + fd.get("email") + "\n" +
-      "TELEFON: " + fd.get("telefon") + "\n" +
-      "DOŚWIADCZENIE: " + fd.get("doswiadczenie") + "\n" +
-      "UWAGI: " + (fd.get("uwagi") || "brak") + "\n";
+    var body = EN
+      ? "COURSE SIGN-UP\n" +
+        "==============\n" +
+        "COURSE: " + current.title + "\n" +
+        "DATE: " + dateLabel(current) + "\n" +
+        "LOCATION: " + current.place + "\n" +
+        "PRICE: " + current.price + "\n\n" +
+        "FULL NAME: " + fd.get("imie_i_nazwisko") + "\n" +
+        "E-MAIL: " + fd.get("email") + "\n" +
+        "PHONE: " + fd.get("telefon") + "\n" +
+        "EXPERIENCE: " + fd.get("doswiadczenie") + "\n" +
+        "NOTES: " + (fd.get("uwagi") || "none") + "\n"
+      : "ZGŁOSZENIE NA SZKOLENIE\n" +
+        "=======================\n" +
+        "SZKOLENIE: " + current.title + "\n" +
+        "TERMIN: " + dateLabel(current) + "\n" +
+        "MIEJSCE: " + current.place + "\n" +
+        "CENA: " + current.price + "\n\n" +
+        "IMIĘ I NAZWISKO: " + fd.get("imie_i_nazwisko") + "\n" +
+        "E-MAIL: " + fd.get("email") + "\n" +
+        "TELEFON: " + fd.get("telefon") + "\n" +
+        "DOŚWIADCZENIE: " + fd.get("doswiadczenie") + "\n" +
+        "UWAGI: " + (fd.get("uwagi") || "brak") + "\n";
     location.href = "mailto:info@peruntac.pl" +
-      "?subject=" + encodeURIComponent("Zgłoszenie: " + current.title + " (" + dateLabel(current) + ")") +
+      "?subject=" + encodeURIComponent((EN ? "Sign-up: " : "Zgłoszenie: ") + current.title + " (" + dateLabel(current) + ")") +
       "&body=" + encodeURIComponent(body);
     els.sent.classList.add("is-on");
   });

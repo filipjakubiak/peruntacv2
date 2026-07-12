@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How mount height affects your zero - Knowledge base - Perun Tac</title>
+<meta name="description" content="How optic mounting height (height over bore) changes your close-range offset and shifts the second zero. An analysis for a 14.5″ AR-15 with EOTech XPS/EXPS, Scalarworks 1.93, Unity FAST 2.26 and GBRS Hydra 2.91.">
+<link rel="canonical" href="https://peruntac.pl/en/article-mount-height.html">
+<link rel="alternate" hreflang="pl" href="https://peruntac.pl/artykul-wysokosc-montazu.html">
+<link rel="alternate" hreflang="en" href="https://peruntac.pl/en/article-mount-height.html">
+<link rel="alternate" hreflang="x-default" href="https://peruntac.pl/artykul-wysokosc-montazu.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Perun Tac">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="How mount height affects your zero - Knowledge base - Perun Tac">
+<meta property="og:description" content="How optic mounting height (height over bore) changes your close-range offset and shifts the second zero. An analysis for a 14.5″ AR-15 with EOTech XPS/EXPS, Scalarworks 1.93, Unity FAST 2.26 and GBRS Hydra 2.91.">
+<meta property="og:url" content="https://peruntac.pl/en/article-mount-height.html">
+<meta property="og:image" content="https://peruntac.pl/assets/art2-banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - home">
+      <img src="../assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="events.html">Events</a>
+      <a href="training.html">Training</a>
+      <a href="knowledge-base.html" aria-current="page">Knowledge base</a>
+      <a href="about.html">About us</a>
+      <a href="perun-security.html">Perun Security</a>
+    </nav>
+    <div class="nav__right">
+      <a class="lang lang--en" id="langSwitch" href="../artykul-wysokosc-montazu.html" hreflang="pl" rel="alternate" aria-label="Przełącz na polski" lang="pl">
+        <span class="lang__thumb" aria-hidden="true"></span>
+        <span class="lang__opt">PL</span>
+        <span class="lang__opt is-on" lang="en">EN</span>
+      </a>
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="contact.html" data-magnetic>Contact</a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Mobile menu">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Home</a>
+    <a href="events.html"><span class="mono mmenu__tag">CALENDAR</span>Events</a>
+    <a href="training.html"><span class="mono mmenu__tag">COURSES</span>Training</a>
+    <a href="knowledge-base.html"><span class="mono mmenu__tag">FREE KNOWLEDGE</span>Knowledge base</a>
+    <a href="about.html"><span class="mono mmenu__tag">TEAM</span>About us</a>
+    <a href="perun-security.html"><span class="mono mmenu__tag">PROTECTION</span>Perun Security</a>
+    <a href="contact.html"><span class="mono mmenu__tag">COMMS</span>Contact</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero" style="min-height:clamp(360px,52svh,540px)">
+    <div class="page-hero__media">
+      <img src="../assets/art2-banner.jpg" alt="AR-15 carbine with a red dot on a tall mount" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <a href="knowledge-base.html">KNOWLEDGE BASE</a> <span>//</span> <span>ARTICLE</span></p>
+      <h1 class="page-hero__title" style="font-size:clamp(2.2rem,6vw,4.2rem)">
+        <span class="line"><span class="line__in">Mount height</span></span>
+        <span class="line"><span class="line__in">and the optic's <em>second zero</em></span></span>
+      </h1>
+    </div>
+  </section>
+
+  <article class="art">
+    <div class="art__meta mono">
+      <span>08 JANUARY 2026</span><span>//</span><span>BALLISTICS</span><span>//</span><span>HOB · FAR ZERO</span>
+    </div>
+
+    <h2>Introduction</h2>
+    <p>The mounting height of the optic on an AR-15 is one of those parameters that can "quietly" change
+    how the whole setup behaves, even though the zeroing process itself looks identical: we set
+    the point of impact at a given distance and consider the subject closed. In reality, changing the height of the sight
+    axis over the bore (the so-called height over bore) doesn't just affect the well-known offset at close distances;
+    it also shifts, in space, the second point where the bullet's flight path crosses the line of sight, the
+    so-called <strong>"second zero" (far zero)</strong>.</p>
+    <p>The higher the optic sits, the greater the elevation angle of the bore axis required to achieve the same zero
+    at short distance, and that in turn changes the geometry of the entire trajectory relative to the line of sight and causes
+    the "far" intersection to land somewhere other than the shooter intuitively assumes, based on popular
+    schemes like 25/300 or 50/200.</p>
+    <p>We base the analysis on a common reference point: an AR-15 in .223/5.56 with a 14.5″ barrel and
+    55 gr FMJ ammunition. We'll compare the consequences of zeroing at 25 m and 50 m for four popular height configurations:
+    EOTech XPS and EXPS, and an Aimpoint red dot on Scalarworks 1.93″, Unity FAST 2.26″ and GBRS Hydra 2.91″ mounts.
+    The presented values are model values, meant to convey the trend and the scale of the changes.</p>
+
+    <h2>What does "mount height" mean, and why does it change the second zero?</h2>
+    <p>With red dot and holographic optics, what we care about isn't "how much riser there is", but the
+    <strong>height of the aiming axis above the bore axis</strong> (HOB, height over bore). Mechanically:</p>
+    <ul>
+      <li><strong>The line of sight (LOS)</strong> is a straight line: sight → target</li>
+      <li><strong>The bullet's path</strong> is a curve: it starts below the LOS, rises relative to the LOS, then falls</li>
+      <li>For the bullet to cross the LOS at the intended zero distance, you have to set the elevation angle of the bore axis relative to the LOS</li>
+    </ul>
+    <p>The higher the optic (the larger the HOB), the further "below" the LOS the bullet starts at the muzzle, and the more upward
+    the barrel has to point to hit "on point" at a short zero. As a result, the bullet stays above the
+    LOS longer before gravity and air resistance "pull it" back down. The effect: <strong>the second zero moves
+    further out</strong>. It's pure geometry combined with external ballistics: you change the boundary condition, so
+    you change the angle, and the angle determines where the curve crosses the straight line a second time.</p>
+
+    <h2>From "height above the rail" to real HOB</h2>
+    <p>For the AR-15 it's commonly accepted that the distance from the bore axis to the top surface of the Picatinny rail
+    on the upper is about <strong>1.215″</strong>. So the approximate HOB:</p>
+    <div class="art__callout">
+      <span class="mono">FORMULA</span>
+      HOB ≈ (height of the optic axis above the rail) + 1.215″
+    </div>
+    <p>You'll also often encounter the rule of thumb that the AR-15's sight plane sits about 2.6″ above the bore axis
+    (which is where "absolute co-witness" comes from).</p>
+
+    <h2>Configurations analyzed</h2>
+    <ul>
+      <li><strong>EOTech XPS</strong> (absolute co-witness, on the rail): approx. 1.41-1.42″ above the rail</li>
+      <li><strong>EOTech EXPS</strong> (lower 1/3 co-witness): approx. 1.71-1.72″</li>
+      <li><strong>Aimpoint + Scalarworks 1.93</strong>: 1.93″ (49 mm)</li>
+      <li><strong>Aimpoint + Unity FAST 2.26</strong>: 2.26″</li>
+      <li><strong>Aimpoint + GBRS Hydra 2.91</strong>: 2.91″</li>
+    </ul>
+    <figure>
+      <img src="../assets/art2-chart-1.png" alt="Comparison of optic mounting heights on the AR-15: XPS, EXPS, 1.93, 2.26, 2.91" loading="lazy">
+      <figcaption class="mono">MOUNT HEIGHT COMPARISON / AR-15</figcaption>
+    </figure>
+
+    <h2>How the "second zero" shifts for 25 m and 50 m zeros</h2>
+    <p>Reference point: in shooting practice there's the concept of the <strong>"25/300"</strong> scheme for 5.56
+    carbines (near zero ~25 m, far zero ~300 m) as a training and combat shorthand. For <strong>"50/200"</strong>
+    (often quoted in yards) the far zero is typically described as ~200-225 yd, depending on the configuration.</p>
+    <ul>
+      <li><strong>25 m zero</strong> → far zero ~300 m for a standard height close to "absolute" (XPS)</li>
+      <li><strong>50 m zero</strong> → far zero ~210 m as the metric equivalent of the popular 50/200-225 yd descriptions</li>
+    </ul>
+    <figure>
+      <img src="../assets/art2-chart-2.png" alt="Results: second zero shift depending on mount height for 25 m and 50 m zeros" loading="lazy">
+      <figcaption class="mono">SECOND ZERO VS MOUNT HEIGHT / 14.5″ / 55 GR FMJ</figcaption>
+    </figure>
+    <h3>Practical interpretation</h3>
+    <p>Moving from a "standard" height (around 2.6″ HOB) to 1.93″ above the rail, the far zero can
+    shift by <strong>tens of meters</strong>. At 2.26″ and 2.91″ the change becomes "doctrinal":
+    it starts being <strong>a different system of holds</strong>, not just cosmetics.</p>
+
+    <h2>What this means on the target</h2>
+    <h3>A) The close-range offset grows</h3>
+    <p>At distances in the 3-15 m range the bullet has no time to "climb" up to the LOS, so the hit will essentially be
+    <strong>lower by the HOB</strong>. With the ~2.6″ HOB standard we're talking ~6.5-7 cm low; with the Hydra (~4.125″ HOB)
+    we're already talking <strong>~10.5 cm low</strong>. This is critical for:</p>
+    <ul>
+      <li>precision shooting at small zones (A-zone, head box)</li>
+      <li>shooting "through obstacles" (ports, gaps)</li>
+      <li>situations where 2-4 cm of error makes the difference</li>
+    </ul>
+    <h3>B) The taller the mount, the higher the trajectory's "hump" relative to the LOS</h3>
+    <p>Because you have to raise the barrel more, the bullet flies higher above the LOS in the middle phase. For a 50 m zero
+    this often produces a comfortable "battle zero" out to ~200 m, but with very tall HOBs the maximum rise
+    above the LOS grows, the differences between "hold center" and "hold low" at 100-150 m grow too, and it gets easier to overshoot small targets
+    if the shooter holds "on point" without awareness of the curve.</p>
+    <h3>C) Changing HOB changes not only the far zero, but the whole map of corrections</h3>
+    <p>If you're moving from 1.42-1.72″ above the rail to 2.26-2.91″, it's worth building new, simple hold rules
+    (e.g. 7 m / 15 m / 25 m / 50 m / 100 m), confirming the far zero for real (200-350 m, depending on your chosen zero),
+    and not assuming that "50/200 will behave the same".</p>
+
+    <h2>Practical advice: mapping your carbine after a mount change</h2>
+    <p>Changing the height of the optic axis changes your close-range offset and shifts the second zero. To avoid relying
+    on "ready-made answers", do a short mapping session after setting your zero.</p>
+    <h3>1) The procedure in short</h3>
+    <p>Set or confirm your zero at 25 m or 50 m, then map your hits at several distances and note
+    the deviation relative to the dot or the crosshair.</p>
+    <h3>2) The minimum set of distances</h3>
+    <ul>
+      <li><strong>5 / 10 / 15 m</strong>: offset (you hit low)</li>
+      <li><strong>25 / 50 m</strong>: zero confirmation</li>
+      <li><strong>100 m</strong>: a "midpoint" check</li>
+      <li><strong>200 / 300 m</strong>: checking the trend and verifying the second zero</li>
+    </ul>
+    <h3>3) The close-range rule</h3>
+    <p>At 5-15 m the bullet practically has no time to enter the line of sight, so you hit lower by roughly the HOB.
+    The taller the mount (1.93 / 2.26 / 2.91), the bigger the "hold up" at close range. Train with small targets
+    to force precision and memorize the offsets.</p>
+    <h3>4) How to confirm the second zero</h3>
+    <ul>
+      <li><strong>25 m zero</strong>: check a group at 300 m; with tall mounts additionally at 350-400 m</li>
+      <li><strong>50 m zero</strong>: check at 200 m; with tall mounts additionally at 250-300 m</li>
+    </ul>
+    <h3>5) The end result</h3>
+    <p>Make yourself a simple "hold card" with the deviations for 5/10/15/25 (or 50)/100/200/300 m. You'll always be able
+    to come back to it when in doubt. On top of that, practice shooting at various distances using smaller targets;
+    you'll be forced to work with corrections, so you'll memorize them faster and they'll become intuitive.</p>
+    <div class="art__callout">
+      <span class="mono">KNOW YOUR ZERO</span>
+      A tall mount is a different system of holds. Map it before you trust it at distance.
+    </div>
+  </article>
+
+  <nav class="art-nav" aria-label="More articles">
+    <a href="article-ar15-zero.html"><span class="mono">← PREVIOUS</span><strong>Which zero should you choose for an AR-15 carbine?</strong></a>
+    <a href="article-suppressors.html"><span class="mono">NEXT →</span><strong>Firearm suppressors: the positives and the negatives</strong></a>
+  </nav>
+
+  <footer class="contact" style="padding-top:clamp(50px,8vh,80px)">
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

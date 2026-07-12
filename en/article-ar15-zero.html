@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which zero should you choose for an AR-15 carbine? - Knowledge base - Perun Tac</title>
+<meta name="description" content="A comparison of 25, 36, 50 and 100 m zeros for 5.56/.223 and .300 BLK. How to set your zero precisely, how to confirm it, and how to map your carbine's trajectory.">
+<link rel="canonical" href="https://peruntac.pl/en/article-ar15-zero.html">
+<link rel="alternate" hreflang="pl" href="https://peruntac.pl/artykul-zero-ar15.html">
+<link rel="alternate" hreflang="en" href="https://peruntac.pl/en/article-ar15-zero.html">
+<link rel="alternate" hreflang="x-default" href="https://peruntac.pl/artykul-zero-ar15.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Perun Tac">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Which zero should you choose for an AR-15 carbine? - Knowledge base - Perun Tac">
+<meta property="og:description" content="A comparison of 25, 36, 50 and 100 m zeros for 5.56/.223 and .300 BLK. How to set your zero precisely, how to confirm it, and how to map your carbine's trajectory.">
+<meta property="og:url" content="https://peruntac.pl/en/article-ar15-zero.html">
+<meta property="og:image" content="https://peruntac.pl/assets/art1-banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<header class="nav is-solid" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Perun Tac - home">
+      <img src="../assets/logo-flat.png" alt="Perun Tac">
+    </a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="events.html">Events</a>
+      <a href="training.html">Training</a>
+      <a href="knowledge-base.html" aria-current="page">Knowledge base</a>
+      <a href="about.html">About us</a>
+      <a href="perun-security.html">Perun Security</a>
+    </nav>
+    <div class="nav__right">
+      <a class="lang lang--en" id="langSwitch" href="../artykul-zero-ar15.html" hreflang="pl" rel="alternate" aria-label="Przełącz na polski" lang="pl">
+        <span class="lang__thumb" aria-hidden="true"></span>
+        <span class="lang__opt">PL</span>
+        <span class="lang__opt is-on" lang="en">EN</span>
+      </a>
+      <a class="nav__phone mono" href="tel:+48453300536">+48 453 300 536</a>
+      <a class="btn btn--signal nav__cta" href="contact.html" data-magnetic>Contact</a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Mobile menu">
+    <a href="index.html"><span class="mono mmenu__tag">START</span>Home</a>
+    <a href="events.html"><span class="mono mmenu__tag">CALENDAR</span>Events</a>
+    <a href="training.html"><span class="mono mmenu__tag">COURSES</span>Training</a>
+    <a href="knowledge-base.html"><span class="mono mmenu__tag">FREE KNOWLEDGE</span>Knowledge base</a>
+    <a href="about.html"><span class="mono mmenu__tag">TEAM</span>About us</a>
+    <a href="perun-security.html"><span class="mono mmenu__tag">PROTECTION</span>Perun Security</a>
+    <a href="contact.html"><span class="mono mmenu__tag">COMMS</span>Contact</a>
+  </nav>
+  <div class="mmenu__foot mono">
+    <a href="tel:+48453300536">+48 453 300 536</a>
+    <a href="mailto:info@peruntac.pl">info@peruntac.pl</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="page-hero" style="min-height:clamp(360px,52svh,540px)">
+    <div class="page-hero__media">
+      <img src="../assets/art1-banner.jpg" alt="AR-15 carbine at a shooting station" fetchpriority="high">
+    </div>
+    <div class="page-hero__scrim" aria-hidden="true"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb mono"><a href="index.html">PERUN TAC</a> <span>//</span> <a href="knowledge-base.html">KNOWLEDGE BASE</a> <span>//</span> <span>ARTICLE</span></p>
+      <h1 class="page-hero__title" style="font-size:clamp(2.4rem,6.5vw,4.6rem)">
+        <span class="line"><span class="line__in">Which zero to choose</span></span>
+        <span class="line"><span class="line__in">for an <em>AR-15?</em></span></span>
+      </h1>
+    </div>
+  </section>
+
+  <article class="art">
+    <div class="art__meta mono">
+      <span>04 MAY 2026</span><span>//</span><span>BALLISTICS</span><span>//</span><span>5.56 · .300 BLK</span>
+    </div>
+
+    <p>Choosing a zero for your carbine is one of those topics that very often gets presented too simply.
+    You can find short answers all over the internet: "zero at 50", "36 is the best", "the military uses 25",
+    "100 m is the most precise". The problem is that each of these solutions can make sense,
+    but only when we understand what happens to the bullet between the barrel, the line of sight and the target.</p>
+    <p>A zero is not a magic sight setting. It's an agreement between the line of sight, the bore axis, the ballistics
+    of a specific load, the barrel length and the optic's mounting height. That's why two carbines both zeroed "at 50 m"
+    can behave differently if one has a standard red dot mount and the other a tall mount for night vision work.</p>
+    <p>In this article we'll compare zeros at <strong>25 m, 36 m, 50 m and 100 m</strong> for two popular calibers:
+    <strong>5.56/.223</strong> and <strong>.300 BLK</strong>. We'll cover .300 BLK supersonic and subsonic separately,
+    because in practice they are two completely different ballistic worlds.</p>
+
+    <h2>1. Assumptions behind the calculations</h2>
+    <p>The values below are model values, meant to help you understand the differences between zeros.
+    They are not a ready-made DOPE table for every carbine. For the calculations we assumed:</p>
+    <ul>
+      <li>Sight axis height over bore: <strong>lower 1/3, about 2.6″ / 6.6 cm</strong></li>
+      <li>Sight: primarily a <strong>red dot</strong></li>
+      <li>Distances: ranges in meters</li>
+      <li>A positive value in the tables: the bullet hits high; negative: low</li>
+    </ul>
+    <h3>Ammunition</h3>
+    <p>For 5.56/.223 we assumed a <strong>55 gr FMJ</strong> bullet. Reference data for commercial 55 gr ammunition
+    shows typical velocities from long test barrels around 3200-3240 fps and a G1 BC around 0.24-0.27,
+    while real-world velocity from shorter AR-15 barrels will be lower. The model therefore assumes about
+    <strong>884 m/s for a 14.5″ barrel</strong> and about <strong>808 m/s for a 10.5″ barrel</strong>.</p>
+    <p>For .300 BLK supersonic we assumed a <strong>110 gr V-MAX</strong> bullet and a barrel of about 8″. Hornady lists
+    2375 fps for its 110 gr V-MAX load from a 16″ test barrel; with a shorter barrel you should assume
+    a lower velocity, about <strong>649 m/s / 2130 fps</strong> in the model.</p>
+    <p>For .300 BLK subsonic we assumed a <strong>190 gr Sub-X</strong> bullet and a barrel of about 8″. Catalog data shows
+    1050 fps from a 24″ test barrel, a G1 BC of .437 and a very large drop already at 200-300 yd. For the short barrel
+    the model assumes about <strong>305 m/s / 1000 fps</strong>.</p>
+
+    <h2>2. Why does mounting height matter so much?</h2>
+    <p>The optic's mounting height, or HOB (height over bore), is the distance between the bore axis and the sight axis.
+    On an AR-15, a standard lower 1/3 red dot mount usually gives you around 2.6″ / 6.6 cm. That means at very
+    close range, e.g. 5-10 m, the bullet will hit low by roughly that value, because it hasn't yet had time
+    to "climb" into the line of sight.</p>
+    <p>There's already a separate <a href="article-mount-height.html" style="text-decoration:underline">article
+    on how mounting height affects your zero and shifts the second zero</a> on our site. It's worth reading as a companion piece:
+    switching from a classic mount to a tall one doesn't just change your close-range offset, it also changes the whole
+    behavior of the trajectory, the bullet's rise at mid-range, the position of the second zero and your map of corrections.</p>
+    <p>That's why all the tables below are based on one assumption: <strong>lower 1/3, about 6.6 cm HOB</strong>.
+    If you're using a 1.93″, 2.26″, Hydra or another tall mount, your values will be different.</p>
+
+    <h2>3. Zeros for .223/5.56</h2>
+    <figure>
+      <img src="../assets/art1-chart-1.png" alt="Table of hits relative to point of aim for 5.56 from a 14.5-inch barrel with 25, 36, 50 and 100 m zeros" loading="lazy">
+      <figcaption class="mono">5.56 / 14.5″ BARREL / 55 GR FMJ / HOB 6.6 CM</figcaption>
+    </figure>
+    <h3>Interpretation: 14.5″ barrel</h3>
+    <p>For a 14.5″ barrel, a 25 m zero produces very high hits in the middle of the trajectory, especially around
+    100-200 m. The advantage is that out to 300 m the bullet stays inside a fairly wide but still practical "tube" of hits
+    for large target zones. This is exactly why at Perun Tac we use the 25 m zero as a practical training solution:
+    it gives relatively few corrections to memorize out to about 300 m. That doesn't mean, however,
+    that it's the only good zero.</p>
+    <p>A 36 m zero is "flatter" in the 36-200 m bracket, but at 300 m it already requires a bigger correction.
+    A 50 m zero is very comfortable for close and medium distances, especially when most of your work happens
+    out to about 150-200 m. A 100 m zero is the most intuitive for longer-range shooting, but it won't serve you well
+    when shooting at closer distances.</p>
+    <figure>
+      <img src="../assets/art1-chart-2.png" alt="Table of hits relative to point of aim for 5.56 from a 10.5-inch barrel with 25, 36, 50 and 100 m zeros" loading="lazy">
+      <figcaption class="mono">5.56 / 10.5″ BARREL / 55 GR FMJ / HOB 6.6 CM</figcaption>
+    </figure>
+    <h3>Interpretation: 10.5″ barrel</h3>
+    <p>A shorter barrel means a lower muzzle velocity. Out to 100-150 m the difference against the 14.5″ barrel
+    doesn't look dramatic, but the further out you go, the faster it becomes visible. At 300 m the 10.5″ barrel
+    already demands noticeably more awareness of your corrections.</p>
+    <p>In practice a 25 m zero can still be useful if the goal is a simple working map out to about 300 m,
+    but you have to remember that at 100-150 m the bullet will be noticeably high. A 50 m zero is convenient on a shorter
+    carbine if most of your shooting happens up close and 200-300 m distances are occasional and treated
+    as requiring a deliberate holdover. With a 10.5-inch barrel, long-distance shooting is unlikely to be
+    the default choice, so a 100 m zero should probably not be on the table.</p>
+
+    <h2>4. Zeros for .300 BLK</h2>
+    <figure>
+      <img src="../assets/art1-chart-3.png" alt="Table of hits for .300 BLK supersonic 110 gr from an 8-inch barrel" loading="lazy">
+      <figcaption class="mono">.300 BLK SUPERSONIC / 110 GR V-MAX / 8″ BARREL</figcaption>
+    </figure>
+    <h3>Interpretation: supersonic</h3>
+    <p>.300 BLK supersonic from a short barrel is very practical at close and medium distances, but it doesn't
+    behave like 5.56 from a 14.5″ barrel. At 200-300 m the drop is already much larger. This matters especially if
+    someone tries to reuse the habits they built on an AR-15 in 5.56.</p>
+    <p>A 25 m zero gives a simple, fairly high trajectory up close and sensible behavior out to about 200 m. The 50 m
+    and 100 m zeros are more intuitive, but they require holding noticeably higher at 200-300 m. With .300 BLK supersonic
+    it's worth heavily limiting "ready-made answers from the internet" and genuinely mapping your own carbine.</p>
+    <figure>
+      <img src="../assets/art1-chart-4.png" alt="Table of hits for .300 BLK subsonic 190 gr from an 8-inch barrel" loading="lazy">
+      <figcaption class="mono">.300 BLK SUBSONIC / 190 GR SUB-X / 8″ BARREL</figcaption>
+    </figure>
+    <h3>Interpretation: subsonic</h3>
+    <p>.300 BLK subsonic has to be treated separately. It's not simply a "slower .300 BLK", it's a completely different
+    trajectory. The bullet flies much slower, so the time of flight is longer and gravity has far more time
+    to "pull" it downward.</p>
+    <p>For subsonic loads a 25 m or 50 m zero can be practical at short distances, especially if the gun is
+    run suppressed and the real working range is close. With drops this large, reinforcing your zero map
+    during training becomes especially important.</p>
+
+    <h2>5. Pros and cons of each zero</h2>
+    <h3>25 m zero</h3>
+    <p>Simple to set, available at most ranges and very practical for training. It gives a relatively
+    simple map of corrections out to about 300 m, particularly in 5.56/.223. At Perun Tac we use it for exactly that reason:
+    it lets beginners understand their carbine's behavior faster and limits the number of corrections to memorize
+    at typical tactical distances.</p>
+    <p>The downside is a clear rise of the bullet at medium distances. With 5.56 from a 14.5″ barrel the model shows
+    about +14 cm at 100 m and about +15 cm at 200 m. That can still be acceptable for a large target zone, but it
+    is not irrelevant with small targets, head boxes, partially obscured targets or shooting through ports.</p>
+    <h3>36 m zero</h3>
+    <p>A popular compromise between a close zero and usefulness at longer distance. Be careful, though, about
+    copying American "36 yard zero" write-ups: 36 yards is about 33 m, not 36 m. On top of that, mounting height
+    matters a lot. With the assumed lower 1/3 HOB, a 36 m zero gives a reasonable trajectory in the
+    36-200 m bracket for 5.56, but at 300 m it already needs a clear correction. A practical solution, but not a universal one.</p>
+    <h3>50 m zero</h3>
+    <p>A very good compromise for many red dot users. It produces small deviations at close and medium
+    distances, and at the same time it's easy to set up at a typical range. For people working mainly
+    in the 0-200 m bracket it can be very comfortable. The downside is that at 300 m, especially from a shorter barrel or
+    with .300 BLK, you already have to hold high: with 5.56 from a 14.5″ barrel the model shows about -48 cm at 300 m,
+    and from a 10.5″ barrel about -64 cm.</p>
+    <h3>100 m zero</h3>
+    <p>Very readable and precise. An excellent reference point for people using LPVOs, magnified optics, MRAD/MOA
+    reticles, or keeping careful ballistic notes. If you want to build deliberate DOPE for shooting
+    at longer distances, 100 m is a very logical choice. The downside with a red dot is that at close
+    distances the bullet still hits low because of HOB, and further out it starts dropping quickly: with 5.56 from a 14.5″ barrel
+    about -56 cm at 300 m, with a 10.5″ about -69 cm. That demands a deliberate holdover.</p>
+
+    <h2>6. Red dots, LPVOs and BDC reticles</h2>
+    <p>In this article we mainly assume a red dot, i.e. a simple aiming point without an elaborate ballistic
+    reticle. In that case the choice of zero matters enormously, because the shooter works mainly by holding the point:
+    higher, lower or center.</p>
+    <p>With an LPVO the situation can look different. If the reticle has an MRAD or MOA scale, you can build your own
+    corrections and use them regardless of the chosen zero. If, however, the optic has a BDC reticle, the manufacturer usually
+    designs it for a specific caliber, velocity, mounting height and zeroing distance. Then the choice of zero is not
+    arbitrary: if the BDC reticle requires a 100 m zero and we set the gun up at 50 m, the markers may stop matching
+    the real trajectory.</p>
+
+    <h2>7. How to set your zero precisely</h2>
+    <p>The most important rule: a zero cannot be set "more or less". This is not a stage you can treat
+    as a formality with the thought "I'll fix it later". Every subsequent shot, every drill and every correction
+    will be built on how well we zeroed the sight. A good zero requires precision, patience
+    and a stable platform.</p>
+    <h3>1) Establish the true distance</h3>
+    <p>Don't set the target up "by eye". If you're zeroing at 25 m, it has to be 25 m from the firing point to the target.
+    A difference of a few meters can change the result, especially with short zeros. Ideally use a rangefinder, a measuring
+    tape or a marked lane at the range. If you're using a scaled-down zeroing target, make sure it's designed
+    for exactly that distance, caliber and intended zero.</p>
+    <h3>2) Shoot from the most stable position possible</h3>
+    <p>We set the zero to eliminate hardware error, not to test our shooting position. Ideally use
+    a bench, a rest, a shooting bag, a stable front rest or a zeroing station. If you don't have
+    a bench, use the most stable prone position possible with solid support. This stage is not about
+    speed, it's about repeatability.</p>
+    <h3>3) Shoot groups, not single shots</h3>
+    <p>Don't adjust the sight after one shot, unless the first shot is wildly off the target and you need to get back
+    on paper. The standard should be 3-shot groups, or better yet 5-shot groups if ammunition and time
+    allow. After firing a group, find its center. You adjust the sight to the center of the group, not to the best
+    single hit.</p>
+    <h3>4) Calculate the correction</h3>
+    <p>If the group is 4 cm left and 3 cm low, dial in the correction based on your sight's click values. Make
+    sure you know what one click means at the given distance: a 1/2 MOA sight works differently from a 1/4 MOA one, and differently
+    again from MRAD adjustments. You can also work by trial and error: apply a correction, count the clicks and write them
+    on the target. After the follow-up shots, compare the difference between the points of impact — now you know how many clicks
+    equal what distance on the target.</p>
+    <h3>5) Confirm the zero with another group</h3>
+    <p>After adjusting, fire the next group. If the center of the group is where it should be, the zero is set.
+    If not, repeat the process. It's also good practice to re-confirm your zero after removing and remounting
+    the optic, changing the mount, changing ammunition, changing the suppressor, or after the gun takes a hard knock.</p>
+
+    <h2>8. Map your zero</h2>
+    <p>Setting the zero at 25, 36, 50 or 100 m doesn't end the job. You still need to know your zero.
+    That means checking where the gun hits at other distances. The minimum set for mapping:</p>
+    <ul>
+      <li>5 m, 10 m, 15 m</li>
+      <li>your zeroing distance</li>
+      <li>50 m, 100 m, 200 m</li>
+      <li>300 m, if the range allows it</li>
+    </ul>
+    <p>Fire shots from each distance while always holding the same point of aim (ideally the center of a large
+    target). After each string, walk up to the target and label the hits with the distance you fired from. When you're done,
+    the target becomes your zero map. Keep it, and from then on shoot while shifting your point of aim so that your hits
+    land in the target zone you've chosen.</p>
+
+    <h2>9. So which zero should you choose?</h2>
+    <p>There is no single best zero for every carbine and every shooter.</p>
+    <p>For 5.56/.223, a 25 m zero can be very practical if you want a simple working map out to about 300 m
+    and accept higher hits at medium distance. A 36 m zero is an interesting compromise, but it has to be understood
+    in the context of a specific mounting height. A 50 m zero is very comfortable for a red dot and for work at close
+    and medium distances. A 100 m zero is the clearest for precise confirmation, LPVOs
+    and building DOPE.</p>
+    <p>For .300 BLK you have to separate supersonic and subsonic. Supersonic can still be treated as a practical
+    caliber for close and medium distances, but with more drop than 5.56. Subsonic demands a completely different
+    approach: shorter real-world distances, careful mapping and awareness of very large corrections.</p>
+    <p>What matters most is not whether you pick 25, 36, 50 or 100 m. What matters most is that you know
+    what that choice means on your carbine, with your ammunition, your barrel, your mount and your sight.</p>
+    <div class="art__callout">
+      <span class="mono">KNOW YOUR ZERO</span>
+      A zero has to be set precisely. Then it has to be confirmed. And finally it has to be mapped.
+      Only then do you truly know your carbine.
+    </div>
+  </article>
+
+  <nav class="art-nav" aria-label="More articles">
+    <a href="knowledge-base.html#articles"><span class="mono">← KNOWLEDGE BASE</span><strong>All articles</strong></a>
+    <a href="article-mount-height.html"><span class="mono">NEXT →</span><strong>How mount height affects your zero</strong></a>
+  </nav>
+
+  <footer class="contact" style="padding-top:clamp(50px,8vh,80px)">
+    <div class="contact__socials mono">
+      <a href="https://www.instagram.com/perun_tac/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+      <a href="https://www.facebook.com/Perun-Tac-105875867961319" target="_blank" rel="noopener">FACEBOOK ↗</a>
+      <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
+    </div>
+    <div class="contact__bottom mono">
+      <span>© 2026-2027 PERUN TAC</span>
+      <span>WROCŁAW - 51°06′N 17°02′E</span>
+      <a href="https://peruntac.pl/" target="_blank" rel="noopener">PERUNTAC.PL ↗</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

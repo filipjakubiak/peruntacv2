@@ -16,19 +16,36 @@
   var grid = document.getElementById("igGrid");
   if (!grid) return;
 
+  /* EN pages live in /en/ and set <html lang="en" data-root="../"> —
+     ROOT re-bases the asset paths, EN swaps captions/alts. */
+  var EN = (document.documentElement.lang || "pl").toLowerCase().indexOf("en") === 0;
+  var ROOT = document.documentElement.getAttribute("data-root") || "";
+
   /* ---- Kuratorowane posty (placeholder — podmień na realne) ---- */
   var PT_IG = [
-    { img: "assets/hero-4.jpg", alt: "Trening karabinkowy na strzelnicy Perun Tac",
+    { img: "assets/hero-4.jpg",
+      alt: "Trening karabinkowy na strzelnicy Perun Tac",
+      altEn: "Carbine training at the Perun Tac range",
       caption: "Otwarty trening: karabinek na dystansie. Powtarzalność ponad wszystko. 🎯",
+      captionEn: "Open training: carbine at distance. Repeatability above all. 🎯",
       likes: 412, comments: 18, url: "https://www.instagram.com/perun_tac/" },
-    { img: "assets/hero-2.jpg", alt: "Nocne szkolenie strzeleckie przy świetle latarek",
+    { img: "assets/hero-2.jpg",
+      alt: "Nocne szkolenie strzeleckie przy świetle latarek",
+      altEn: "Night shooting course under flashlight illumination",
       caption: "Low-light. Praca z latarką i noktowizją — noc nie wybacza skrótów.",
+      captionEn: "Low-light. Flashlight and NVG work — the night forgives no shortcuts.",
       likes: 537, comments: 24, url: "https://www.instagram.com/perun_tac/" },
-    { img: "assets/hero-1.jpg", alt: "Praca zespołowa podczas wejścia do pomieszczeń (CQB)",
+    { img: "assets/hero-1.jpg",
+      alt: "Praca zespołowa podczas wejścia do pomieszczeń (CQB)",
+      altEn: "Team work during room entries (CQB)",
       caption: "CQB. Kąty, komunikacja, decyzja. Zespół, który nie polega na szczęściu.",
+      captionEn: "CQB. Angles, communication, decision. A team that doesn't rely on luck.",
       likes: 689, comments: 41, url: "https://www.instagram.com/perun_tac/" },
-    { img: "assets/about-2.jpg", alt: "Uczestnicy szkolenia Perun Tac w trakcie ćwiczeń",
+    { img: "assets/about-2.jpg",
+      alt: "Uczestnicy szkolenia Perun Tac w trakcie ćwiczeń",
+      altEn: "Perun Tac course participants during drills",
       caption: "Zjazd zamknięty. Dzięki za robotę — do zobaczenia na kolejnym terminie. 🔩",
+      captionEn: "Session closed. Thanks for the work — see you on the next date. 🔩",
       likes: 358, comments: 12, url: "https://www.instagram.com/perun_tac/" }
   ];
 
@@ -45,11 +62,13 @@
 
   function renderIG(posts) {
     grid.innerHTML = posts.slice(0, 4).map(function (p) {
+      var cap = EN && p.captionEn ? p.captionEn : p.caption;
+      var alt = EN && p.altEn ? p.altEn : p.alt;
       return '<a class="ig__tile" role="listitem" href="' + esc(p.url) + '" target="_blank" rel="noopener" ' +
-        'aria-label="Zobacz post na Instagramie: ' + esc(p.caption) + '">' +
-        '<img src="' + esc(p.img) + '" alt="' + esc(p.alt) + '" loading="lazy">' +
+        'aria-label="' + (EN ? "View the Instagram post: " : "Zobacz post na Instagramie: ") + esc(cap) + '">' +
+        '<img src="' + esc(ROOT + p.img) + '" alt="' + esc(alt) + '" loading="lazy">' +
         '<span class="ig__overlay">' + IG_GLYPH +
-        '<span><span class="ig__cap">' + esc(p.caption) + '</span>' +
+        '<span><span class="ig__cap">' + esc(cap) + '</span>' +
         '<span class="ig__stat mono">' +
         (p.likes != null ? '<span>♥ ' + p.likes + '</span>' : '') +
         (p.comments != null ? '<span>💬 ' + p.comments + '</span>' : '') +
