@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects — Perun Sec
+#
+# Serwis jest WYŁĄCZNIE po angielsku (decyzja klienta, 2026-08-18).
+# Katalog pl/ został po wcześniejszej wersji dwujęzycznej i nie jest już
+# linkowany z żadnego miejsca. Zostaje na dysku jako materiał źródłowy
+# (polskie tłumaczenia treści), ale nie może się serwować ani indeksować.
+/pl/*   /   301
+/pl     /   301

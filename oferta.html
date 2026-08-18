@@ -36,8 +36,8 @@
       <img src="assets/logo-flat.png" alt="Perun Tac">
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
-      <a href="wydarzenia.html">Wydarzenia</a>
-      <a href="oferta.html" aria-current="page">Oferta</a>
+      <a href="wydarzenia.html">Kalendarz</a>
+      <a href="oferta.html" aria-current="page">Szkolenia</a>
       <a href="baza-wiedzy.html">Baza wiedzy</a>
       <a href="o-nas.html">O nas</a>
       <a href="perun-security.html">Perun Security</a>
@@ -60,7 +60,7 @@
 <div class="mmenu" id="mobileMenu" aria-hidden="true">
   <nav class="mmenu__links" aria-label="Menu mobilne">
     <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
-    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">NAJBLIŻSZE TERMINY</span>Kalendarz</a>
     <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
     <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
     <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
@@ -91,56 +91,73 @@
     </div>
   </section>
 
-  <!-- MODUŁY -->
-  <div class="modgrid" aria-label="Moduły szkoleniowe">
-    <article class="modgrid__card modgrid__feature" id="strzeleckie">
-      <div class="modgrid__media" data-parallax="9"><img src="assets/mod-strzel.jpg" alt="Instruktor koryguje złożenie strzelca na strzelnicy" loading="lazy"></div>
-      <span class="mod__label mono">MODUŁ / STRZELECKI</span>
-      <h2 class="mod__title reveal-lines"><span class="line"><span class="line__in">Szkolenia</span></span><span class="line"><span class="line__in">strzeleckie</span></span></h2>
-      <p class="mod__desc">Nauka obsługi różnych platform strzeleckich i systematyczne rozwijanie umiejętności:
-      od bezpiecznych fundamentów po strzelanie w ruchu, na dystansie i pod presją czasu.</p>
-      <ul class="mod__points">
-        <li>Pistolet: fundamenty, praca na spuście, szybkie strzelania</li>
-        <li>Karabinek AR-15: zero, marksmanship, kontrola odrzutu</li>
-        <li>Otwarte treningi z timerem i informacją zwrotną</li>
-        <li>Treningi indywidualne dla osób już strzelających</li>
-      </ul>
-      <a class="btn btn--signal" href="wydarzenia.html" data-magnetic>Najbliższe terminy</a>
-    </article>
-
-    <article class="modgrid__card" id="taktyczne">
-      <div class="modgrid__media"><img src="assets/mod-takt.jpg" alt="Zespół podczas szkolenia taktycznego" loading="lazy"></div>
-      <span class="mod__label mono">MODUŁ / TAKTYCZNY</span>
-      <h2 class="mod__title reveal-lines"><span class="line"><span class="line__in">Szkolenia taktyczne</span></span></h2>
-      <p class="mod__desc">Działania taktyczne z zaawansowanym użyciem broni: walka w pomieszczeniach,
-      taktyka małych zespołów i taktyka wykorzystania pojazdów, w dzień i w nocy.</p>
-      <ul class="mod__points">
-        <li>CQB: od intro po scenariusze w kill house</li>
-        <li>Taktyka małych zespołów i praca sekcji</li>
-        <li>Vehicle Tactics: praca wokół i wewnątrz pojazdów</li>
-        <li>Działania przy ograniczonym świetle / NVG</li>
-      </ul>
-      <a class="btn btn--signal" href="wydarzenia.html" data-magnetic>Najbliższe terminy</a>
-    </article>
-
-    <article class="modgrid__card" id="specjalistyczne">
-      <div class="modgrid__media"><img src="assets/mod-spec.jpg" alt="Szkolenie specjalistyczne Perun Tac" loading="lazy"></div>
-      <span class="mod__label mono">MODUŁ / SPECJALISTYCZNY</span>
-      <h2 class="mod__title reveal-lines"><span class="line"><span class="line__in">Szkolenia specjalistyczne</span></span></h2>
-      <p class="mod__desc">Specjalistyczne umiejętności dla wymagających środowisk: ochrona osobista, działania
-      w krajach wysokiego ryzyka, przygotowanie pracowników cywilnych do wyjazdów w obszary podwyższonego zagrożenia.</p>
-      <ul class="mod__points">
-        <li>Ochrona osobista i działania ochronne</li>
-        <li>Szkolenia wysokościowe: budynek i teren górski</li>
-        <li>Breaching: pokonywanie przeszkód budowlanych</li>
-        <li>HEAT: przygotowanie do pracy w strefach ryzyka</li>
-      </ul>
-      <a class="btn btn--signal" href="wydarzenia.html" data-magnetic>Najbliższe terminy</a>
-    </article>
+  <!-- FILTRY + AKORDEON MODUŁÓW: renderowane w całości przez js/products.js -->
+  <div class="offer-filters">
+    <div class="offer-filters__group"><span class="mono offer-filters__label">POZIOM DOŚWIADCZENIA</span><div class="tfilter" id="offerFilterLevel"></div></div>
+    <div class="offer-filters__group"><span class="mono offer-filters__label">TRYB REALIZACJI</span><div class="tfilter" id="offerFilterMode"></div></div>
+    <div class="offer-filters__group"><span class="mono offer-filters__label">MIEJSCE</span><div class="tfilter" id="offerFilterPlace"></div></div>
+    <div class="offer-filters__group"><span class="mono offer-filters__label">CENA</span><div class="tfilter" id="offerFilterSort"></div></div>
   </div>
+  <div class="modacc" id="modacc" aria-label="Moduły szkoleniowe"></div>
+  <p class="offer-empty" id="offerEmpty">Brak szkoleń spełniających wybrane kryteria.</p>
+
+  <!-- Dialog zapytania o termin (reużywa stylowanie .bk z kalendarza) -->
+  <dialog class="bk" id="pfDialog" aria-labelledby="pfTitle" data-lenis-prevent>
+    <button class="bk__close" id="pfClose" type="button" aria-label="Zamknij okno">✕</button>
+    <div class="bk__wrap">
+      <div class="bk__info">
+        <span class="bk__tag mono" id="pfTag">MODUŁ</span>
+        <h2 class="bk__title" id="pfTitle">...</h2>
+        <div class="bk__grid">
+          <div><span class="mono">Miejsce</span><strong id="pfPlace">...</strong></div>
+          <div><span class="mono">Cena</span><strong id="pfPrice">...</strong></div>
+          <div><span class="mono">Poziom</span><strong id="pfLevel">...</strong></div>
+          <div><span class="mono">Tryb</span><strong id="pfMode">...</strong></div>
+        </div>
+        <p class="bk__desc" id="pfDesc"></p>
+        <div id="pfProgramWrap"><h3 class="bk__h">Program</h3><ul class="bk__list" id="pfProgram"></ul></div>
+        <div id="pfReqWrap"><h3 class="bk__h">Wymagania</h3><ul class="bk__list" id="pfReq"></ul></div>
+      </div>
+      <div class="bk__form-side">
+        <h3 class="bk__form-title">Zapytaj o termin</h3>
+        <p class="bk__form-note">Wypełnij zgłoszenie, a przygotujemy wiadomość e-mail z Twoimi danymi.
+        Odezwiemy się z dostępnymi terminami i szczegółami.</p>
+        <form id="pfForm" novalidate>
+          <div class="field">
+            <label for="pfName">Imię i nazwisko *</label>
+            <input id="pfName" name="imie_i_nazwisko" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="pfMail">E-mail *</label>
+            <input id="pfMail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="pfPhone">Telefon *</label>
+            <input id="pfPhone" name="telefon" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="pfNotes">Uwagi (preferowany termin, pytania)</label>
+            <textarea id="pfNotes" name="uwagi"></textarea>
+          </div>
+          <div class="field field--check">
+            <input id="pfRodo" type="checkbox" required>
+            <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia
+            zgodnie z <a href="polityka-prywatnosci.html" target="_blank" rel="noopener" style="text-decoration:underline">polityką prywatności</a>. *</span>
+          </div>
+          <button class="btn btn--signal bk__submit" type="submit">Wyślij zapytanie →</button>
+          <div class="bk__sent" id="pfSent" role="status">
+            <span class="mono">ZGŁOSZENIE PRZYGOTOWANE</span>
+            Otworzyliśmy Twój program pocztowy z gotową wiadomością. Wystarczy nacisnąć „Wyślij”.
+            Jeśli nic się nie otworzyło, napisz bezpośrednio na <a href="mailto:info@peruntac.pl" style="text-decoration:underline">info@peruntac.pl</a>
+            lub zadzwoń: <a href="tel:+48453300536" style="text-decoration:underline">+48 453 300 536</a>.
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
 
   <!-- TRYBY -->
-  <section class="section-pad" aria-label="Tryby realizacji szkoleń">
+  <section class="section-pad" id="tryby" aria-label="Tryby realizacji szkoleń">
     <div class="section-head" style="padding-left:0;padding-right:0;padding-top:0">
       <h2 class="section-head__title reveal-lines"><span class="line"><span class="line__in">Tryby realizacji</span></span></h2>
       <p class="section-head__note">Ten sam standard, trzy formy pracy. Wybierz tę, która pasuje do Twojej sytuacji.</p>
@@ -159,8 +176,8 @@
           <span class="modes__name">Indywidualny</span>
           <span class="modes__tag mono">TRENING 1:1</span>
         </div>
-        <p class="modes__desc">Masz własny pomysł na szkolenie albo chcesz popracować nad konkretnym zagadnieniem?
-        Program budujemy pod Ciebie. Dla osób już strzelających prowadzimy również regularne treningi indywidualne.</p>
+        <p class="modes__desc">Zależy Ci na szybkim rozwoju i indywidualnym toku zajęć? W tym trybie zmaksymalizujesz
+        progres, pracując sam na sam z instruktorem na jednorazowych zajęciach lub na cyklicznych spotkaniach.</p>
       </div>
       <div class="modes__row">
         <div>
@@ -170,6 +187,14 @@
         <p class="modes__desc">Szkolenia zamknięte dla zorganizowanych grup: firm, formacji i zespołów. Poza kursami
         organizujemy warsztaty taktyczne, na których uczestnicy z różnych sektorów wymieniają się doświadczeniem
         i weryfikują procedury w realistycznych warunkach.</p>
+      </div>
+      <div class="modes__row">
+        <div>
+          <span class="modes__name">Dla instytucji</span>
+          <span class="modes__tag mono">SŁUŻBY MUNDUROWE</span>
+        </div>
+        <p class="modes__desc">Ekskluzywne szkolenia dla służb, wojska, policji i innych instytucji państwowych,
+        z zachowaniem najwyższych standardów poufności.</p>
       </div>
     </div>
   </section>
@@ -185,8 +210,12 @@
         profesjonalne audyty i szkolenia dla firm oraz wdrażać procedury, które realnie zwiększają odporność
         operacyjną organizacji.</p>
         <p class="mod__desc">Obsługujemy również bezpieczeństwo projektów realizowanych w krajach wysokiego ryzyka:
-        od wsparcia analitycznego po kompleksowe zarządzanie bezpieczeństwem na miejscu prowadzenia działań.</p>
-        <a class="btn btn--ghost" href="kontakt.html" data-magnetic>Zapytaj o współpracę</a>
+        od wsparcia analitycznego po kompleksowe przygotowanie i zarządzanie bezpieczeństwem na miejscu
+        prowadzenia działań.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn btn--ghost" href="kontakt.html" data-magnetic>Zapytaj o współpracę</a>
+          <a class="btn btn--signal" href="perun-security.html" data-magnetic>Przejdź do Perun SEC →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -223,6 +252,12 @@
       <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
       <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
     </div>
+    <nav class="contact__legal mono" aria-label="Dokumenty">
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin-strony.html">Regulamin strony</a>
+      <a href="regulamin-szkolen.html">Regulamin szkoleń</a>
+      <a href="regulamin-sklepu.html">Regulamin sklepu</a>
+    </nav>
     <div class="contact__bottom mono">
       <span>© 2026-2027 PERUN TAC</span>
       <span>WROCŁAW - 51°06′N 17°02′E</span>
@@ -235,6 +270,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="js/products.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

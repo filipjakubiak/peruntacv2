@@ -86,12 +86,25 @@
         <span class="line"><span class="line__in">calendar <em>2026</em></span></span>
       </h1>
       <p class="page-hero__intro">Open training sessions, tactical courses and specialist workshops.
-      Pick a date, check the details and send your application. We confirm your spot by e-mail.</p>
+      Pick a date, check the details and send your application.</p>
     </div>
   </section>
 
+  <!-- Filters: rendered by js/booking.js from the event list -->
+  <div class="cal-filters">
+    <div class="cal-filters__group">
+      <span class="mono cal-filters__label">LOCATION</span>
+      <div class="tfilter" id="calFilterPlace"></div>
+    </div>
+    <div class="cal-filters__group">
+      <span class="mono cal-filters__label">EXPERIENCE LEVEL</span>
+      <div class="tfilter" id="calFilterLevel"></div>
+    </div>
+  </div>
+
   <!-- Calendar renders here from js/booking.js -->
   <section class="cal" id="cal" aria-label="List of upcoming courses"></section>
+  <p class="cal__empty" id="calEmpty">No courses match the selected filters.</p>
 
   <!-- Booking dialog -->
   <dialog class="bk" id="bkDialog" aria-labelledby="bkTitle" data-lenis-prevent>
@@ -104,7 +117,7 @@
         <div class="bk__grid">
           <div><span class="mono">Date</span><strong id="bkDate">...</strong></div>
           <div><span class="mono">Location</span><strong id="bkPlace">...</strong></div>
-          <div><span class="mono">Price</span><strong id="bkPrice">...</strong></div>
+          <div><span class="mono">Course price</span><strong id="bkPrice">...</strong></div>
           <div><span class="mono">Level</span><strong id="bkLevel">...</strong></div>
         </div>
         <p class="bk__desc" id="bkDesc"></p>
@@ -122,17 +135,6 @@
         <p class="bk__form-note">Fill in the application and we'll prepare an e-mail with your details.
         We confirm your spot on the list by reply, along with the organizational information.</p>
 
-        <!-- Payment gateway: reservation deposit (PayU/P24 link per course) -->
-        <div class="bk__pay" id="bkPay">
-          <div class="bk__pay-row">
-            <span class="bk__pay-lbl mono">RESERVATION DEPOSIT</span>
-            <span class="bk__pay-amt" id="bkPayAmt">—</span>
-          </div>
-          <p class="bk__pay-sub">Pay the deposit to lock in your spot on the list right away. The remaining
-          amount is settled before the course. The deposit is refundable up to 14 days before the date.</p>
-          <a class="btn btn--signal" id="bkPayBtn" href="#" target="_blank" rel="noopener">Pay the deposit online →</a>
-          <p class="bk__pay-note"><b>PayU · Przelewy24 · BLIK.</b> Payment in the operator's secure window.</p>
-        </div>
         <form id="bkForm" novalidate>
           <div class="field">
             <label for="bkName">Full name *</label>
@@ -149,22 +151,108 @@
           <div class="field">
             <label for="bkExp">Experience level</label>
             <select id="bkExp" name="doswiadczenie">
-              <option value="Beginner">Beginner - first steps</option>
-              <option value="Intermediate">Intermediate - regular training</option>
-              <option value="Advanced">Advanced - competition / duty</option>
-              <option value="Uniformed services">Uniformed services / military</option>
+              <option value="Beginner - first steps">Beginner - first steps</option>
+              <option value="Intermediate - training for a while already">Intermediate - training for a while already</option>
+              <option value="Advanced - years of training, a professional">Advanced - years of training, a professional</option>
+              <option value="Uniformed services">Uniformed services</option>
             </select>
           </div>
+
           <div class="field">
-            <label for="bkNotes">Notes (own firearm / rental, questions)</label>
+            <span class="mono toggle__lbl">Firearm</span>
+            <div class="tfilter" id="bkWeaponToggle">
+              <button type="button" class="is-active" data-val="own">I have my own</button>
+              <button type="button" data-val="rent">I need a rental</button>
+            </div>
+            <p class="toggle__price" id="bkWeaponPrice">+ 100 PLN for the rental</p>
+          </div>
+          <div class="field">
+            <span class="mono toggle__lbl">Mandatory gear</span>
+            <div class="tfilter" id="bkGearToggle">
+              <button type="button" class="is-active" data-val="own">I have my own</button>
+              <button type="button" data-val="rent">I need a rental</button>
+            </div>
+            <p class="toggle__price" id="bkGearPrice">+ 50 PLN for the rental</p>
+          </div>
+          <div class="field">
+            <span class="mono toggle__lbl">Dominant hand</span>
+            <div class="tfilter" id="bkHandToggle">
+              <button type="button" class="is-active" data-val="right">Right-handed</button>
+              <button type="button" data-val="left">Left-handed</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bkNotes">Notes (billing details, special needs, preferred rental firearm, questions)</label>
             <textarea id="bkNotes" name="uwagi"></textarea>
+          </div>
+
+          <div class="field field--check">
+            <input id="bkCriminal" type="checkbox" required>
+            <span>I declare that I have not been convicted, am not subject to a final criminal conviction for
+            an intentional offense, that no criminal proceedings are pending against me, and that I have full
+            legal capacity and full public rights. *</span>
+          </div>
+
+          <div class="field">
+            <label for="bkPromo">Discount code</label>
+            <input id="bkPromo" name="kod_rabatowy" type="text" autocomplete="off" placeholder="If you have one, enter it here">
+          </div>
+
+          <div class="bk__total is-hidden" id="bkTotalWrap">
+            <span class="bk__total-lbl mono">TOTAL DUE</span>
+            <span class="bk__total-amt" id="bkTotalAmt">—</span>
+          </div>
+
+          <div class="bk__pay is-hidden" id="bkPay">
+            <h3 class="bk__form-title" style="font-size:1.15rem;margin-bottom:10px">Payment</h3>
+            <p class="bk__pay-sub">Registration requires a deposit of at least 50% of the course price. We
+            refund the deposit if you cancel at least one month before the course date. If you cancel less
+            than a month before the course, the deposit is non-refundable - it covers costs the organizer
+            incurs in connection with your participation. Details are available in the
+            <a href="shop-terms.html" target="_blank" rel="noopener" style="text-decoration:underline">Shop Terms</a>.</p>
+
+            <div class="bk__pay-choice" id="bkPayChoice">
+              <button type="button" class="bk__pay-opt is-active" data-pay="deposit">
+                <span class="bk__pay-opt-lbl mono">PAY A DEPOSIT (50%)</span>
+                <span class="bk__pay-opt-amt" id="bkDepositAmt">—</span>
+              </button>
+              <button type="button" class="bk__pay-opt" data-pay="full">
+                <span class="bk__pay-opt-lbl mono">PAY THE FULL PRICE</span>
+                <span class="bk__pay-opt-amt" id="bkFullAmt">—</span>
+              </button>
+            </div>
+
+            <div class="field" style="margin-bottom:0">
+              <label for="bkPayMethod">Payment method</label>
+              <select id="bkPayMethod" name="metoda_platnosci">
+                <option value="BLIK">BLIK</option>
+                <option value="Przelewy24">Przelewy24</option>
+                <option value="PayU">PayU</option>
+                <option value="Payment card">Payment card</option>
+              </select>
+            </div>
+            <input type="hidden" id="bkPayHidden" name="platnosc">
+          </div>
+
+          <div class="field field--check">
+            <input id="bkNoWithdraw" type="checkbox" required>
+            <span>I acknowledge that this is a service related to a sporting event taking place on a specified
+            date, and therefore I am not entitled to withdraw from a distance contract. *</span>
           </div>
           <div class="field field--check">
             <input id="bkRodo" type="checkbox" required>
             <span>I consent to the processing of my personal data for the purpose of handling this application,
-            in accordance with the <a href="https://peruntac.pl/polityka-prywatnosci" target="_blank" rel="noopener" style="text-decoration:underline">privacy policy</a>. *</span>
+            in accordance with the <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline">privacy policy</a>. *</span>
           </div>
-          <button class="btn btn--signal bk__submit" type="submit">Send application →</button>
+          <div class="field field--check">
+            <input id="bkTerms" type="checkbox" required>
+            <span>I have read the <a href="shop-terms.html" target="_blank" rel="noopener" style="text-decoration:underline">Shop Terms</a>
+            and <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline">Privacy Policy</a>
+            of peruntac.pl and I accept their content. *</span>
+          </div>
+
+          <button class="btn btn--signal bk__submit" type="submit">Pay and sign up for the course →</button>
           <div class="bk__sent" id="bkSent" role="status">
             <span class="mono">APPLICATION PREPARED</span>
             We've opened your e-mail client with a ready-made message. Just press "Send".
@@ -201,6 +289,12 @@
       <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
       <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
     </div>
+    <nav class="contact__legal mono" aria-label="Legal documents">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="site-terms.html">Site Terms</a>
+      <a href="course-terms.html">Course Terms</a>
+      <a href="shop-terms.html">Shop Terms</a>
+    </nav>
     <div class="contact__bottom mono">
       <span>© 2026-2027 PERUN TAC</span>
       <span>WROCŁAW - 51°06′N 17°02′E</span>

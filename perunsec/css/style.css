@@ -2531,3 +2531,276 @@ html.shot .hero, html.shot .split { min-height: 900px; height: 900px; }
 .legal__status { color: var(--signal); letter-spacing: 0.08em; }
 .legal__doc a { text-decoration: underline; text-underline-offset: 3px; }
 .legal__doc a:hover { color: var(--signal); }
+
+/* ==========================================================================
+   PERUN SEC — standalone site (perunsec.com)
+   Layers on top of the shared Perun stylesheet; .theme-sec supplies the blue
+   signal palette. Only rules that exist solely on Perun Sec live here.
+   ========================================================================== */
+
+/* Services — the client asked for one continuous list ("po prostu ciągiem
+   wypisane"), not cards, and for the descriptions to stay English-only in
+   both language versions. */
+.svc { max-width: var(--max); margin-inline: auto; padding: 0 var(--gutter) clamp(70px, 10vh, 120px); border-top: 1px solid var(--line); }
+.svc__row {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 4px clamp(16px, 3vw, 32px);
+  padding: clamp(20px, 3vh, 28px) 14px;
+  border-bottom: 1px solid var(--line);
+}
+.svc__row::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: var(--bg-raised);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s var(--ease-out);
+}
+.svc__row::after {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--signal);
+  transform: scaleY(0);
+  transition: transform 0.4s var(--ease-out);
+}
+.svc__num { grid-column: 1; color: var(--olive); padding-top: 4px; }
+.svc__name {
+  grid-column: 2;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  text-transform: uppercase;
+  line-height: 1.1;
+  transition: transform 0.45s var(--ease-out), color 0.3s;
+}
+.svc__desc { grid-column: 2; color: var(--ink-dim); max-width: 74ch; margin-top: 8px; text-wrap: pretty; }
+@media (hover: hover) {
+  .svc__row:hover::before { transform: scaleY(1); transform-origin: top; }
+  .svc__row:hover::after { transform: scaleY(1); }
+  .svc__row:hover .svc__name { transform: translateX(8px); color: var(--signal); }
+}
+@media (max-width: 640px) {
+  .svc__row { grid-template-columns: 1fr; }
+  .svc__num, .svc__name, .svc__desc { grid-column: 1; }
+}
+
+/* IOC — intelligence & operations centre */
+.ioc { border-block: 1px solid var(--line); background: var(--bg-raised); }
+.ioc__inner {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: clamp(60px, 9vh, 110px) var(--gutter);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: start;
+}
+.ioc__body p { color: var(--ink-dim); margin-bottom: 16px; text-wrap: pretty; }
+.ioc__panel { border: 1px solid var(--line); background: var(--bg); }
+.ioc__panel-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  color: var(--signal);
+}
+.ioc__panel dl { display: grid; grid-template-columns: auto minmax(0, 1fr); }
+.ioc__panel dt {
+  padding: 13px 20px;
+  color: var(--olive);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.ioc__panel dd {
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.15;
+}
+.ioc__panel dt:last-of-type, .ioc__panel dd:last-of-type { border-bottom: 0; }
+@media (max-width: 900px) { .ioc__inner { grid-template-columns: 1fr; } }
+
+/* Global reach map */
+.secmap { max-width: var(--max); margin-inline: auto; padding: 0 var(--gutter) clamp(70px, 10vh, 120px); }
+.secmap__figure { margin: 0 0 clamp(24px, 4vh, 38px); }
+.secmap__svg { width: 100%; height: auto; display: block; overflow: visible; }
+.secmap__land { fill: none; stroke: color-mix(in oklab, var(--ink) 22%, transparent); stroke-width: 0.9; vector-effect: non-scaling-stroke; }
+.secmap__core { fill: var(--signal); transition: r 0.3s var(--ease-out); }
+.secmap__halo {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: secmap-ping 3.4s var(--ease-out) infinite;
+}
+@keyframes secmap-ping {
+  0% { transform: scale(0.6); opacity: 0.85; }
+  70%, 100% { transform: scale(3.4); opacity: 0; }
+}
+.secmap__dot.is-active .secmap__core { r: 6; }
+.secmap__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.secmap__item {
+  border: 1px solid var(--line);
+  padding: 7px 13px;
+  color: var(--ink-dim);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  cursor: default;
+  transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+}
+.secmap__item.is-active, .secmap__item:hover { border-color: var(--signal); color: var(--signal); background: var(--bg-raised); }
+@media (prefers-reduced-motion: reduce) { .secmap__halo { animation: none; } }
+
+/* Contact form */
+.secform { max-width: 620px; }
+.secform .field input, .secform .field textarea, .secform .field select { background: var(--bg); }
+.secform__submit { width: 100%; justify-content: center; margin-top: 6px; }
+.secform__sent { border: 1px solid var(--olive); padding: 16px; color: var(--ink); display: none; margin-top: 14px; }
+.secform__sent.is-on { display: block; }
+.secform__sent .mono { color: var(--olive); display: block; margin-bottom: 6px; }
+
+/* Cross-brand button back to Perun Tac */
+.nav__cross {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  padding: 9px 14px;
+  white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s;
+}
+.nav__cross:hover { color: var(--ink); border-color: var(--ink-dim); }
+@media (max-width: 1100px) { .nav__cross { display: none; } }
+
+/* Perun Sec wordmark lockup — placeholder until the real Perun Sec logo file
+   arrives: the shared Perun mark plus a typeset "Perun Sec", so the header
+   never reads "Perun Tac" on this domain. Swap the whole block for the
+   supplied logo asset when it lands. */
+.nav__logo--sec { display: flex; align-items: center; gap: 11px; }
+.nav__logo--sec img { height: clamp(34px, 2.6vw, 42px); width: auto; }
+.nav__wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.nav__wordmark em { color: var(--signal); font-style: normal; }
+
+/* Contact — two columns: message rail on the left, form panel on the right.
+   The form used to be a lone 620px column against a 1296px section, leaving
+   ~700px of dead space and pushing tel/email far below the fold. */
+.seccontact {
+  max-width: var(--max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  gap: clamp(32px, 5vw, 76px);
+  align-items: start;
+  padding-bottom: clamp(46px, 7vh, 76px);
+}
+/* the global .contact__title is sized for a full-bleed line; in half a column
+   it has to come down or it eats the whole viewport */
+.contact--sec .contact__title { font-size: clamp(2.2rem, 4.4vw, 3.6rem); margin-bottom: clamp(18px, 3vh, 26px); }
+.contact--sec .contact__note { margin-bottom: 0; }
+
+.seccontact__direct { margin-top: clamp(26px, 4vh, 40px); border-top: 1px solid var(--line); }
+.seccontact__direct a {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 15px 2px;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.3s;
+}
+.seccontact__direct a:hover { color: var(--signal); }
+.seccontact__tag { color: var(--olive); flex: 0 0 58px; }
+.seccontact__val { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.15rem, 2vw, 1.45rem); }
+
+.seccontact__panel {
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  padding: clamp(22px, 3vw, 34px);
+}
+/* short fields pair up; select, textarea, consent and submit stay full width */
+.secform { max-width: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.secform .field { margin-bottom: 15px; }
+.secform .field--wide, .secform .field--check, .secform__submit, .secform__sent { grid-column: 1 / -1; }
+.secform textarea { min-height: 120px; }
+.secform__submit { margin-top: 8px; }
+
+@media (max-width: 980px) { .seccontact { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .secform { grid-template-columns: 1fr; } }
+
+/* Map hover: tooltip pops out of the dot + a faint blue glow that follows the
+   pointer. Deliberately restrained — the glow tops out around 10% signal and
+   only ever appears inside the map figure. */
+.secmap__figure { position: relative; }
+.secmap__figure::before {
+  content: "";
+  position: absolute;
+  inset: -4% -2%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+  background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--signal) 8%, transparent), transparent 70%);
+}
+.secmap__figure.is-live::before { opacity: 1; }
+
+.secmap__tip {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 3;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 7px 12px;
+  border: 1px solid var(--signal);
+  background: color-mix(in oklab, var(--bg) 90%, transparent);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, -100%) translateY(-8px) scale(0.96);
+  transform-origin: bottom center;
+  transition: opacity 0.18s var(--ease-out), transform 0.18s var(--ease-out);
+}
+.secmap__tip::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 100%;
+  width: 1px; height: 8px;
+  background: var(--signal);
+  transform: translateX(-50%);
+}
+.secmap__tip.is-on { opacity: 1; transform: translate(-50%, -100%) translateY(-15px) scale(1); }
+
+.secmap__dot { cursor: default; }
+@media (prefers-reduced-motion: reduce) {
+  .secmap__tip { transition-duration: 0.01ms; }
+  .secmap__figure::before { display: none; }
+}

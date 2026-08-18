@@ -36,8 +36,8 @@
       <img src="assets/logo-flat.png" alt="Perun Tac">
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
-      <a href="wydarzenia.html">Wydarzenia</a>
-      <a href="oferta.html">Oferta</a>
+      <a href="wydarzenia.html">Kalendarz</a>
+      <a href="oferta.html">Szkolenia</a>
       <a href="baza-wiedzy.html" aria-current="page">Baza wiedzy</a>
       <a href="o-nas.html">O nas</a>
       <a href="perun-security.html">Perun Security</a>
@@ -60,8 +60,8 @@
 <div class="mmenu" id="mobileMenu" aria-hidden="true">
   <nav class="mmenu__links" aria-label="Menu mobilne">
     <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
-    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
-    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">NAJBLIŻSZE TERMINY</span>Kalendarz</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">PEŁNA OFERTA</span>Szkolenia</a>
     <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
     <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
     <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
@@ -89,12 +89,23 @@
     </div>
   </section>
 
-  <article class="art">
+  <div class="art-layout">
+    <nav class="art-toc" aria-label="Spis treści">
+      <p class="mono art-toc__label">SPIS TREŚCI</p>
+      <a href="#wstep">Wstęp</a>
+      <a href="#co-znaczy-wysokosc-montazu-i-dlaczego-zmienia-drugie-zero">Co znaczy „wysokość montażu” i dlaczego zmienia drugie zero?</a>
+      <a href="#od-wysokosci-nad-szyna-do-realnego-hob">Od „wysokości nad szyną” do realnego HOB</a>
+      <a href="#analizowane-konfiguracje">Analizowane konfiguracje</a>
+      <a href="#jak-przesuwa-sie-drugie-zero-dla-zera-25-m-i-50-m">Jak przesuwa się „drugie zero” dla zera 25 m i 50 m</a>
+      <a href="#co-to-oznacza-na-tarczy">Co to oznacza na tarczy</a>
+      <a href="#praktyczna-porada-mapowanie-karabinka-po-zmianie-montazu">Praktyczna porada: mapowanie karabinka po zmianie montażu</a>
+    </nav>
+    <article class="art">
     <div class="art__meta mono">
       <span>08 STYCZNIA 2026</span><span>//</span><span>BALISTYKA</span><span>//</span><span>HOB · FAR ZERO</span>
     </div>
 
-    <h2>Wstęp</h2>
+    <h2 id="wstep">Wstęp</h2>
     <p>Wysokość montażu optyki w karabinku AR-15 jest jednym z tych parametrów, które w praktyce strzeleckiej
     potrafią „po cichu” zmienić zachowanie zestawu, mimo że sam proces zerowania wygląda identycznie: ustawiamy
     punkt trafienia na zadanym dystansie i uznajemy temat za zamknięty. W rzeczywistości zmiana wysokości osi
@@ -110,7 +121,7 @@
     EOTech XPS i EXPS oraz kolimator Aimpoint na montażach Scalarworks 1.93″, Unity FAST 2.26″ i GBRS Hydra 2.91″.
     Przedstawione wartości mają charakter modelowy i służą do zrozumienia trendu oraz skali zmian.</p>
 
-    <h2>Co znaczy „wysokość montażu” i dlaczego zmienia drugie zero?</h2>
+    <h2 id="co-znaczy-wysokosc-montazu-i-dlaczego-zmienia-drugie-zero">Co znaczy „wysokość montażu” i dlaczego zmienia drugie zero?</h2>
     <p>W optyce kolimatorowej i holograficznej interesuje nas nie „ile jest risera”, tylko
     <strong>wysokość osi celowania ponad osią przewodu lufy</strong> (HOB, height over bore). Mechanicznie:</p>
     <ul>
@@ -124,7 +135,7 @@
     dalej</strong>. To czysta geometria w połączeniu z balistyką zewnętrzną: zmieniasz warunek brzegowy, więc
     zmieniasz kąt, a kąt determinuje, gdzie krzywa przetnie linię prostą po raz drugi.</p>
 
-    <h2>Od „wysokości nad szyną” do realnego HOB</h2>
+    <h2 id="od-wysokosci-nad-szyna-do-realnego-hob">Od „wysokości nad szyną” do realnego HOB</h2>
     <p>Dla AR-15 powszechnie przyjmuje się, że odległość od osi przewodu lufy do górnej powierzchni szyny Picatinny
     na upperze to około <strong>1.215″</strong>. Zatem przybliżony HOB:</p>
     <div class="art__callout">
@@ -134,7 +145,7 @@
     <p>Często spotkasz też regułę, że płaszczyzna przyrządów celowniczych AR-15 jest około 2.6″ ponad osią lufy
     (stąd bierze się „absolute co-witness”).</p>
 
-    <h2>Analizowane konfiguracje</h2>
+    <h2 id="analizowane-konfiguracje">Analizowane konfiguracje</h2>
     <ul>
       <li><strong>EOTech XPS</strong> (absolute co-witness, na szynie): ok. 1.41-1.42″ nad szyną</li>
       <li><strong>EOTech EXPS</strong> (lower 1/3 co-witness): ok. 1.71-1.72″</li>
@@ -147,7 +158,7 @@
       <figcaption class="mono">PORÓWNANIE WYSOKOŚCI MONTAŻY / AR-15</figcaption>
     </figure>
 
-    <h2>Jak przesuwa się „drugie zero” dla zera 25 m i 50 m</h2>
+    <h2 id="jak-przesuwa-sie-drugie-zero-dla-zera-25-m-i-50-m">Jak przesuwa się „drugie zero” dla zera 25 m i 50 m</h2>
     <p>Punkt odniesienia: w praktyce strzeleckiej funkcjonuje koncepcja <strong>„25/300”</strong> dla karabinków
     5.56 (near zero ~25 m, far zero ~300 m) jako schemat szkoleniowo-bojowy. Dla <strong>„50/200”</strong>
     (często w jardach) typowo mówi się o far zero rzędu ~200-225 yd, zależnie od konfiguracji.</p>
@@ -164,7 +175,7 @@
     przesunąć o <strong>kilkadziesiąt metrów</strong>. Przy 2.26″ i 2.91″ zmiana jest już „doktrynalna”:
     to zaczyna być <strong>inny system holdów</strong>, a nie tylko kosmetyka.</p>
 
-    <h2>Co to oznacza na tarczy</h2>
+    <h2 id="co-to-oznacza-na-tarczy">Co to oznacza na tarczy</h2>
     <h3>A) Offset na bliskich dystansach rośnie</h3>
     <p>W odległościach rzędu 3-15 m pocisk nie ma czasu „wspiąć się” do LOS, więc trafienie będzie zasadniczo
     <strong>niżej o HOB</strong>. Przy standardzie ~2.6″ HOB mówimy o ~6.5-7 cm nisko; przy Hydra (~4.125″ HOB)
@@ -184,7 +195,7 @@
     (np. 7 m / 15 m / 25 m / 50 m / 100 m), potwierdzić far zero realnie (200-350 m, zależnie od wybranego zera)
     i nie zakładać, że „50/200 zachowa się tak samo”.</p>
 
-    <h2>Praktyczna porada: mapowanie karabinka po zmianie montażu</h2>
+    <h2 id="praktyczna-porada-mapowanie-karabinka-po-zmianie-montazu">Praktyczna porada: mapowanie karabinka po zmianie montażu</h2>
     <p>Zmiana wysokości osi optyki zmienia offset na blisko i przesuwa drugie zero. Żeby nie opierać się
     na „gotowcach”, zrób krótkie mapowanie po ustawieniu zera.</p>
     <h3>1) Procedura w skrócie</h3>
@@ -215,6 +226,7 @@
       Wysoki montaż to inny system holdów. Zmapuj go, zanim zaufasz mu na dystansie.
     </div>
   </article>
+  </div>
 
   <nav class="art-nav" aria-label="Kolejne artykuły">
     <a href="artykul-zero-ar15.html"><span class="mono">← POPRZEDNI</span><strong>Jakie zero wybrać na karabinek AR-15?</strong></a>
@@ -228,6 +240,12 @@
       <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
       <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
     </div>
+    <nav class="contact__legal mono" aria-label="Dokumenty">
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin-strony.html">Regulamin strony</a>
+      <a href="regulamin-szkolen.html">Regulamin szkoleń</a>
+      <a href="regulamin-sklepu.html">Regulamin sklepu</a>
+    </nav>
     <div class="contact__bottom mono">
       <span>© 2026-2027 PERUN TAC</span>
       <span>WROCŁAW - 51°06′N 17°02′E</span>

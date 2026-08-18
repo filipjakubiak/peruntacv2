@@ -36,8 +36,8 @@
       <img src="assets/logo-flat.png" alt="Perun Tac">
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
-      <a href="wydarzenia.html">Wydarzenia</a>
-      <a href="oferta.html">Oferta</a>
+      <a href="wydarzenia.html">Kalendarz</a>
+      <a href="oferta.html">Szkolenia</a>
       <a href="baza-wiedzy.html" aria-current="page">Baza wiedzy</a>
       <a href="o-nas.html">O nas</a>
       <a href="perun-security.html">Perun Security</a>
@@ -60,8 +60,8 @@
 <div class="mmenu" id="mobileMenu" aria-hidden="true">
   <nav class="mmenu__links" aria-label="Menu mobilne">
     <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
-    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
-    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">NAJBLIŻSZE TERMINY</span>Kalendarz</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">PEŁNA OFERTA</span>Szkolenia</a>
     <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
     <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
     <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
@@ -89,12 +89,28 @@
     </div>
   </section>
 
-  <article class="art">
+  <div class="art-layout">
+    <nav class="art-toc" aria-label="Spis treści">
+      <p class="mono art-toc__label">SPIS TREŚCI</p>
+      <a href="#wstep">Wstęp</a>
+      <a href="#1-co-robi-halas-przy-strzale-trzy-zrodla-dzwieku">1. Co „robi hałas” przy strzale: trzy źródła dźwięku</a>
+      <a href="#2-korzysci-z-uzytkowania-tlumikow">2. Korzyści z użytkowania tłumików</a>
+      <a href="#3-koszty-i-ryzyka-gdzie-rachunek-bywa-nieoczywisty">3. Koszty i ryzyka: gdzie rachunek bywa nieoczywisty</a>
+      <a href="#4-dlugosc-lufy-i-przeciwcisnienie-dlaczego-krotkie-lufy-karza-tlumiki">4. Długość lufy i przeciwciśnienie: dlaczego krótkie lufy „karzą” tłumiki</a>
+      <a href="#5-di-vs-tlok-piston">5. DI vs tłok (piston)</a>
+      <a href="#6-amunicja-subsoniczna-vs-supersoniczna">6. Amunicja subsoniczna vs supersoniczna</a>
+      <a href="#7-tlumiki-flow-through-i-ograniczanie-ekspozycji-na-gazy">7. Tłumiki „flow-through” i ograniczanie ekspozycji na gazy</a>
+      <a href="#8-standardy-i-praktyki-bhp">8. Standardy i praktyki BHP</a>
+      <a href="#wnioski-kiedy-tlumik-jest-dobrym-pomyslem-a-kiedy-moze-szkodzic">Wnioski: kiedy tłumik jest dobrym pomysłem, a kiedy może szkodzić?</a>
+      <a href="#slowniczek">Słowniczek</a>
+      <a href="#bibliografia">Bibliografia</a>
+    </nav>
+    <article class="art">
     <div class="art__meta mono">
       <span>04 STYCZNIA 2026</span><span>//</span><span>SPRZĘT · BHP</span><span>//</span><span>NA PODSTAWIE BADAŃ</span>
     </div>
 
-    <h2>Wstęp</h2>
+    <h2 id="wstep">Wstęp</h2>
     <p>Tłumik dźwięku jest urządzeniem inżynieryjnym, które redukuje energię fali akustycznej generowanej przez
     wylot gazów prochowych (tzw. muzzle blast). Badania pokazują, że może on istotnie obniżać szczytowe poziomy
     ciśnienia akustycznego przy uchu strzelca oraz ekspozycję energetyczną w ujęciu dobowym, ale
@@ -108,7 +124,7 @@
     hałasu</strong>, ale wymaga świadomego doboru do platformy broni, amunicji i warunków (zwłaszcza pomieszczenia,
     praca zespołowa, noc), a także stosowania standardów higieny strzeleckiej i kontroli ekspozycji.</p>
 
-    <h2>1. Co „robi hałas” przy strzale: trzy źródła dźwięku</h2>
+    <h2 id="1-co-robi-halas-przy-strzale-trzy-zrodla-dzwieku">1. Co „robi hałas” przy strzale: trzy źródła dźwięku</h2>
     <ul>
       <li><strong>Wylot gazów prochowych (muzzle blast)</strong>: dominujące źródło impulsowego hałasu przy broni
       bez tłumika; tłumik działa głównie tutaj, zwiększając objętość rozprężania i wydłużając czas uwalniania gazów</li>
@@ -121,7 +137,7 @@
     <p>Wniosek praktyczny: „jak cicho” będzie po strzale, zależy nie tylko od tłumika, ale od
     <strong>amunicji (sub/super), platformy (bolt vs semi/auto), długości lufy i układu gazowego</strong>.</p>
 
-    <h2>2. Korzyści z użytkowania tłumików</h2>
+    <h2 id="2-korzysci-z-uzytkowania-tlumikow">2. Korzyści z użytkowania tłumików</h2>
     <h3>2.1. Ochrona słuchu: realne obniżenie ekspozycji, ale nie „cud”</h3>
     <p>NIOSH w badaniach terenowych wykazał, że tłumiki potrafią obniżać ekspozycję przy uchu strzelca
     o <strong>~17-24 dB (peak)</strong> oraz obniżać LAeq,8h o <strong>~9-21 dB</strong>, zależnie od broni
@@ -142,7 +158,7 @@
     <p>Wiele konfiguracji ogranicza płomień wylotowy i podpis świetlny, co ma znaczenie szkoleniowe (noc)
     i operacyjne. Skala zależy od amunicji i długości lufy.</p>
 
-    <h2>3. Koszty i ryzyka: gdzie rachunek bywa nieoczywisty</h2>
+    <h2 id="3-koszty-i-ryzyka-gdzie-rachunek-bywa-nieoczywisty">3. Koszty i ryzyka: gdzie rachunek bywa nieoczywisty</h2>
     <h3>3.1. Gazy powrotne i aerozole</h3>
     <p>W literaturze środowiskowej i higienicznej dotyczącej strzelnic wielokrotnie identyfikowano CO jako istotny
     składnik (ryzyko zatrucia przy niekorzystnej wentylacji), mieszaniny cząstek i metali (w tym Pb) przekładające
@@ -175,7 +191,7 @@
     <p>Wyniki NIOSH są jednoznaczne: tłumik redukuje ekspozycję, ale skumulowane strzelanie nadal może przekraczać
     bezpieczne dawki, więc ochronniki słuchu pozostają standardem.</p>
 
-    <h2>4. Długość lufy i przeciwciśnienie: dlaczego krótkie lufy „karzą” tłumiki</h2>
+    <h2 id="4-dlugosc-lufy-i-przeciwcisnienie-dlaczego-krotkie-lufy-karza-tlumiki">4. Długość lufy i przeciwciśnienie: dlaczego krótkie lufy „karzą” tłumiki</h2>
     <p>Krótsza lufa zwykle oznacza wyższe ciśnienie „na odetkaniu” (uncorking pressure) i bardziej agresywny impuls
     gazowy na wylocie, co zwiększa obciążenia tłumika i może pogarszać blowback w broni gazowej. Pomiary (AR-15,
     amunicja M855) pokazują, że ciśnienie w przewodzie lufy w momencie wylotu oraz poziom hałasu bez tłumika rosną
@@ -184,7 +200,7 @@
     uciążliwy blowback i „brudzenie”. Dłuższa lufa daje więcej czasu na dopalenie prochu (mniej płomienia i impulsu
     na wylocie) i łagodniejsze warunki pracy tłumika.</p>
 
-    <h2>5. DI vs tłok (piston)</h2>
+    <h2 id="5-di-vs-tlok-piston">5. DI vs tłok (piston)</h2>
     <ul>
       <li><strong>DI</strong> kieruje część gazów bezpośrednio do zespołu suwadła/BCG, co sprzyja zabrudzeniu
       i po dodaniu tłumika może nasilać emisję przez ejection port</li>
@@ -194,7 +210,7 @@
     <p>Ujęcie badawczo-pomiarowe podkreśla, że zjawisko jest bardzo zależne od kombinacji broń + tłumik,
     a nie tylko od amunicji.</p>
 
-    <h2>6. Amunicja subsoniczna vs supersoniczna</h2>
+    <h2 id="6-amunicja-subsoniczna-vs-supersoniczna">6. Amunicja subsoniczna vs supersoniczna</h2>
     <h3>6.1. „Sonic crack” (fala N)</h3>
     <p>Przy locie naddźwiękowym pocisk wytwarza falę uderzeniową o charakterystycznym kształcie (N-wave).
     Dla obserwatora „w bok” od toru lotu dźwięk ten jest często wyraźniejszy niż resztkowy dźwięk wylotu
@@ -205,7 +221,7 @@
     amunicja w broni samopowtarzalnej bywa mniej niezawodna (zależnie od platformy i układu gazowego),
     a w wielu zastosowaniach ma inne ograniczenia balistyczne. To zawsze trade-off.</p>
 
-    <h2>7. Tłumiki „flow-through” i ograniczanie ekspozycji na gazy</h2>
+    <h2 id="7-tlumiki-flow-through-i-ograniczanie-ekspozycji-na-gazy">7. Tłumiki „flow-through” i ograniczanie ekspozycji na gazy</h2>
     <p>W ujęciu BHP kluczowe jest pojęcie przeciwciśnienia. Klasyczne tłumiki, „zamykając” gazy na dłużej,
     potrafią zwiększyć back pressure i blowback. Rozwiązania „flow-through” / „low back pressure” dążą do takiego
     prowadzenia strumienia, aby ograniczać cofanie się gazów do układu broni, odprowadzać większą część gazów
@@ -219,7 +235,7 @@
       <li>Procedury higieniczne redukujące ingestię i inhalację pyłów</li>
     </ul>
 
-    <h2>8. Standardy i praktyki BHP</h2>
+    <h2 id="8-standardy-i-praktyki-bhp">8. Standardy i praktyki BHP</h2>
     <p><strong>MIL-STD-1474E</strong>: wojskowy standard dopuszczalnych poziomów hałasu i wymagań pomiarowych.
     <strong>NATO AEP-4875</strong>: metodyka pomiaru sygnatury akustycznej tłumików (NIOSH omawia jej zakres
     i ograniczenia, m.in. nieuwzględnianie N-wave). Najtwardsze wytyczne higieniczne pochodzą z higieny
@@ -233,7 +249,7 @@
       <li>Unikaj kontaktu z napojami i żywnością przed umyciem rąk</li>
     </ul>
 
-    <h2>Wnioski: kiedy tłumik jest dobrym pomysłem, a kiedy może szkodzić?</h2>
+    <h2 id="wnioski-kiedy-tlumik-jest-dobrym-pomyslem-a-kiedy-moze-szkodzic">Wnioski: kiedy tłumik jest dobrym pomysłem, a kiedy może szkodzić?</h2>
     <ul>
       <li>Tłumik to wartościowa kontrola inżynieryjna hałasu (redukcje są mierzalne), ale nie znosi obowiązku
       ochrony słuchu</li>
@@ -243,7 +259,7 @@
       „cool factor”, bez analizy platformy i ekspozycji, może być wyborem nieoptymalnym zdrowotnie</li>
     </ul>
 
-    <h2>Słowniczek</h2>
+    <h2 id="slowniczek">Słowniczek</h2>
     <ul>
       <li><strong>AEP-4875</strong>: NATO Allied Engineering Publication, protokół pomiaru sygnatury akustycznej tłumików</li>
       <li><strong>MIL-STD-1474E</strong>: standard pomiaru i limitów hałasu systemów wojskowych</li>
@@ -258,7 +274,7 @@
       <li><strong>OSHA / NIOSH</strong>: amerykańskie instytucje i standardy BHP pracy</li>
     </ul>
 
-    <h2>Bibliografia</h2>
+    <h2 id="bibliografia">Bibliografia</h2>
     <ul>
       <li>Murphy WJ et al. The reduction of gunshot noise and auditory risk through the use of firearm suppressors and low-velocity ammunition. Int J Audiol. 2018;57(S1):S28-S41.</li>
       <li>Aurell J et al. Gas and particle emissions from rifle and pistol firing. J Hazard Mater. 2024;476:135196.</li>
@@ -271,6 +287,7 @@
       <li>Boczkowski A. Analysis of the change in directionality of a gunshot noise after applying a gun silencer. Zeszyty Naukowe Politechniki Śląskiej. 2024;(210):33-44.</li>
     </ul>
   </article>
+  </div>
 
   <nav class="art-nav" aria-label="Kolejne artykuły">
     <a href="artykul-wysokosc-montazu.html"><span class="mono">← POPRZEDNI</span><strong>Wpływ wysokości montażu na „zero” broni</strong></a>
@@ -284,6 +301,12 @@
       <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
       <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
     </div>
+    <nav class="contact__legal mono" aria-label="Dokumenty">
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin-strony.html">Regulamin strony</a>
+      <a href="regulamin-szkolen.html">Regulamin szkoleń</a>
+      <a href="regulamin-sklepu.html">Regulamin sklepu</a>
+    </nav>
     <div class="contact__bottom mono">
       <span>© 2026-2027 PERUN TAC</span>
       <span>WROCŁAW - 51°06′N 17°02′E</span>

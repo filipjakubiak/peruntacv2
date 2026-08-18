@@ -14,6 +14,8 @@ poczty @peruntac.pl**.
 | WebWave ma elementy HTML/CSS/JS + own code w `<head>` (site-wide i per podstrona) | [help.webwave.me](https://help.webwave.me/html-css-and-javascript), [add-a-customized-code](https://help.webwave.me/add-a-customized-code-to-your-website) | Da się osadzić własny markup/style/skrypty na pustych podstronach |
 | Biblioteka plików WebWave serwuje dowolne pliki pod `/lib/v7viiv/…` | działające linki do PDF-ów tarcz na żywej stronie | Assety (zdjęcia, PDF-y) można trzymać w bibliotece i linkować |
 | Stara strona ma ~48 podstron PL + ~28 EN (sitemap.xml) | `peruntac.pl/sitemap.xml` | Potrzebna mapa przekierowań 301, inaczej tracimy SEO i żywe linki |
+| **Domena jest zarejestrowana przez DOMENY.TV (MSERWIS Sp. z o.o.), NIE przez WebWave** | WHOIS `peruntac.pl` → registrar DOMENY.TV, whois.dns.pl | Panel WebWave **nigdy nie miał** edytora DNS — to nie jest błąd/brak dostępu, tylko architektura. Rekordy A/CNAME edytuje się w panelu DOMENY.TV |
+| Oficjalny help WebWave (`redirect-your-domain-purchased-elsewhere-to-a-website-created-in-webwave`) opisuje dokładnie Wariant A jako wspieraną ścieżkę: zmienić tylko rekord A u rejestratora, nie ruszać MX | help.webwave.me | Wariant A jest oficjalnie wspierany przez WebWave, nie jest obejściem — ryzyko "poczta wymaga hostingu strony u WebWave" odpada |
 
 ## Zależności nowego builda od starej strony (do rozwiązania PRZED podmianą)
 
@@ -45,14 +47,17 @@ Nowa strona w 100 % taka jak w repo (GSAP, Lenis, dialogi — zero kompromisów)
 4. Przekierowania 301 ze starych slugów konfigurowane na nowym hostingu
    (Cloudflare Pages `_redirects` / reguły) — patrz mapa niżej.
 
-**Warunek wejścia:** dostęp do panelu WebWave z edycją DNS (memory:
-nadal niepotwierdzony — do wyjaśnienia z właścicielem). Bez tego wariant A
-nie startuje.
+**Warunek wejścia:** dostęp do panelu **DOMENY.TV** (rejestrator domeny,
+potwierdzony przez WHOIS — NIE panel WebWave, tam DNS nigdy nie było).
+Trzeba ustalić z właścicielem, czy zna login/hasło do konta w domeny.tv.
+Bez tego wariant A nie startuje.
 
 **Ryzyka:** literówka w DNS (mitygacja: zrzut wszystkich rekordów przed
-zmianą, zmiana tylko A/CNAME, TTL na 5 min na czas cutoveru);
-polityka WebWave wiążąca pocztę z aktywnym hostingiem strony — potwierdzić
-na czacie supportu przed cutoverem.
+zmianą, zmiana tylko A/CNAME, TTL na 5 min na czas cutoveru).
+~~Polityka WebWave wiążąca pocztę z aktywnym hostingiem strony~~ — nieaktualne,
+oficjalny help WebWave opisuje ten dokładny scenariusz (tylko rekord A gdzie
+indziej, MX zostaje) jako wspieraną opcję, więc czat supportu do potwierdzenia
+tego już niepotrzebny.
 
 ## Wariant B: osadzenie builda w edytorze WebWave (custom-code shell)
 
@@ -107,8 +112,8 @@ oraz `og:url` w podstronach (obecnie wskazują na `…/plik.html`).
 
 ## Checklist przed cutoverem (oba warianty)
 
-- [ ] Potwierdzić dostęp do panelu WebWave (login właściciela) i do edycji DNS
-- [ ] Zapytać support WebWave: czy poczta działa przy A-rekordach poza WebWave (wariant A) / limity elementu HTML (wariant B)
+- [ ] Potwierdzić dostęp do panelu **DOMENY.TV** (rejestrator — WHOIS potwierdzony, login/hasło właściciela) do edycji rekordu A
+- [ ] (Tylko wariant B, jeśli DOMENY.TV niedostępne) zapytać support WebWave o limity elementu HTML
 - [ ] Pobrać i zabezpieczyć wszystkie pliki `/lib/v7viiv/…` linkowane z bazy wiedzy
 - [ ] Odtworzyć `polityka-prywatnosci` i (opcjonalnie) `cele-strzeleckie`
 - [ ] Wpisać prawdziwe linki PayU/P24 do `PAY_LINKS` w `js/booking.js` (do tego czasu blok płatności jest ukryty — celowo)

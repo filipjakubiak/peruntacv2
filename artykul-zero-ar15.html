@@ -36,8 +36,8 @@
       <img src="assets/logo-flat.png" alt="Perun Tac">
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
-      <a href="wydarzenia.html">Wydarzenia</a>
-      <a href="oferta.html">Oferta</a>
+      <a href="wydarzenia.html">Kalendarz</a>
+      <a href="oferta.html">Szkolenia</a>
       <a href="baza-wiedzy.html" aria-current="page">Baza wiedzy</a>
       <a href="o-nas.html">O nas</a>
       <a href="perun-security.html">Perun Security</a>
@@ -60,8 +60,8 @@
 <div class="mmenu" id="mobileMenu" aria-hidden="true">
   <nav class="mmenu__links" aria-label="Menu mobilne">
     <a href="index.html"><span class="mono mmenu__tag">START</span>Strona główna</a>
-    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
-    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">NAJBLIŻSZE TERMINY</span>Kalendarz</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">PEŁNA OFERTA</span>Szkolenia</a>
     <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
     <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
     <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
@@ -89,7 +89,20 @@
     </div>
   </section>
 
-  <article class="art">
+  <div class="art-layout">
+    <nav class="art-toc" aria-label="Spis treści">
+      <p class="mono art-toc__label">SPIS TREŚCI</p>
+      <a href="#1-zalozenia-do-obliczen">1. Założenia do obliczeń</a>
+      <a href="#2-dlaczego-wysokosc-montazu-jest-tak-wazna">2. Dlaczego wysokość montażu jest tak ważna?</a>
+      <a href="#3-zero-dla-223556">3. Zero dla .223/5.56</a>
+      <a href="#4-zero-dla-300-blk">4. Zero dla .300 BLK</a>
+      <a href="#5-porownanie-zalet-i-wad-poszczegolnych-zer">5. Porównanie zalet i wad poszczególnych zer</a>
+      <a href="#6-kolimator-lpvo-i-siatki-bdc">6. Kolimator, LPVO i siatki BDC</a>
+      <a href="#7-jak-precyzyjnie-ustawic-zero">7. Jak precyzyjnie ustawić zero?</a>
+      <a href="#8-zmapuj-swoje-zero">8. Zmapuj swoje zero</a>
+      <a href="#9-jakie-zero-wybrac">9. Jakie zero wybrać?</a>
+    </nav>
+    <article class="art">
     <div class="art__meta mono">
       <span>04 MAJA 2026</span><span>//</span><span>BALISTYKA</span><span>//</span><span>5.56 · .300 BLK</span>
     </div>
@@ -105,7 +118,7 @@
     <strong>5.56/.223</strong> oraz <strong>.300 BLK</strong>. Osobno omówimy .300 BLK supersonic i subsonic,
     ponieważ są to w praktyce dwa zupełnie różne światy balistyczne.</p>
 
-    <h2>1. Założenia do obliczeń</h2>
+    <h2 id="1-zalozenia-do-obliczen">1. Założenia do obliczeń</h2>
     <p>Poniższe wartości są modelowe i służą do zrozumienia różnic między zerami.
     Nie są gotową tabelą DOPE dla każdego karabinka. Do obliczeń przyjęliśmy:</p>
     <ul>
@@ -126,7 +139,7 @@
     prędkość 1050 fps z lufy testowej 24″, BC G1 .437 oraz bardzo duży opad już na 200-300 yd. W modelu dla krótkiej
     lufy przyjęto ok. <strong>305 m/s / 1000 fps</strong>.</p>
 
-    <h2>2. Dlaczego wysokość montażu jest tak ważna?</h2>
+    <h2 id="2-dlaczego-wysokosc-montazu-jest-tak-wazna">2. Dlaczego wysokość montażu jest tak ważna?</h2>
     <p>Wysokość montażu optyki, czyli HOB (height over bore), to odległość między osią lufy a osią celownika.
     W AR-15 standardowy montaż kolimatora lower 1/3 daje zwykle okolice 2,6″ / 6,6 cm. To oznacza, że na bardzo
     bliskim dystansie, np. 5-10 m, pocisk będzie trafiał niżej mniej więcej o tę wartość, ponieważ nie zdąży
@@ -138,7 +151,7 @@
     <p>Dlatego wszystkie tabele poniżej bazują na jednym założeniu: <strong>lower 1/3, około 6,6 cm HOB</strong>.
     Jeżeli używasz montażu 1.93″, 2.26″, Hydra albo innego wysokiego montażu, Twoje wartości będą inne.</p>
 
-    <h2>3. Zero dla .223/5.56</h2>
+    <h2 id="3-zero-dla-223556">3. Zero dla .223/5.56</h2>
     <figure>
       <img src="assets/art1-chart-1.png" alt="Tabela trafień względem punktu celowania dla 5.56 z lufy 14,5 cala przy zerach 25, 36, 50 i 100 m" loading="lazy">
       <figcaption class="mono">5.56 / LUFA 14,5″ / 55 GR FMJ / HOB 6,6 CM</figcaption>
@@ -167,7 +180,7 @@
     jako wymagające świadomego holdoveru. Przy 10,5-calowej lufie strzelanie długiego dystansu raczej nie będzie
     domyślnym wyborem, więc zero na 100 m raczej nie powinno być brane pod uwagę.</p>
 
-    <h2>4. Zero dla .300 BLK</h2>
+    <h2 id="4-zero-dla-300-blk">4. Zero dla .300 BLK</h2>
     <figure>
       <img src="assets/art1-chart-3.png" alt="Tabela trafień dla .300 BLK supersonic 110 gr z lufy 8 cali" loading="lazy">
       <figcaption class="mono">.300 BLK SUPERSONIC / 110 GR V-MAX / LUFA 8″</figcaption>
@@ -191,7 +204,7 @@
     używana w konfiguracji z tłumikiem i realny zakres pracy jest bliski. Przy tak dużych opadach szczególnie ważne
     będzie utrwalanie mapy zera podczas treningów.</p>
 
-    <h2>5. Porównanie zalet i wad poszczególnych zer</h2>
+    <h2 id="5-porownanie-zalet-i-wad-poszczegolnych-zer">5. Porównanie zalet i wad poszczególnych zer</h2>
     <h3>Zero 25 m</h3>
     <p>Proste do ustawienia, łatwo dostępne na większości strzelnic i bardzo praktyczne szkoleniowo. Daje relatywnie
     prostą mapę poprawek do około 300 m, szczególnie w 5.56/.223. W Perun Tac używamy go właśnie z tego powodu:
@@ -218,7 +231,7 @@
     dystansach pocisk nadal trafia nisko z powodu HOB, a na dalszych szybko zaczyna opadać: przy 5.56 z lufy 14,5″
     około -56 cm na 300 m, przy 10,5″ około -69 cm. To wymaga świadomego holdoveru.</p>
 
-    <h2>6. Kolimator, LPVO i siatki BDC</h2>
+    <h2 id="6-kolimator-lpvo-i-siatki-bdc">6. Kolimator, LPVO i siatki BDC</h2>
     <p>W tym artykule zakładamy głównie kolimator, czyli prosty punkt celowniczy bez rozbudowanej siatki
     balistycznej. W takim przypadku wybór zera ma ogromne znaczenie, bo strzelec pracuje głównie trzymaniem punktu:
     wyżej, niżej albo centralnie.</p>
@@ -228,7 +241,7 @@
     dowolny: jeżeli siatka BDC wymaga zera na 100 m, a ustawimy broń na 50 m, znaczniki mogą przestać odpowiadać
     realnej trajektorii.</p>
 
-    <h2>7. Jak precyzyjnie ustawić zero?</h2>
+    <h2 id="7-jak-precyzyjnie-ustawic-zero">7. Jak precyzyjnie ustawić zero?</h2>
     <p>Najważniejsza zasada: zero nie może być ustawione „mniej więcej”. To nie jest etap, który można potraktować
     jako formalność z myślą „kiedyś jeszcze to poprawię”. Każdy kolejny strzał, każde ćwiczenie i każda poprawka
     będą bazować na tym, jak dobrze wyzerowaliśmy celownik. Dobre zero wymaga precyzji, cierpliwości
@@ -259,7 +272,7 @@
     Jeżeli nie, powtórz proces. Dobrą praktyką jest też ponowne potwierdzenie zera po zdjęciu i ponownym założeniu
     optyki, zmianie montażu, zmianie amunicji, zmianie tłumika lub mocnym uderzeniu broni.</p>
 
-    <h2>8. Zmapuj swoje zero</h2>
+    <h2 id="8-zmapuj-swoje-zero">8. Zmapuj swoje zero</h2>
     <p>Samo ustawienie zera na 25, 36, 50 albo 100 m nie kończy pracy. Trzeba jeszcze znać swoje zero.
     Oznacza to sprawdzenie, gdzie broń trafia na innych dystansach. Minimalny zestaw do mapowania:</p>
     <ul>
@@ -273,7 +286,7 @@
     z tarczy stworzysz mapę zera. Zachowaj ją i następnie strzelaj, zmieniając punkt celowania tak, aby trafienia
     były w wybranej przez Ciebie strefie tarczy.</p>
 
-    <h2>9. Jakie zero wybrać?</h2>
+    <h2 id="9-jakie-zero-wybrac">9. Jakie zero wybrać?</h2>
     <p>Nie ma jednego najlepszego zera dla każdego karabinka i każdego strzelca.</p>
     <p>Dla 5.56/.223 zero 25 m może być bardzo praktyczne, jeżeli zależy nam na prostej mapie pracy do około 300 m
     i akceptujemy wyższe trafienia na średnim dystansie. Zero 36 m jest ciekawym kompromisem, ale musi być rozumiane
@@ -291,6 +304,7 @@
       Dopiero wtedy naprawdę znasz swój karabinek.
     </div>
   </article>
+  </div>
 
   <nav class="art-nav" aria-label="Kolejne artykuły">
     <a href="baza-wiedzy.html#artykuly"><span class="mono">← BAZA WIEDZY</span><strong>Wszystkie artykuły</strong></a>
@@ -304,6 +318,12 @@
       <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
       <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
     </div>
+    <nav class="contact__legal mono" aria-label="Dokumenty">
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin-strony.html">Regulamin strony</a>
+      <a href="regulamin-szkolen.html">Regulamin szkoleń</a>
+      <a href="regulamin-sklepu.html">Regulamin sklepu</a>
+    </nav>
     <div class="contact__bottom mono">
       <span>© 2026-2027 PERUN TAC</span>
       <span>WROCŁAW - 51°06′N 17°02′E</span>

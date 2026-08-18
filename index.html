@@ -22,6 +22,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;900&family=Sofia+Sans:wght@400;600&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>
+/* Auto-wybór języka — działa tylko na stronie głównej, tylko przy wejściu
+   z zewnątrz i tylko dopóki użytkownik nie wybrał języka ręcznie
+   (wybór zapisuje js/main.js pod kluczem perun-lang). */
+(function () {
+  try {
+    if (/[?&](shot|lang)=/.test(location.search)) return;
+    var saved = localStorage.getItem("perun-lang");
+    if (saved === "pl") return;
+    if (saved === "en") { location.replace("en/index.html"); return; }
+    if (document.referrer && document.referrer.indexOf(location.host) > -1) return;
+    var pref = (navigator.languages && navigator.languages[0]) || navigator.language || "pl";
+    if (pref.toLowerCase().indexOf("pl") !== 0) location.replace("en/index.html");
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 
@@ -47,8 +63,8 @@
       <img src="assets/logo-flat.png" alt="Perun Tac">
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
-      <a href="wydarzenia.html">Wydarzenia</a>
-      <a href="oferta.html">Oferta</a>
+      <a href="wydarzenia.html">Kalendarz</a>
+      <a href="oferta.html">Szkolenia</a>
       <a href="baza-wiedzy.html">Baza wiedzy</a>
       <a href="o-nas.html">O nas</a>
       <a href="perun-security.html">Perun Security</a>
@@ -71,8 +87,8 @@
 <!-- Mobile menu -->
 <div class="mmenu" id="mobileMenu" aria-hidden="true">
   <nav class="mmenu__links" aria-label="Menu mobilne">
-    <a href="wydarzenia.html"><span class="mono mmenu__tag">KALENDARZ</span>Wydarzenia</a>
-    <a href="oferta.html"><span class="mono mmenu__tag">SZKOLENIA</span>Oferta</a>
+    <a href="wydarzenia.html"><span class="mono mmenu__tag">NAJBLIŻSZE TERMINY</span>Kalendarz</a>
+    <a href="oferta.html"><span class="mono mmenu__tag">PEŁNA OFERTA</span>Szkolenia</a>
     <a href="baza-wiedzy.html"><span class="mono mmenu__tag">DARMOWA WIEDZA</span>Baza wiedzy</a>
     <a href="o-nas.html"><span class="mono mmenu__tag">ZESPÓŁ</span>O nas</a>
     <a href="perun-security.html"><span class="mono mmenu__tag">OCHRONA</span>Perun Security</a>
@@ -97,21 +113,21 @@
       <div class="split__scrim" aria-hidden="true"></div>
       <div class="split__glow" aria-hidden="true"></div>
       <span class="split__index mono">01 // DYWIZJA SZKOLENIOWA</span>
-      <p class="split__kicker mono"><span class="blink" aria-hidden="true">●</span> STRZELECKIE · TAKTYCZNE · SPECJALISTYCZNE</p>
+      <p class="split__kicker mono"><span class="blink" aria-hidden="true">●</span><span>STRZELECKIE <i class="dot" aria-hidden="true">●</i> TAKTYCZNE <i class="dot" aria-hidden="true">●</i> SPECJALISTYCZNE</span></p>
       <p class="split__brand">Perun <em>Tac</em></p>
-      <p class="split__desc">Szkolimy tych, którzy nie mogą zawieść. Strzelcy cywilni, służby mundurowe i jednostki wojskowe — wybierz szkolenie.</p>
-      <span class="split__cta">Wejdź do szkoleń <span class="arw" aria-hidden="true">→</span></span>
+      <p class="split__desc">Budujemy kulturę bezpieczeństwa, przekazując wiedzę i umiejętności sprawdzone w realnych warunkach. Wybierz szkolenie Perun Tac i przygotuj się na sytuacje, w których liczy się właściwa reakcja.</p>
+      <span class="split__cta">Zobacz dostępne szkolenia <span class="arw" aria-hidden="true">→</span></span>
     </a>
 
     <a class="split__panel split__panel--sec" href="perun-security.html" aria-label="Perun Security — ochrona osobista i VIP">
-      <div class="split__media" aria-hidden="true"><img src="assets/about-1.jpg" alt=""></div>
+      <div class="split__media" aria-hidden="true"><img src="assets/sec-baghdad.jpg" alt=""></div>
       <div class="split__scrim" aria-hidden="true"></div>
       <div class="split__glow" aria-hidden="true"></div>
       <span class="split__index mono">02 // DYWIZJA OCHRONY</span>
-      <p class="split__kicker mono"><span class="blink" aria-hidden="true">●</span> OCHRONA OSOBISTA · CLOSE PROTECTION · VIP</p>
+      <p class="split__kicker mono"><span class="blink" aria-hidden="true">●</span><span>OCHRONA OSOBISTA <i class="dot" aria-hidden="true">●</i> CLOSE PROTECTION <i class="dot" aria-hidden="true">●</i> VIP</span></p>
       <p class="split__brand">Perun <em>Sec</em></p>
-      <p class="split__desc">Bezpieczeństwo osób, których nie stać na przypadek. Dyskretna ochrona osobista i zabezpieczenie na całym świecie.</p>
-      <span class="split__cta">Wejdź do ochrony <span class="arw" aria-hidden="true">→</span></span>
+      <p class="split__desc">Działania ochronne i bezpieczeństwo na całym świecie dla osób, mienia firm i instytucji.</p>
+      <span class="split__cta">Zobacz nasze usługi <span class="arw" aria-hidden="true">→</span></span>
     </a>
   </section>
 
@@ -125,35 +141,44 @@
   <!-- OFERTA -->
   <section class="offer" id="oferta">
     <div class="section-head">
-      <h2 class="section-head__title"><span class="line"><span class="line__in">Nasza oferta</span></span></h2>
-      <p class="section-head__note">Cztery kierunki. Jeden standard: taki, przy którym nie ma miejsca na&nbsp;szczęście.</p>
+      <h2 class="section-head__title"><span class="line"><span class="line__in">Szkolenia</span></span></h2>
+      <p class="section-head__note">Znajdź profesjonalne szkolenia w&nbsp;czterech różnych tematykach. Rozwijaj swoje umiejętności od&nbsp;podstaw po&nbsp;zaawansowane schematy dla&nbsp;profesjonalistów.</p>
     </div>
 
     <div class="offer__list">
-      <a class="offer__row" href="oferta.html">
+      <a class="offer__row" href="oferta.html#strzeleckie">
         <div class="offer__bg" aria-hidden="true"><img src="assets/hero-4.jpg" alt="" loading="lazy"></div>
         <div class="offer__inner">
           <span class="offer__tag mono">OTWARTE ZAPISY</span>
-          <h3 class="offer__title">Szkolenia strzeleckie</h3>
-          <p class="offer__desc">Pistolet i karabinek AR-15: od fundamentów po strzelanie w ruchu, na dystansie i pod presją czasu.</p>
+          <h3 class="offer__title">Strzeleckie</h3>
+          <p class="offer__desc">Naucz się kompleksowej obsługi broni. Dla początkujących i zaawansowanych strzelców.</p>
           <span class="offer__arrow" aria-hidden="true">→</span>
         </div>
       </a>
       <a class="offer__row" href="oferta.html#taktyczne">
         <div class="offer__bg" aria-hidden="true"><img src="assets/hero-2.jpg" alt="" loading="lazy"></div>
         <div class="offer__inner">
-          <span class="offer__tag mono">NOC / DZIEŃ</span>
-          <h3 class="offer__title">Szkolenia taktyczne</h3>
-          <p class="offer__desc">CQB, praca zespołowa, działania nocne. Procedury wypracowane z jednostkami, które nie polegają na szczęściu.</p>
+          <span class="offer__tag mono">OTWARTE ZAPISY</span>
+          <h3 class="offer__title">Taktyczne</h3>
+          <p class="offer__desc">Poznaj aktualne standardy operacyjne w różnych środowiskach: CQB, VCQB, VBSS.</p>
           <span class="offer__arrow" aria-hidden="true">→</span>
         </div>
       </a>
       <a class="offer__row" href="oferta.html#specjalistyczne">
         <div class="offer__bg" aria-hidden="true"><img src="assets/hero-1.jpg" alt="" loading="lazy"></div>
         <div class="offer__inner">
+          <span class="offer__tag offer__tag--signal mono">ZDOBĄDŹ SPECJALIZACJĘ</span>
+          <h3 class="offer__title">Specjalistyczne</h3>
+          <p class="offer__desc">Zdobądź niszowe umiejętności takie jak breaching, techniki linowe, czy ochrona osobista i inne.</p>
+          <span class="offer__arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+      <a class="offer__row" href="oferta.html#tryby">
+        <div class="offer__bg" aria-hidden="true"><img src="assets/hero-6.jpg" alt="" loading="lazy"></div>
+        <div class="offer__inner">
           <span class="offer__tag mono">AO: GLOBAL</span>
-          <h3 class="offer__title">Kontrakty specjalistyczne</h3>
-          <p class="offer__desc">Programy dla wojska, policji i sektora prywatnego. Realizujemy zadania na całym świecie.</p>
+          <h3 class="offer__title">Tryby realizacji</h3>
+          <p class="offer__desc">Organizujemy szkolenia otwarte, indywidualne i dla grup zamkniętych. Znajdziesz u nas dedykowane programy dla wojska, służb i dla sektora prywatnego.</p>
           <span class="offer__arrow" aria-hidden="true">→</span>
         </div>
       </a>
@@ -162,7 +187,7 @@
         <div class="offer__inner">
           <span class="offer__tag mono">DO POBRANIA</span>
           <h3 class="offer__title">Materiały treningowe</h3>
-          <p class="offer__desc">Autorskie tarcze, range-cardy i darmowa baza wiedzy. Trenuj mądrzej między zjazdami.</p>
+          <p class="offer__desc">Wszystko czego możesz potrzebować do samodzielnych treningów. Darmowa baza wiedzy, tarcze, standardy i testy strzeleckie.</p>
           <span class="offer__arrow" aria-hidden="true">→</span>
         </div>
       </a>
@@ -175,29 +200,28 @@
       <div class="mission__text">
         <p class="mission__label mono">MISJA PERUN TAC</p>
         <h2 class="mission__title">
-          <span class="line"><span class="line__in">Poszerzamy kulturę</span></span>
-          <span class="line"><span class="line__in">strzelectwa. Wymieniamy</span></span>
-          <span class="line"><span class="line__in"><em>doświadczenie.</em></span></span>
+          <span class="line"><span class="line__in">Świadomość,</span></span>
+          <span class="line"><span class="line__in">bezpieczeństwo, <em>rozwój.</em></span></span>
+          <span class="line"><span class="line__in">Wymiana doświadczeń</span></span>
+          <span class="line"><span class="line__in">z operacji na całym świecie.</span></span>
         </h2>
-        <p class="mission__body">Nasze szkolenia kierowane są do strzelców cywilnych, służb mundurowych
-        i&nbsp;jednostek wojskowych. Realizujemy zadania na&nbsp;całym świecie, współpracując
-        z&nbsp;jednostkami wojska, policji i&nbsp;firmami z&nbsp;sektora prywatnego.</p>
+        <p class="mission__body">Nasze szkolenia skierowane są do cywili, służb mundurowych,
+        jednostek wojskowych i&nbsp;innych instytucji. Realizujemy zadania na&nbsp;całym świecie,
+        współpracując z&nbsp;jednostkami wojska, policji i&nbsp;firmami z&nbsp;sektora prywatnego.</p>
         <ul class="mission__facts mono">
           <li><span>WSPÓŁPRACA</span><span>WOJSKO · POLICJA · SEKTOR PRYWATNY</span></li>
           <li><span>ZASIĘG</span><span>CAŁY ŚWIAT</span></li>
           <li><span>BAZA</span><span>WROCŁAW, DOLNY ŚLĄSK</span></li>
-          <li><span>DOKTRYNA</span><span>WIEDZA → POWTÓRZENIA → PRESJA</span></li>
+          <li><span>DOKTRYNA</span><span>AUTORSKI SYSTEM NAUCZANIA</span></li>
         </ul>
-        <a class="btn btn--ghost" href="kontakt.html" data-magnetic>Porozmawiajmy o szkoleniu</a>
+        <a class="btn btn--ghost" href="kontakt.html" data-magnetic>Skontaktuj się z nami</a>
       </div>
       <div class="mission__media">
         <figure class="mission__photo mission__photo--tall" data-parallax="-14">
           <img src="assets/about-1.jpg" alt="Operator w noktowizji podczas nocnego szkolenia" loading="lazy">
-          <figcaption class="mono">NOC // PRACA NA NVG</figcaption>
         </figure>
         <figure class="mission__photo" data-parallax="10">
           <img src="assets/about-2.jpg" alt="Szkolenie strzeleckie Perun Tac" loading="lazy">
-          <figcaption class="mono">DZIEŃ // PRACA ZESPOŁOWA</figcaption>
         </figure>
       </div>
     </div>
@@ -212,13 +236,14 @@
       </div>
       <div class="gallery__strip">
       <div class="gallery__track" id="galleryTrack">
-        <figure class="gallery__item"><img src="assets/hero-1.jpg" alt="Praca z psem bojowym podczas wejścia do pomieszczeń" loading="lazy"><figcaption class="mono">PT/001 - K9 / CQB</figcaption></figure>
-        <figure class="gallery__item"><img src="assets/hero-2.jpg" alt="Nocne szkolenie strzeleckie przy świetle latarek" loading="lazy"><figcaption class="mono">PT/002 - NOC / LOW-LIGHT</figcaption></figure>
-        <figure class="gallery__item"><img src="assets/hero-3.jpg" alt="Szkolenie strzeleckie Perun Tac" loading="lazy"><figcaption class="mono">PT/003 - STRZELNICA</figcaption></figure>
-        <figure class="gallery__item"><img src="assets/hero-4.jpg" alt="Trening na strzelnicy" loading="lazy"><figcaption class="mono">PT/004 - KARABINEK</figcaption></figure>
-        <figure class="gallery__item"><img src="assets/hero-5.jpg" alt="Uczestnicy szkolenia w trakcie ćwiczeń" loading="lazy"><figcaption class="mono">PT/005 - ZESPÓŁ</figcaption></figure>
-        <figure class="gallery__item"><img src="assets/hero-6.jpg" alt="Szkolenie taktyczne" loading="lazy"><figcaption class="mono">PT/006 - TAKTYKA</figcaption></figure>
-        <figure class="gallery__item"><img src="assets/hero-7.jpg" alt="Zgranie zespołu podczas szkolenia" loading="lazy"><figcaption class="mono">PT/007 - PRESJA</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-1.jpg" alt="Międzynarodowe Warsztaty Taktyczne Gryf-25" loading="lazy"><figcaption class="mono">PT/001 - MIĘDZYNARODOWE WARSZTATY TAKTYCZNE GRYF-25</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-2.jpg" alt="Międzynarodowe Warsztaty Taktyczne Gryf-25" loading="lazy"><figcaption class="mono">PT/002 - MIĘDZYNARODOWE WARSZTATY TAKTYCZNE GRYF-25</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-3.jpg" alt="Szkolenie Vehicle Tactics" loading="lazy"><figcaption class="mono">PT/003 - SZKOLENIE VEHICLE TACTICS</figcaption></figure>
+        <!-- TODO: podmienić zdjęcia PT/004-PT/007 na materiał od Piotrka (Gryf-26, Mid Range, Long Range, NVG) -->
+        <figure class="gallery__item"><img src="assets/hero-4.jpg" alt="Międzynarodowe Warsztaty Taktyczne Gryf-26" loading="lazy"><figcaption class="mono">PT/004 - GRYF-26</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-5.jpg" alt="Szkolenie strzeleckie Mid Range" loading="lazy"><figcaption class="mono">PT/005 - MID RANGE</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-6.jpg" alt="Szkolenie strzeleckie Long Range" loading="lazy"><figcaption class="mono">PT/006 - LONG RANGE</figcaption></figure>
+        <figure class="gallery__item"><img src="assets/hero-7.jpg" alt="Szkolenie NVG - praca w noktowizji" loading="lazy"><figcaption class="mono">PT/007 - NVG</figcaption></figure>
       </div>
       </div>
     </div>
@@ -252,7 +277,7 @@
   <section class="kb" id="wiedza">
     <div class="section-head">
       <h2 class="section-head__title"><span class="line"><span class="line__in">Baza wiedzy</span></span></h2>
-      <p class="section-head__note">Darmowa wiedza z&nbsp;pierwszej ręki: balistyka, optyka, sprzęt. Bez marketingowej mgły.</p>
+      <p class="section-head__note">Przeczytaj artykuły opracowane przez naszych ekspertów. Poszerzaj swoją wiedzę o&nbsp;informacje, których nie&nbsp;znajdziesz nigdzie indziej.</p>
     </div>
 
     <div class="kb__list" id="kbList">
@@ -310,6 +335,12 @@
       <a href="https://www.youtube.com/channel/UCxeWXLKbPxCwjw3OgNXCPiQ" target="_blank" rel="noopener">YOUTUBE ↗</a>
       <a href="https://www.tiktok.com/@perun_tac" target="_blank" rel="noopener">TIKTOK ↗</a>
     </div>
+    <nav class="contact__legal mono" aria-label="Dokumenty">
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin-strony.html">Regulamin strony</a>
+      <a href="regulamin-szkolen.html">Regulamin szkoleń</a>
+      <a href="regulamin-sklepu.html">Regulamin sklepu</a>
+    </nav>
     <div class="contact__bottom mono">
       <span>© 2026-2027 PERUN TAC</span>
       <span>WROCŁAW - 51°06′N 17°02′E</span>
