@@ -307,11 +307,17 @@ Szczegóły techniczne i checklista cutoveru: **`perunsec/README.md`**.
       + pełny formularz kontaktowy (imię, firma, e-mail, telefon, zakres, wiadomość, RODO)
 - [~] Osobny e-mail: strona używa **`info@perunsec.com` (założenie)** — do potwierdzenia
       i ewentualnej podmiany w 3 miejscach (patrz README)
-- [ ] **Cutover — celowo NIE zrobiony**: linki na peruntac.pl (panel Sec w hero, przycisk
-      w Ofercie, pozycja w nawigacji) nadal prowadzą do lokalnego `perun-security.html`.
-      Przełączenie ich na `https://perunsec.com` teraz zrobiłoby martwe linki, bo domena
-      jeszcze nie odpowiada. Dokładna lista 4 zmian do wykonania po uruchomieniu domeny
-      jest w `perunsec/README.md`.
+- [x] **Linki z Perun Tac przepięte na nowy serwis (2026-08-18)** — klient zgłosił, że
+      klikanie „Perun Security" otwiera starą wersję. Wszystkie **54 linki** (nawigacja,
+      menu mobilne, panel Sec w hero, przycisk w Ofercie; PL i EN) prowadzą teraz do
+      `perunsec/index.html` (ze stron w `en/`: `../perunsec/index.html`). Stare
+      `perun-security.html` i `en/perun-security.html` zamienione na strony
+      przekierowujące (meta refresh + `location.replace` + `noindex`), żeby zakładki
+      i zaindeksowane adresy nie serwowały nieaktualnej treści. Ścieżki względne, więc
+      działa lokalnie, na GitHub Pages i na Cloudflare.
+- [ ] **Cutover na własną domenę** — gdy perunsec.com zacznie odpowiadać: podmienić
+      ścieżki względne na `https://perunsec.com/` i dodać 301 dla `peruntac.pl/perunsec/`,
+      żeby nie było duplikatu treści. Kroki w `perunsec/README.md`.
 - [ ] Deploy: osobny projekt Cloudflare Pages (root = `perunsec/`) + DNS perunsec.com
 
 Zweryfikowane Playwright (EN + PL): 13 usług, 20 punktów mapy i 20 pozycji listy,

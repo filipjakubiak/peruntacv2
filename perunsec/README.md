@@ -49,20 +49,34 @@ Regeneracja (gdy zmieni się lista krajów): skrypt `genmap3.mjs` — wymaga
 Osobny projekt Pages wskazujący na katalog `perunsec/` jako root.
 Domena `perunsec.com` + `www` → ten projekt.
 
-## Cutover — do zrobienia DOPIERO gdy perunsec.com odpowiada
+## Linkowanie z Perun Tac — stan obecny
 
-Celowo jeszcze NIE przełączone, żeby nie zrobić martwych linków na żywej
-stronie peruntac.pl:
+✅ **Zrobione 2026-08-18.** Wszystkie 54 linki „Perun Security" na stronie Tac
+(nawigacja, menu mobilne, panel Sec w hero, przycisk w Ofercie — PL i EN)
+prowadzą teraz do tego serwisu ścieżką względną:
 
-1. `peruntac-v3/index.html` + `peruntac-v3/en/index.html` — panel Sec w hero
-   (`.split__panel--sec`) linkuje do `perun-security.html` → zmienić na
-   `https://perunsec.com/`.
-2. `peruntac-v3/oferta.html` + `peruntac-v3/en/training.html` — przycisk
-   „Przejdź do Perun SEC" / „Go to Perun SEC" → `https://perunsec.com/`.
-3. Nawigacja główna (wszystkie strony PL i EN) — pozycja „Perun Security”
-   → `https://perunsec.com/`.
-4. `peruntac-v3/perun-security.html` i `en/perun-security.html` → 301 na
-   `https://perunsec.com/` (przekierowanie w `_redirects` Cloudflare Pages).
+- ze stron w korzeniu repo: `perunsec/index.html`
+- ze stron w `en/`: `../perunsec/index.html`
+
+Stare `perun-security.html` i `en/perun-security.html` zostały zamienione na
+**strony przekierowujące** (meta refresh + `location.replace` + `noindex`),
+żeby zakładki i zaindeksowane adresy nie pokazywały nieaktualnej treści.
+
+Ścieżki względne działają wszędzie tam, gdzie serwis Tac ma w katalogu
+głównym podkatalog `perunsec/` — czyli lokalnie, na podglądzie GitHub Pages
+i na Cloudflare Pages z rootem `/`.
+
+## Cutover na własną domenę — gdy perunsec.com zacznie odpowiadać
+
+1. Podmienić `perunsec/index.html` → `https://perunsec.com/` oraz
+   `../perunsec/index.html` → `https://perunsec.com/` we wszystkich stronach
+   Tac (prosty search & replace, 54 wystąpienia).
+2. W obu stronach przekierowujących (`perun-security.html`,
+   `en/perun-security.html`) podmienić cel na `https://perunsec.com/`,
+   a docelowo zastąpić je regułą 301 w `_redirects` projektu Tac.
+3. Uwaga na duplikat treści: dopóki projekt Tac ma root `/`, serwis Sec jest
+   dostępny również pod `peruntac.pl/perunsec/`. Po uruchomieniu własnej
+   domeny dodać tam 301 na `https://perunsec.com/`.
 
 ## Czeka na materiały od klienta
 
