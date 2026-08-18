@@ -5,17 +5,42 @@
 > Źródło wymagań: `../assety/Strona PERUN TAC.pdf` (poprawki od klienta).
 > Zrzuty z adnotacjami wyciągnięte z PDF — numeracja punktów niżej = numeracja z PDF.
 
-**Ostatnia aktualizacja:** 2026-08-18
-**Aktualny etap:** ETAP 1 (Perun Tac) i ETAP 2 (Perun Sec) ZBUDOWANE.
-Zostają: **cutover linków + deploy perunsec.com** (czeka na domenę) oraz
-**ETAP 3 — CMS** (zaplanowany na grudzień 2026).
+**Ostatnia aktualizacja:** 2026-08-18 (koniec sesji)
+**Stan:** ETAP 1 (Perun Tac) i ETAP 2 (Perun Sec) ZBUDOWANE i wypchnięte na GitHub
+(`filipjakubiak/peruntacv2`, gałąź `main`, ostatni commit `6c60241`). Drzewo czyste.
 
-Jedyne pozostałe otwarte punkty w Etapie 1: **25b** (artykuł-relacja z wydarzenia — czeka na
+---
+
+## ⏭️ OD CZEGO ZACZĄĆ NASTĘPNĄ SESJĘ
+
+**Czeka decyzja klienta — bez niej nie ruszamy CMS-a.** Rozpisany został design
+(patrz „ETAP 3 — Panel CMS" niżej), ustalone są wymagania, ale wisi wybór technologii:
+
+- **Wariant A — Sveltia CMS (git-based)** ← rekomendacja. Panel pod `peruntac.pl/admin`,
+  treść = pliki w repo, publikacja przez commit + przebudowa Pages (~1 min). Zero backendu,
+  zero kosztów, pełna historia zmian. **Koszt: każdy edytor musi mieć konto GitHub.**
+- **Wariant B — własny panel na Cloudflare Workers + D1.** Logowanie e-mail + hasło,
+  publikacja natychmiastowa, naturalna podstawa pod etap 3B (płatności, maile).
+  **Koszt: ~3× więcej pracy, własna odpowiedzialność za autoryzację, backupy bazy.**
+
+Ustalone już wymagania CMS (nie trzeba pytać ponownie):
+1. **Edytorzy:** kilka osób, w tym jedna techniczna.
+2. **Model danych:** SZKOLENIE (opis/program/wymagania — pisane raz) + TERMIN
+   (data/miejsce/cena). Dodanie terminu = wybór szkolenia z listy. Koniec z dzisiejszą
+   duplikacją `products.js` ↔ `booking.js` spinaną ręcznie przez `calendarEventId`.
+3. **Języki:** pola EN opcjonalne, brak EN = strona angielska pokazuje PL (bez pustych miejsc).
+4. **Zakres:** szkolenia + terminy + relacje z wydarzeń (PT/001–007) + galeria na home
+   + artykuły w Bazie wiedzy. **Bez** celów strzeleckich (46 pozycji, rzadko się zmieniają).
+
+**Warunek techniczny (niezależny od wariantu):** dane muszą wyjechać z tablic w `js/` do
+plików JSON. Dziś siedzą w `js/booking.js` (EVENTS, 14 pozycji), `js/products.js`
+(PRODUCTS, 23) i `js/targets.js` (46). To pierwszy krok implementacji.
+
+---
+
+**Pozostałe otwarte punkty Etapu 1:** **25b** (artykuł-relacja z wydarzenia — czeka na
 szablon + treści od Piotrka) i treści prawne (regulaminy/polityka — czekają na Gabę).
 Wszystko inne z PDF-a zrobione i zweryfikowane w przeglądarce, PL+EN.
-
-Przy okazji poprawek zdjęcie z Bagdadu (`assets/sec-baghdad.jpg`) zostało też podmienione w
-hero `perun-security.html` (PL+EN), żeby było spójne ze zdjęciem panelu Sec na stronie głównej.
 
 ### Decyzje podjęte (2026-08-18)
 
@@ -333,11 +358,33 @@ poziom, cena, miejsce, data rozpoczęcia i zakończenia, godzina, szczegóły, o
 wymagane wyposażenie, opcje do wyboru przy zakupie, treść maila po rejestracji.
 Po zapisaniu produkt **automatycznie pojawia się w kalendarzu i w ofercie**.
 
-- [ ] Wyprowadzić dane wydarzeń z `js/booking.js` do `data/events.json` (jedno źródło prawdy)
-- [ ] Model danych: szkolenie (produkt) + termin (event) + opcje dodatkowe (wynajem broni/sprzętu)
-- [ ] Panel: logowanie, lista, edytor, upload zdjęć, publikacja
-- [ ] Podgląd przed publikacją
-- [ ] Wybór technologii → patrz „Decyzje do podjęcia"
+**Uwaga do wymagania z PDF:** klient opisuje to jako JEDEN formularz, który ląduje
+i w kalendarzu, i w ofercie. Po rozmowie (2026-08-18) rozbiliśmy to na dwa typy treści,
+bo inaczej opis Vehicle Tactics trzeba by przepisywać przy każdym nowym terminie,
+a poprawka literówki oznaczałaby edycję wszystkich wpisów. Efekt dla klienta jest ten sam
+(dodaję termin → pojawia się w kalendarzu i przy szkoleniu w ofercie), tylko bez duplikacji.
+
+### Ustalenia z brainstormingu (2026-08-18)
+
+| Pytanie | Ustalenie |
+|---|---|
+| Kto edytuje | Kilka osób, w tym jedna techniczna |
+| Model danych | SZKOLENIE (evergreen) + TERMIN (data/miejsce/cena), termin wskazuje szkolenie |
+| Języki | Pola EN opcjonalne; brak EN → strona angielska pokazuje treść PL |
+| Zakres | Szkolenia, terminy, relacje PT/001–007, galeria home, artykuły Bazy wiedzy |
+| Poza zakresem | Cele strzeleckie (46 poz.), maile po rejestracji (to etap 3B) |
+| Technologia | **NIEROZSTRZYGNIĘTE** — wariant A (Sveltia/git) vs B (Workers + D1) |
+
+### Kroki implementacji (po wyborze technologii)
+
+- [ ] **Krok 1 — migracja danych** (niezależny od wyboru A/B, można robić od razu):
+      `js/booking.js` → `data/terms.json`, `js/products.js` → `data/products.json`,
+      przepiąć renderery na `fetch()` zamiast tablic w kodzie. To rozbija dzisiejszą
+      duplikację produkt ↔ termin i jest warunkiem dla obu wariantów.
+- [ ] Krok 2 — schemat treści (pola, walidacja, wymagane vs opcjonalne)
+- [ ] Krok 3 — panel: logowanie, lista, edytor, upload zdjęć, publikacja
+- [ ] Krok 4 — podgląd przed publikacją
+- [ ] Krok 5 — instrukcja obsługi dla zespołu klienta (PL, ze zrzutami)
 
 ### ETAP 3B — Płatności i automatyzacja (osobny, największy blok)
 
@@ -350,6 +397,8 @@ Po zapisaniu produkt **automatycznie pojawia się w kalendarzu i w ofercie**.
 
 ## Decyzje do podjęcia (otwarte)
 
+0. **⚠️ TECHNOLOGIA CMS — wariant A (Sveltia/git, konta GitHub) czy B (Workers + D1,
+   logowanie hasłem)?** To blokuje start Etapu 3. Pełne porównanie na górze dokumentu.
 1. **Operator płatności** — Przelewy24 / PayU / Stripe. Do ustalenia przed etapem 3B.
 2. **Nazwa i skrzynka e-mail w domenie perunsec** — kto zakłada, gdzie hostowana.
    (Uwaga: mail peruntac.pl jest u WebWave — patrz `WEBWAVE-MIGRATION.md`.)
